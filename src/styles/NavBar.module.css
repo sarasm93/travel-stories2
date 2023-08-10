@@ -1,0 +1,38 @@
+.NavBar {
+    background-color: #ffffff;
+    font-size: 2.2vh;
+}
+
+.NavLogo {
+    margin-right: 20px;
+}
+
+.NavLogo span {
+    margin: 5px 5px 0 10px;
+    font-size: 3.1vh;
+}
+
+.NavLogo:hover {
+    background-color: #ffffff;
+}
+
+img {
+    margin-bottom: 3px;
+}
+
+img:hover {
+    background-color: #c5ecef;
+}
+
+.NavLink {
+    padding: 8px;
+    color: black;
+}
+
+.Active {
+    background-color: #d9f1fb;
+}
+  
+a:hover {
+    color: #11780a;
+}
