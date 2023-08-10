@@ -1,0 +1,65 @@
+.App {
+    font-family: Quicksand, verdana, sans-serif;
+    background-color: #d9f1fb;
+    min-height: 100vh;
+  }
+
+* {
+    box-sizing: border-box;
+}
+
+.Main {
+    padding-top: 85px;
+}
+
+.Content {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 2px;
+    border: 1px solid #dadadf;
+}
+
+a {
+    transition: color ease-in-out 0.3s;
+}
+
+a:hover {
+    background-color: #c5ecef;
+    text-decoration: none;
+}
+
+a:hover i {
+    color: #4dae46;
+    transition: color ease-in-out 0.3s;
+}
+
+.AddIcon:hover {
+  background-color: #ffffff;
+}
+
+i {
+    color: #0a7503;
+    font-size: 1.4rem;
+    padding: 5px;
+    margin-bottom: 2px;
+}
+
+i:hover {
+    cursor: pointer;
+    transition: color ease-in-out 0.3s;
+    color: #c5ecef;
+}
+  
+  /* scrollbar */
+  *::-webkit-scrollbar {
+    width: 5px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
