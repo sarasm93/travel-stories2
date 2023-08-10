@@ -1,0 +1,36 @@
+.Row {
+    height: calc(100vh - 81px);
+}
+
+.Input {
+    background: #ffffff;
+    font-size: 15px;
+    border: 1px solid #f0f1f9;
+    box-sizing: border-box;
+    border-radius: 2px;
+    border-color: #c5ecef;
+}
+
+.Header {
+    line-height: 100px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #0a7503;
+    font-weight: bold;
+}
+
+.Link {
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    margin: auto;
+    color: black;
+}
+  
+.Link span {
+    color: #1916f6;
+}
+
+.Image {
+    margin-bottom: 5vh;
+}
