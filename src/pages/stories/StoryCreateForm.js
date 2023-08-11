@@ -12,7 +12,8 @@ import styles from "../../styles/StoryCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
-import { Alert, Image } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
+import Image from "react-bootstrap/Image";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -53,19 +54,20 @@ function StoryCreateForm() {
         const formData = new FormData();
     
         formData.append("title", title);
+        formData.append("destination", destination);
         formData.append("content", content);
         formData.append("image", imageInput.current.files[0]);
     
         try {
-          const { data } = await axiosReq.post("/posts/", formData);
-          history.push(`/stories/${data.id}`);
-        } catch (err) {
-          console.log(err);
-          if (err.response?.status !== 401) {
-            setErrors(err.response?.data);
+            const { data } = await axiosReq.post("/stories/", formData);
+            history.push(`/stories/${data.id}`); /* HOW TO GO TO OWNERS PROFILE PAGE INSTEAD???*/
+          } catch (err) {
+            console.log(err);
+            if (err.response?.status !== 401) {
+              setErrors(err.response?.data);
+            }
           }
-        }
-      };
+    };
 
     const textFields = (
         <div className="text-center">
@@ -114,7 +116,7 @@ function StoryCreateForm() {
             ))}
             <Button
                 className={`${btnStyles.Button} ${btnStyles.Cancel}`}
-                onClick={() => {}}>
+                onClick={() => history.goBack()}>
                 cancel
             </Button>
             <Button className={`${btnStyles.Button} ${btnStyles.Bright}`} type="submit">

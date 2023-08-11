@@ -26,6 +26,7 @@ img:hover {
 
 .NavLink {
     padding: 8px;
+    align-self: center;
     color: black;
 }
 
