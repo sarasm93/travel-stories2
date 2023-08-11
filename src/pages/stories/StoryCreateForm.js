@@ -11,84 +11,106 @@ import defaultImage from "../../assets/upload.png";
 import styles from "../../styles/StoryCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Assets";
+import Asset from "../../components/Asset";
 
 function StoryCreateForm() {
 
-  const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({});
 
+    const [postData, setPostData] = useState({
+        title: "",
+        destination: "",
+        content: "",
+        image: "",
+    });
+        const { title, destination, content, image } = postData;
+    
+    const handleChange = (event) => {
+        setPostData({
+        ...postData,
+        [event.target.name]: event.target.value,
+        });
+    };
 
-  const textFields = (
-    <div className="text-center">
-        <Form.Group>
-            <Form.Label>Title</Form.Label>
-            <Form.Control
-            type="text"
-            name="title"
-            value={title}
-            onChange={handleChange}
-            />
-        </Form.Group>
-        <Form.Group>
-            <Form.Label>Destination</Form.Label>
-            <Form.Control
-            type="text"
-            name="destination"
-            value={destination}
-            onChange={handleChange}
-            />
-        </Form.Group>
-        <Form.Group>
-            <Form.Label>Content</Form.Label>
-            <Form.Control
-            type="textarea"
-            rows={10}
-            name="content"
-            value={content}
-            onChange={handleChange}
-            />
-        </Form.Group>
-        
-        <Button
-            className={`${btnStyles.Button} ${btnStyles.Cancel}`}
-            onClick={() => {}}
-        >
-            cancel
-        </Button>
-        <Button className={`${btnStyles.Button} ${btnStyles.Bright}`} type="submit">
-            create
-        </Button>
-    </div>
-  );
+    const handleChangeImage = (event) => {
+        if (event.target.files.length) {
+            URL.revokeObjectURL(image);
+            setPostData({
+                ...postData,
+                image: URL.createObjectURL(event.target.files[0]),
+            });
+        }
+    };
 
-  return (
-    <Form>
-        <Row>
-            <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-                <Container
-                    className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-                >
-                    <Form.Group className="text-center">
-                    
-                        <Form.Label
-                        className="d-flex justify-content-center"
-                        htmlFor="image-upload"
-                        >
-                        <Asset
-                            src={defaultImage}
-                            message="Click the camera to upload an image"
-                        />
-                        </Form.Label>
+    const textFields = (
+        <div className="text-center">
+            <Form.Group>
+                <Form.Label>Title</Form.Label>
+                <Form.Control
+                type="text"
+                name="title"
+                value={title}
+                onChange={handleChange}
+                />
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Destination</Form.Label>
+                <Form.Control
+                type="text"
+                name="destination"
+                value={destination}
+                onChange={handleChange}
+                />
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Content</Form.Label>
+                <Form.Control
+                type="textarea"
+                rows={10}
+                name="content"
+                value={content}
+                onChange={handleChange}
+                />
+            </Form.Group>
+            <Button
+                className={`${btnStyles.Button} ${btnStyles.Cancel}`}
+                onClick={() => {}}>
+                cancel
+            </Button>
+            <Button className={`${btnStyles.Button} ${btnStyles.Bright}`} type="submit">
+                create
+            </Button>
+        </div>
+    );
 
-                    </Form.Group>
-                    <div className="d-none">{textFields}</div>
-                </Container>
-            </Col>
-            <Col md={5} lg={4} className="d-md-block p-0 p-md-2">
-                <Container className={appStyles.Content}>{textFields}</Container>
-            </Col>
-        </Row>
-    </Form>
-);}
+    return (
+        <Form>
+            <Row>
+                <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+                    <Container
+                        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
+                        <Form.Group className="text-center">
+                            <Form.Label
+                            className="d-flex justify-content-center"
+                            htmlFor="image-upload">
+                            <Asset
+                                src={defaultImage}
+                                message="Click the camera to upload an image"/>
+                            </Form.Label>
+                            <Form.File
+                                id="image-upload"
+                                accept="image/*"
+                                onChange={handleChangeImage}
+                                ref={imageInput}/>
+                        </Form.Group>
+                        <div className="d-none">{textFields}</div>
+                    </Container>
+                </Col>
+                <Col md={5} lg={4} className="d-md-block p-0 p-md-2">
+                    <Container className={appStyles.Content}>{textFields}</Container>
+                </Col>
+            </Row>
+        </Form>
+    );}
 
 export default StoryCreateForm;
