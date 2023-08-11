@@ -50,6 +50,17 @@ i:hover {
     color: #c5ecef;
 }
 
+.Image {
+  max-height: 40vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+
   /* scrollbar */
   *::-webkit-scrollbar {
     width: 5px;

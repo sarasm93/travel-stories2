@@ -35,7 +35,7 @@
   
 .Bright:hover {
     background-color: #c5ecef;
-    color: #0a7503;
+    color: #000000;
 }
   
 .Bright {
@@ -51,4 +51,14 @@
 .Cancel:hover {
     background-color: #afb6af;
     color: #000000;
+}
+
+.Orange:hover {
+    background-color: #baab72;
+    color: #000000;
+}
+  
+.Orange {
+    background-color: #ba9811;
+    color: #ffffff;
 }
