@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import { Route, Switch } from "react-router-dom";
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from "./pages/auth/SignInForm";
+import StoryCreateForm from "./pages/stories/StoryCreateForm";
 
 
 function App() {
@@ -15,24 +16,10 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route 
-            exact
-            path="/"
-            render={() => (
-              <h1>Home Page</h1>
-          )}/>
-          <Route 
-            exact
-            path="/login"
-            render={() => (
-              <SignInForm />
-          )}/>
-          <Route 
-            exact
-            path="/signup"
-            render={() => (
-              <SignUpForm />
-          )}/>
+          <Route exact path="/" render={() => <h1>Home Page</h1>}/>
+          <Route exact path="/login"render={() => <SignInForm />}/>
+          <Route exact path="/signup" render={() => <SignUpForm />}/>
+          <Route exact path="/stories/create" render={() => <StoryCreateForm />}/>
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>

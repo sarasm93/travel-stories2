@@ -6,7 +6,8 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: bold;
-  }
+    margin: 0 5px;
+}
   
 .Button:hover {
     opacity: 0.8;
@@ -14,17 +15,17 @@
     cursor: pointer;
 }
   
-  .Button:hover:active {
+.Button:hover:active {
     background-color: #0a7503 !important;
-  }
+}
   
-  .Button:active {
+.Button:active {
     background-color: #0a7503 !important;
-  }
+}
   
-  .Button:focus {
+.Button:focus {
     background-color: #0a7503;
-  }
+}
   
 .Wide {
     padding: 7px 27px;
@@ -40,4 +41,14 @@
 .Bright {
     background-color: #0a7503;
     color: #ffffff;
+}
+
+.Cancel {
+    background-color: #757c75;
+    color: #ffffff;
+}
+
+.Cancel:hover {
+    background-color: #afb6af;
+    color: #000000;
 }

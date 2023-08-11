@@ -45,7 +45,7 @@ const NavBar = () => {
                 to="/saved"
                 className={navStyles.NavLink}
                 activeClassName={navStyles.Active}
-            >Saved Stories
+            >Saved
             </NavLink>
             <NavLink 
                 to="/bucket"
