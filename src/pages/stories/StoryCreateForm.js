@@ -16,6 +16,7 @@ import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function StoryCreateForm() {
 
@@ -31,7 +32,9 @@ function StoryCreateForm() {
 
     const imageInput = useRef(null);
     const history = useHistory();
-    
+
+    const currentUser = useCurrentUser();
+
     const handleChange = (event) => {
         setPostData({
         ...postData,
@@ -57,10 +60,11 @@ function StoryCreateForm() {
         formData.append("destination", destination);
         formData.append("content", content);
         formData.append("image", imageInput.current.files[0]);
+
     
         try {
-            const { data } = await axiosReq.post("/stories/", formData);
-            history.push(`/stories/${data.id}`); /* HOW TO GO TO OWNERS PROFILE PAGE INSTEAD???*/
+            await axiosReq.post("/stories/", formData);
+            history.push(`/profiles/${currentUser.profile_id}`); /* IS THIS CORRECT? wANT TO GET TO USERS PROFILE WHEN STORY IS POSTED*/
           } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {
