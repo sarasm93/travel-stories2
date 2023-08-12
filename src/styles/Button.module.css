@@ -62,3 +62,23 @@
     background-color: #ba9811;
     color: #ffffff;
 }
+
+.Button a {
+    background-color: transparent;
+    color: #ffffff;
+    transition: none;
+}
+
+.Button a i {
+    color: #ffffff;
+}
+
+.Button:hover a {
+    background-color: transparent;
+    color: #000000;
+    transition: none;
+}
+
+.Button:hover a i {
+    color: #000000;
+}

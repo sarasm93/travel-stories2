@@ -7,6 +7,8 @@ import { Route, Switch } from "react-router-dom";
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from "./pages/auth/SignInForm";
 import StoryCreateForm from "./pages/stories/StoryCreateForm";
+import BucketlistPage from './pages/destinations/BucketlistPage';
+import DestinationCreateForm from './pages/destinations/DestinationCreateForm';
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
           <Route exact path="/login"render={() => <SignInForm />}/>
           <Route exact path="/signup" render={() => <SignUpForm />}/>
           <Route exact path="/stories/create" render={() => <StoryCreateForm />}/>
+          <Route exact path="/bucketlist" render={() => <BucketlistPage />}/>
+          <Route exact path="/bucketlist/create" render={() => <DestinationCreateForm />}/>
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>

@@ -31,8 +31,8 @@ const NavBar = () => {
     const addStoryItem = (
         <NavLink 
             to="/stories/create"
-            className={`${navStyles.NavLink} ${appStyles.AddIcon}`}
-            activeClassName={navStyles.Active}
+            className={`${navStyles.NavLink} ${appStyles.NavIcon}`}
+            activeClassName={navStyles.ActiveIcon}
             >
             <i className="fa-solid fa-plus" />
             Add story
@@ -48,7 +48,7 @@ const NavBar = () => {
             >Saved
             </NavLink>
             <NavLink 
-                to="/bucket"
+                to="/bucketlist"
                 className={navStyles.NavLink}
                 activeClassName={navStyles.Active}
             >Bucket List
@@ -61,8 +61,9 @@ const NavBar = () => {
             </NavLink>
             <NavLink 
                 to={`/profiles/${currentUser?.profile_id}`}
-                className={navStyles.NavLink}>        
-            <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+                className={`${appStyles.NavBar} ${appStyles.NavIcon} ${navStyles.NavLink}`}
+                activeClassName={navStyles.ActiveIcon}>        
+            <Avatar src={currentUser?.profile_image} text="Profile" height={38} className={``}/>
             </NavLink>
         </>
 

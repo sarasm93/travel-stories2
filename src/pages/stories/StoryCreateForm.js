@@ -121,10 +121,10 @@ function StoryCreateForm() {
             <Button
                 className={`${btnStyles.Button} ${btnStyles.Cancel}`}
                 onClick={() => history.goBack()}>
-                cancel
+                Cancel
             </Button>
             <Button className={`${btnStyles.Button} ${btnStyles.Bright}`} type="submit">
-                create
+                Create
             </Button>
         </div>
     );

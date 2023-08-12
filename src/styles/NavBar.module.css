@@ -33,7 +33,13 @@ img:hover {
 .Active {
     background-color: #d9f1fb;
 }
+
+.ActiveIcon {
+    background-color: #d9f1fb;
+    padding: 0.9px 8px;
+    margin: 7.1px 0;
+}
   
 a:hover {
-    color: #11780a;
+    color: #19a10f;
 }
