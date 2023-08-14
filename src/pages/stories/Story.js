@@ -46,6 +46,22 @@ const Story = (props) => {
         }
     };
 
+    const handleSave = async () => {
+        try {
+            const { data } = await axiosRes.post("/saves/", { story: id });
+            setStories((prevStories) => ({
+                ...prevStories,
+                results: prevStories.results.map((story) => {
+                return story.id === id
+                    ? { ...story, save_id: data.id }
+                    : story;
+                }),
+            }));
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     const handleUnlike = async () => {
         try {
             await axiosRes.delete(`/likes/${like_id}/`);
@@ -61,6 +77,23 @@ const Story = (props) => {
             console.log(err);
         }
     };
+
+    const handleUnsave = async () => {
+        try {
+            await axiosRes.delete(`/saves/${save_id}/`);
+            setStories((prevStories) => ({
+                ...prevStories,
+                results: prevStories.results.map((story) => {
+                return story.id === id
+                    ? { ...story, save_id: null }
+                    : story;
+                }),
+            }));
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    
 
     return (
         <Card >
@@ -105,11 +138,11 @@ const Story = (props) => {
                             <i className="fa-regular fa-bookmark" />
                         </OverlayTrigger>
                     ) : save_id ? (
-                        <span>
+                        <span onClick={handleUnsave}>
                             <i className="fa-solid fa-bookmark" />
                         </span>
                     ) : currentUser ? (
-                        <span>
+                        <span onClick={handleSave}>
                             <i className="fa-regular fa-bookmark" />
                         </span>
                     ) : (
