@@ -52,10 +52,7 @@ function SignInForm() {
     return (
         <Row className={styles.Row}>
             <Col className="m-auto p-0 p-md-2" md={6}>
-                <div className="text-center">
-                    <Image roundedCircle src={logo} alt="logo" height="100" className={styles.Image} />
-                </div>
-                <Container className={`${appStyles.Content} p-4 `}>
+                <Container className={`${appStyles.Content} ${appStyles.BlueBorder} p-4 `}>
                 <h1 className={styles.Header}>Log In</h1>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="username">

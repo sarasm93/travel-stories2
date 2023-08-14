@@ -96,7 +96,7 @@ const Story = (props) => {
     
 
     return (
-        <Card >
+        <Card>
             <Card.Body className={styles.CardHeader}>
                 {title && <Card.Title className="text-center">{title}</Card.Title>}
                 {destination && <Card.Subtitle className="text-center mb-3"><strong>{destination}</strong></Card.Subtitle>}

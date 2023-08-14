@@ -14,6 +14,8 @@
     opacity: 0.8;
     border-color: transparent;
     cursor: pointer;
+    background-color: #c5ecef;
+    color: #000000;
 }
   
 .Button:hover:active {
@@ -34,11 +36,6 @@
     margin: 20px;
 }
   
-.Bright:hover {
-    background-color: #c5ecef;
-    color: #000000;
-}
-  
 .Bright {
     background-color: #0a7503;
     color: #ffffff;
@@ -49,16 +46,6 @@
     background-color: #757c75;
     color: #ffffff;
     padding: 4px 15px;
-}
-
-.Cancel:hover {
-    background-color: #afb6af;
-    color: #000000;
-}
-
-.Orange:hover {
-    background-color: #baab72;
-    color: #000000;
 }
   
 .Orange {

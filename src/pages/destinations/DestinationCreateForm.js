@@ -128,7 +128,7 @@ function DestinationCreateForm() {
 
     return (
         <>
-            <div className="my-2">
+            <div className="pt-5 pb-1">
                 <p>All created destinations are added to your bucket list and sorted based on the selected priority.</p>
             </div> 
             <Form onSubmit={handleSubmit}>

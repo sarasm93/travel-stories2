@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignUpInForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import headerImage from "../../assets/view-man.jpg";
 
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
@@ -13,6 +14,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import axios from "axios";
+import { Card, Image } from "react-bootstrap";
 
 
 const SignUpForm = () => {
@@ -46,78 +48,84 @@ const SignUpForm = () => {
     };    
       
     return (
-        <Row className={styles.Row}>
-            <Col className="m-auto py-2 p-md-2" md={6}>
-                <Container className={`${appStyles.Content} p-4 `}>
-                    <h1 className={styles.Header}>Sign Up</h1>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="username">
-                        <Form.Label className="d-none">Username:</Form.Label>
-                            <Form.Control
-                                className={styles.Input}
-                                type="text"
-                                placeholder="Enter username"
-                                name="username"
-                                value={username}
-                                onChange={handleChange}
-                            />
-                        </Form.Group>
-                        {errors.username?.map((message, idx) => (
-                        <Alert variant="warning" key={idx}>
-                            {message}
-                        </Alert>
-                        ))}
-                        <Form.Group controlId="password1">
-                            <Form.Label className="d-none">Password:</Form.Label>
-                            <Form.Control
-                                className={styles.Input}
-                                type="password"
-                                placeholder="Enter password"
-                                name="password1"
-                                value={password1}
-                                onChange={handleChange}
-                            />
-                        </Form.Group>
-                        {errors.password1?.map((message, idx) => (
-                        <Alert variant="warning" key={idx}>
-                            {message}
-                        </Alert>
-                        ))}
-                        <Form.Group controlId="password2">
-                            <Form.Label className="d-none">Confirm the password:</Form.Label>
-                            <Form.Control
-                                className={styles.Input}
-                                type="password"
-                                placeholder="Repeat password"
-                                name="password2"
-                                value={password2}
-                                onChange={handleChange}
-                            />
-                        </Form.Group>
-                        {errors.password2?.map((message, idx) => (
-                        <Alert variant="warning" key={idx}>
-                            {message}
-                        </Alert>
-                        ))}
-                        <div className="text-center">
-                            <Button
-                                className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
-                                type="submit">
-                                Register
-                            </Button>
-                            {errors.non_field_errors?.map((message, idx) => (
-                            <Alert key={idx} variant="warning" className="mt-3">
+        <>
+            <div className="text-center pt-5">
+                <h1>Welcome to Travel Stories!</h1>
+                <h4>Join us and discover the world!</h4>
+            </div>
+            <Row className={styles.Row}>
+                <Col className="mx-auto mt-3 py-2 p-md-2" md={6}>
+                    <Container className={`${appStyles.Content} ${appStyles.BlueBorder} p-4 `}>
+                        <h1 className={styles.Header}>Sign Up</h1>
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group controlId="username">
+                            <Form.Label className="d-none">Username:</Form.Label>
+                                <Form.Control
+                                    className={styles.Input}
+                                    type="text"
+                                    placeholder="Enter username"
+                                    name="username"
+                                    value={username}
+                                    onChange={handleChange}
+                                />
+                            </Form.Group>
+                            {errors.username?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
                                 {message}
                             </Alert>
                             ))}
-                        </div>
-                    </Form>
-                </Container>
-                <Container className='mt-3'>
-                    <Link className={styles.Link} to="/login">Already have an account? Sign in<span> here.</span></Link>
-                </Container>
-            </Col>
-        </Row>
+                            <Form.Group controlId="password1">
+                                <Form.Label className="d-none">Password:</Form.Label>
+                                <Form.Control
+                                    className={styles.Input}
+                                    type="password"
+                                    placeholder="Enter password"
+                                    name="password1"
+                                    value={password1}
+                                    onChange={handleChange}
+                                />
+                            </Form.Group>
+                            {errors.password1?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                            ))}
+                            <Form.Group controlId="password2">
+                                <Form.Label className="d-none">Confirm the password:</Form.Label>
+                                <Form.Control
+                                    className={styles.Input}
+                                    type="password"
+                                    placeholder="Repeat password"
+                                    name="password2"
+                                    value={password2}
+                                    onChange={handleChange}
+                                />
+                            </Form.Group>
+                            {errors.password2?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                            ))}
+                            <div className="text-center">
+                                <Button
+                                    className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+                                    type="submit">
+                                    Register
+                                </Button>
+                                {errors.non_field_errors?.map((message, idx) => (
+                                <Alert key={idx} variant="warning" className="mt-3">
+                                    {message}
+                                </Alert>
+                                ))}
+                            </div>
+                        </Form>
+                    </Container>
+                    <Container className='mt-3'>
+                        <Link className={styles.Link} to="/login">Already have an account? Sign in<span> here.</span></Link>
+                    </Container>
+                </Col>
+            </Row>
+        </>
   );
 };
 

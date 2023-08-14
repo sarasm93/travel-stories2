@@ -134,6 +134,9 @@ function StoryCreateForm() {
     return (
         <Form onSubmit={handleSubmit}>
             <Row>
+                <Col md={5} lg={4} className="p-0 p-md-2 d-flex">
+                    <Container className={appStyles.Content}>{textFields}</Container>
+                </Col>
                 <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
                     <Container
                         className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
@@ -174,9 +177,6 @@ function StoryCreateForm() {
                         ))}
                         <div className="d-none">{textFields}</div>
                     </Container>
-                </Col>
-                <Col md={5} lg={4} className="p-0 p-md-2 d-flex">
-                    <Container className={appStyles.Content}>{textFields}</Container>
                 </Col>
             </Row>
         </Form>

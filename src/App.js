@@ -23,7 +23,7 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path="/" render={() => <h1>Home page</h1> }/>
+          <Route exact path="/" render={() => <StoriesPage />}/>
           <Route exact path="/saved" render={() => 
             <StoriesPage message="Saved page not ready yet. Add filter" />}/>
           <Route exact path="/login"render={() => <SignInForm />}/>

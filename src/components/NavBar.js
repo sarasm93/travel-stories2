@@ -34,8 +34,8 @@ const NavBar = () => {
             className={`${navStyles.NavLink} ${appStyles.NavIcon} ml-auto`}
             activeClassName={navStyles.ActiveIcon}
             >
-            <i className="fa-solid fa-plus" />
-            Create story
+                <i className="fa-solid fa-plus" />
+                Create story
         </NavLink>
     )
 
