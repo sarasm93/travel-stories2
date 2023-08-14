@@ -1,0 +1,32 @@
+.CardHeader {
+    padding-bottom: 0.5rem;
+}
+
+.CardHeader p {
+    font-size: small;
+}
+
+.CardContent {
+    padding-top: 0.2rem;
+}
+
+.Media {
+    margin-right: 2.5rem;
+}
+
+.Media a {
+    color: #000000;
+}
+
+.Media a:hover {
+    background-color: #ffffff;
+    color: #3cc232;
+}
+
+.Content {
+    margin-top: 1rem;
+}
+
+i:hover {
+    color: #3cc232;
+}

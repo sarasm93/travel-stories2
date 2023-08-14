@@ -9,22 +9,29 @@ import SignInForm from "./pages/auth/SignInForm";
 import StoryCreateForm from "./pages/stories/StoryCreateForm";
 import BucketlistPage from './pages/destinations/BucketlistPage';
 import DestinationCreateForm from './pages/destinations/DestinationCreateForm';
+import StoriesPage from './pages/stories/StoriesPage';
+import { useCurrentUser } from './contexts/CurrentUserContext';
+import StoryPage from './pages/stories/StoryPage';
 
 
 function App() {
-  
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
 
   return (
     <div className={styles.App}>
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path="/" render={() => <h1>Home Page</h1>}/>
+          <Route exact path="/" render={() => <h1>Home page</h1> }/>
+          <Route exact path="/saved" render={() => 
+            <StoriesPage message="Saved page not ready yet. Add filter" />}/>
           <Route exact path="/login"render={() => <SignInForm />}/>
           <Route exact path="/signup" render={() => <SignUpForm />}/>
           <Route exact path="/stories/create" render={() => <StoryCreateForm />}/>
+          <Route exact path="/stories/:id" render={() => <StoryPage />} />
           <Route exact path="/bucketlist" render={() => <BucketlistPage />}/>
-          <Route exact path="/bucketlist/create" render={() => <DestinationCreateForm />}/>
+          <Route exact path="/destination/create" render={() => <DestinationCreateForm />}/>
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>

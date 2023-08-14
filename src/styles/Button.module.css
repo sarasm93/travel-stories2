@@ -2,11 +2,12 @@
     font-size: 0.9rem;
     align-self: center;
     border-color: transparent;
-    min-width: 75px;
+    min-width: 90px;
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: bold;
     margin: 0 5px;
+    padding: 0.1rem 0.75rem;
 }
   
 .Button:hover {
@@ -41,11 +42,13 @@
 .Bright {
     background-color: #0a7503;
     color: #ffffff;
+    padding: 4px 15px;
 }
 
 .Cancel {
     background-color: #757c75;
     color: #ffffff;
+    padding: 4px 15px;
 }
 
 .Cancel:hover {
@@ -61,6 +64,7 @@
 .Orange {
     background-color: #ba9811;
     color: #ffffff;
+    padding: 4px 15px;
 }
 
 .Button a {
@@ -71,6 +75,7 @@
 
 .Button a i {
     color: #ffffff;
+    font-size: 1rem;
 }
 
 .Button:hover a {

@@ -31,11 +31,11 @@ const NavBar = () => {
     const addStoryItem = (
         <NavLink 
             to="/stories/create"
-            className={`${navStyles.NavLink} ${appStyles.NavIcon}`}
+            className={`${navStyles.NavLink} ${appStyles.NavIcon} ml-auto`}
             activeClassName={navStyles.ActiveIcon}
             >
             <i className="fa-solid fa-plus" />
-            Add story
+            Create story
         </NavLink>
     )
 
@@ -43,25 +43,25 @@ const NavBar = () => {
         <>
             <NavLink 
                 to="/saved"
-                className={navStyles.NavLink}
+                className={`${navStyles.NavLink} mr-auto`}
                 activeClassName={navStyles.Active}
             >Saved
             </NavLink>
             <NavLink 
                 to="/bucketlist"
-                className={navStyles.NavLink}
+                className={`${navStyles.NavLink} mr-auto`}
                 activeClassName={navStyles.Active}
             >Bucket List
             </NavLink>
             <NavLink 
                 to="/"
-                className={navStyles.NavLink}
+                className={`${navStyles.NavLink} mr-auto`}
                 onClick={handleSignOut}
             >Log Out
             </NavLink>
             <NavLink 
                 to={`/profiles/${currentUser?.profile_id}`}
-                className={`${appStyles.NavBar} ${appStyles.NavIcon} ${navStyles.NavLink}`}
+                className={`${appStyles.NavBar} ${appStyles.NavIcon} ${navStyles.NavLink} mr-auto`}
                 activeClassName={navStyles.ActiveIcon}>        
             <Avatar src={currentUser?.profile_image} text="Profile" height={38} className={``}/>
             </NavLink>
@@ -69,15 +69,15 @@ const NavBar = () => {
 
     const loggedOutNavItems = (
         <>
-            <NavLink 
+            <NavLink
                 to="/login"
-                className={navStyles.NavLink}
+                className={`${navStyles.NavLink} mr-auto`}
                 activeClassName={navStyles.Active}
             >Log In
             </NavLink>
             <NavLink 
                 to="/signup"
-                className={navStyles.NavLink}
+                className={`${navStyles.NavLink} mr-auto`}
                 activeClassName={navStyles.Active}
             >Sign Up
             </NavLink>
@@ -101,11 +101,11 @@ const NavBar = () => {
                     onClick={() => setExpanded(!expanded)}
                     aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
+                    <Nav>
                         <NavLink 
                             exact
                             to="/" 
-                            className={navStyles.NavLink}
+                            className={`${navStyles.NavLink} mr-auto`}
                             activeClassName={navStyles.Active}
                         >Home
                         </NavLink>

@@ -9,7 +9,7 @@ const BucketlistPage = () => {
     <div>
         <Container className='mt-3'>
             <Button className={`${btnStyles.Button} ${btnStyles.Bright}`}>
-                <Link to="/bucketlist/create">
+                <Link to="/destination/create">
                     <i className="fa-solid fa-plus" />Add destination
                 </Link>
             </Button>

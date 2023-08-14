@@ -28,7 +28,7 @@ function StoryCreateForm() {
         content: "",
         image: "",
     });
-        const { title, destination, content, image } = postData;
+    const { title, destination, content, image } = postData;
 
     const imageInput = useRef(null);
     const history = useHistory();
@@ -74,14 +74,14 @@ function StoryCreateForm() {
     };
 
     const textFields = (
-        <div className="text-center">
+        <>
             <Form.Group>
-                <Form.Label>Title</Form.Label>
+                <Form.Label>Title:</Form.Label>
                 <Form.Control
-                type="text"
-                name="title"
-                value={title}
-                onChange={handleChange}
+                    type="text"
+                    name="title"
+                    value={title}
+                    onChange={handleChange}
                 />
             </Form.Group>
             {errors?.title?.map((message, idx) => (
@@ -90,12 +90,12 @@ function StoryCreateForm() {
                 </Alert>
             ))}
             <Form.Group>
-                <Form.Label>Destination</Form.Label>
+                <Form.Label>Destination:</Form.Label>
                 <Form.Control
-                type="text"
-                name="destination"
-                value={destination}
-                onChange={handleChange}
+                    type="text"
+                    name="destination"
+                    value={destination}
+                    onChange={handleChange}
                 />
             </Form.Group>
             {errors?.destination?.map((message, idx) => (
@@ -104,13 +104,13 @@ function StoryCreateForm() {
                 </Alert>
             ))}
             <Form.Group>
-                <Form.Label>Content</Form.Label>
+                <Form.Label>Content:</Form.Label>
                 <Form.Control
-                as="textarea"
-                rows={10}
-                name="content"
-                value={content}
-                onChange={handleChange}
+                    as="textarea"
+                    rows={10}
+                    name="content"
+                    value={content}
+                    onChange={handleChange}
                 />
             </Form.Group>
             {errors?.content?.map((message, idx) => (
@@ -118,15 +118,17 @@ function StoryCreateForm() {
                     {message}
                 </Alert>
             ))}
-            <Button
-                className={`${btnStyles.Button} ${btnStyles.Cancel}`}
-                onClick={() => history.goBack()}>
-                Cancel
-            </Button>
-            <Button className={`${btnStyles.Button} ${btnStyles.Bright}`} type="submit">
-                Create
-            </Button>
-        </div>
+            <div className="d-inline float-right">
+                <Button
+                    className={`${btnStyles.Button} ${btnStyles.Cancel} mb-4 mt-4`}
+                    onClick={() => history.goBack()}>
+                    Cancel
+                </Button>
+                <Button className={`${btnStyles.Button} ${btnStyles.Bright} mb-4 mt-4`} type="submit">
+                    Create
+                </Button>
+            </div>
+        </>
     );
 
     return (
@@ -143,9 +145,9 @@ function StoryCreateForm() {
                                 </figure>
                                 <div>
                                     <Form.Label
-                                    className={`${btnStyles.Button} ${btnStyles.Orange} btn`}
-                                    htmlFor="image-upload">
-                                    Change image
+                                        className={`${btnStyles.Button} ${btnStyles.Orange} btn`}
+                                        htmlFor="image-upload">
+                                        Change image
                                     </Form.Label>
                                 </div>
                             </>
@@ -173,11 +175,12 @@ function StoryCreateForm() {
                         <div className="d-none">{textFields}</div>
                     </Container>
                 </Col>
-                <Col md={5} lg={4} className="d-md-block p-0 p-md-2">
+                <Col md={5} lg={4} className="p-0 p-md-2 d-flex">
                     <Container className={appStyles.Content}>{textFields}</Container>
                 </Col>
             </Row>
         </Form>
-    );}
+    );
+}
 
 export default StoryCreateForm;
