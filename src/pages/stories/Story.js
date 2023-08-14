@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Avatar from '../../components/Avatar';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
@@ -96,7 +96,7 @@ const Story = (props) => {
     
 
     return (
-        <Card>
+        <Card className='my-4'>
             <Card.Body className={styles.CardHeader}>
                 {title && <Card.Title className="text-center">{title}</Card.Title>}
                 {destination && <Card.Subtitle className="text-center mb-3"><strong>{destination}</strong></Card.Subtitle>}

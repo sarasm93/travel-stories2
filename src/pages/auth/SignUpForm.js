@@ -4,7 +4,6 @@ import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignUpInForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import headerImage from "../../assets/view-man.jpg";
 
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
@@ -14,7 +13,6 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import axios from "axios";
-import { Card, Image } from "react-bootstrap";
 
 
 const SignUpForm = () => {

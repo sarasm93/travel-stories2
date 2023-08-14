@@ -22,13 +22,13 @@ function StoryCreateForm() {
 
     const [errors, setErrors] = useState({});
 
-    const [postData, setPostData] = useState({
+    const [storyData, setStoryData] = useState({
         title: "",
         destination: "",
         content: "",
         image: "",
     });
-    const { title, destination, content, image } = postData;
+    const { title, destination, content, image } = storyData;
 
     const imageInput = useRef(null);
     const history = useHistory();
@@ -36,8 +36,8 @@ function StoryCreateForm() {
     const currentUser = useCurrentUser();
 
     const handleChange = (event) => {
-        setPostData({
-        ...postData,
+        setStoryData({
+        ...storyData,
         [event.target.name]: event.target.value,
         });
     };
@@ -45,8 +45,8 @@ function StoryCreateForm() {
     const handleChangeImage = (event) => {
         if (event.target.files.length) {
             URL.revokeObjectURL(image);
-            setPostData({
-                ...postData,
+            setStoryData({
+                ...storyData,
                 image: URL.createObjectURL(event.target.files[0]),
             });
         }

@@ -73,6 +73,22 @@ input[type="file"] {
   border-color: #84dbe1;
 }
 
+.Card {
+  padding: 20px;
+  border: 0;
+  background-color: #ccaf3a;
+}
+
+.IntroTitle {
+  font-size: xx-large;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.IntroSubtitle {
+  font-size: large;
+}
+
 
   /* scrollbar */
   *::-webkit-scrollbar {

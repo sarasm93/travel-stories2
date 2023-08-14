@@ -12,6 +12,8 @@ import DestinationCreateForm from './pages/destinations/DestinationCreateForm';
 import StoriesPage from './pages/stories/StoriesPage';
 import { useCurrentUser } from './contexts/CurrentUserContext';
 import StoryPage from './pages/stories/StoryPage';
+import { Card, Image } from 'react-bootstrap';
+import headerImage from "../src/assets/surfing.jpg";
 
 
 function App() {
@@ -23,9 +25,25 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path="/" render={() => <StoriesPage />}/>
-          <Route exact path="/saved" render={() => 
-            <StoriesPage message="Saved page not ready yet. Add filter" />}/>
+          <Route exact path="/">
+            <Image src={headerImage} alt="header image" className={`${styles.HeaderImage} img-fluid`}/>
+            <Card className={`${styles.Card} text-center`}>
+                <Card.Body >
+                    <Card.Title className={styles.IntroTitle}>Share your travel story!</Card.Title>
+                    <Card.Subtitle className={styles.IntroSubtitle}>
+                        Discover new places and meet new people. Be inspired and make your travel bucket list.
+                        Join now!
+                    </Card.Subtitle>
+                </Card.Body>
+            </Card>
+            <StoriesPage />
+          </Route>
+          <Route 
+            exact 
+            path="/saved" 
+            render={() => <StoriesPage 
+              filter={`saves__owner__profile=${profile_id}&ordering=-saves__created_at&`}
+              />}/>
           <Route exact path="/login"render={() => <SignInForm />}/>
           <Route exact path="/signup" render={() => <SignUpForm />}/>
           <Route exact path="/stories/create" render={() => <StoryCreateForm />}/>
