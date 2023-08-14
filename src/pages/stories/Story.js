@@ -30,6 +30,38 @@ const Story = (props) => {
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
 
+    const handleLike = async () => {
+        try {
+            const { data } = await axiosRes.post("/likes/", { story: id });
+            setStories((prevStories) => ({
+                ...prevStories,
+                results: prevStories.results.map((story) => {
+                return story.id === id
+                    ? { ...story, likes_count: story.likes_count + 1, like_id: data.id }
+                    : story;
+                }),
+            }));
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const handleUnlike = async () => {
+        try {
+            await axiosRes.delete(`/likes/${like_id}/`);
+            setStories((prevStories) => ({
+                ...prevStories,
+                results: prevStories.results.map((story) => {
+                return story.id === id
+                    ? { ...story, likes_count: story.likes_count - 1, like_id: null }
+                    : story;
+                }),
+            }));
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     return (
         <Card >
             <Card.Body className={styles.CardHeader}>
