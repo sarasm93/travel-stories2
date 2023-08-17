@@ -33,6 +33,33 @@ function DestinationCreateForm({filter = "" }) {
     const currentUser = useCurrentUser();
 
 
+
+    const handleChange = (event) => {
+        setDestinationData({
+            ...destinationData, [event.target.name]: event.target.value,
+        })
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData();
+    
+        formData.append("destination", destination);
+        formData.append("activities", activities);
+        formData.append("priority", priority);
+        formData.append("story_tag", story_tag);
+
+        try {
+            await axiosReq.post("/destinations/", formData);
+            history.push("/bucketlist"); 
+            } catch (err) {
+                console.log(err);
+            if (err.response?.status !== 401) {
+              setErrors(err.response?.data);
+            }
+        };
+    };
+
     const textFields = (
         <>
             <Form.Group>
