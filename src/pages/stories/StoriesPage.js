@@ -8,6 +8,8 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Story from "./Story";
 import Asset from "../../components/Asset";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 
 function StoriesPage({filter = "" }) {
@@ -51,9 +53,15 @@ function StoriesPage({filter = "" }) {
                         {hasLoaded ? (
                             <>
                                 {stories.results.length ? (
-                                    stories.results.map(story => (
+                                    <InfiniteScroll
+                                        children={stories.results.map((story) => (
                                         <Story key={story.id} {...story} setStories={setStories} />
-                                        ))
+                                        ))}
+                                        dataLength={stories.results.length}
+                                        loader={<Asset spinner />}
+                                        hasMore={!!stories.next}
+                                        next={() => fetchMoreData(stories, setStories)}
+                                    />
                                 ) : (
                                     console.log("use asset component to display not found message?")
                                 )}
