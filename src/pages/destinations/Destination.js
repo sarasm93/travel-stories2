@@ -25,7 +25,7 @@ const Destination = (props) => {
                                     </Card.Title>
                                 </Col>
                                 <Col>
-                                    <Card.Text className='text-right'>
+                                    <Card.Text className='text-right mr-4'>
                                         <strong>Priority: </strong>
                                             {priority == "1" ? (
                                                 <span>Now</span>
@@ -47,10 +47,12 @@ const Destination = (props) => {
                     </Row>
                     <Row>
                         <Card.Body>
-                            <Card.Subtitle className='mb-2'><strong>Activities:</strong></Card.Subtitle>
-                            <Card.Text>
-                                {activities}
-                            </Card.Text>
+                            <Col className="p-0" sm={9}>
+                                <Card.Subtitle className='mb-2'><strong>Activities:</strong></Card.Subtitle>
+                                <Card.Text>
+                                    {activities}
+                                </Card.Text>
+                            </Col>
                         </Card.Body>
                     </Row>
                     <Row>

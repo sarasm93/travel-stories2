@@ -51,7 +51,7 @@ function App() {
           <Route exact path="/stories/:id" render={() => <StoryPage />} />
           <Route exact path="/destinations/:id" render={() => <DestinationPage />} />
           <Route exact path="/bucketlist" render={() => <BucketlistPage 
-            filter={`is_owner=${profile_id}&ordering=-created_at&`}/>}/>
+            filter={`profile=${profile_id}&ordering=-created_at&`}/>}/>
           <Route 
             exact 
             path="/destination/create" 

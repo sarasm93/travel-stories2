@@ -118,16 +118,6 @@ function StoryCreateForm() {
                     {message}
                 </Alert>
             ))}
-            <div className="d-inline float-right">
-                <Button
-                    className={`${btnStyles.Button} ${btnStyles.Cancel} mb-4 mt-4`}
-                    onClick={() => history.goBack()}>
-                    Cancel
-                </Button>
-                <Button className={`${btnStyles.Button} ${btnStyles.Bright} mb-4 mt-4`} type="submit">
-                    Create
-                </Button>
-            </div>
         </>
     );
 
@@ -176,6 +166,18 @@ function StoryCreateForm() {
                             </Alert>
                         ))}
                         <div className="d-none">{textFields}</div>
+                    </Container>
+                    <Container>
+                        <div className="text-center">
+                            <Button
+                                className={`${btnStyles.Button} ${btnStyles.Cancel} mb-4 mt-4`}
+                                onClick={() => history.goBack()}>
+                                Cancel
+                            </Button>
+                            <Button className={`${btnStyles.Button} ${btnStyles.Bright} mb-4 mt-4`} type="submit">
+                                Create
+                            </Button>
+                        </div>
                     </Container>
                 </Col>
             </Row>

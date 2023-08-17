@@ -56,6 +56,21 @@ function BucketlistPage({filter = "" }) {
                         </Link>
                     </Button>
                 </div>
+                {hasLoaded ? (
+                    <>
+                        {destinations.results.length ? (
+                            destinations.results.map(destination=> (
+                                <Destination key={destination.id} value={destination.id} {...destination} setDestinations={setDestinations} />
+                            ))
+                        ) : (
+                            <p>You have no destinations in your bucketlist</p>
+                        )}
+                    </>
+                ) : (
+                    <Container className={styles.Content}>
+                        <Asset spinner />
+                    </Container>
+                )}
             </Container>
         </div>
     )

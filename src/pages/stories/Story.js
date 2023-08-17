@@ -2,7 +2,7 @@ import React from 'react';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Avatar from '../../components/Avatar';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
-import { Card, Media } from 'react-bootstrap';
+import { Card, Col, Media, Row } from 'react-bootstrap';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import styles from "../../styles/Story.module.css";
 import { axiosRes } from '../../api/axiosDefaults';
@@ -104,57 +104,65 @@ const Story = (props) => {
             </Card.Body>
             <Card.Img src={image} alt={title} />
             <Card.Body className={styles.CardContent}>  
-                <div className='text-right'>
-                    {is_owner ? (
-                            <OverlayTrigger
-                            placement="top"
-                            overlay={<Tooltip>You can't like your own stories!</Tooltip>}
-                            >
-                                <i className="fa-regular fa-heart" />
-                            </OverlayTrigger>
-                        ) : like_id ? (
-                            <span onClick={handleUnlike}>
-                                <i className="fa-solid fa-heart" />
-                            </span>
-                        ) : currentUser ? (
-                            <span onClick={handleLike}>
-                                <i className="fa-regular fa-heart" />
-                            </span>
-                        ) : (
-                            <OverlayTrigger
-                            placement="top"
-                            overlay={<Tooltip>Log in to like stories!</Tooltip>}
-                            >
-                                <i className="fa-regular fa-heart" />
-                            </OverlayTrigger>
-                        )}
-                    {likes_count}
-                    <i className="far fa-comments" /><p>Comments count here</p>
-                    {is_owner ? (
-                        <OverlayTrigger
-                        placement="top"
-                        overlay={<Tooltip>You can't save your own stories!</Tooltip>}
-                        >
-                            <i className="fa-regular fa-bookmark" />
-                        </OverlayTrigger>
-                    ) : save_id ? (
-                        <span onClick={handleUnsave}>
-                            <i className="fa-solid fa-bookmark" />
-                        </span>
-                    ) : currentUser ? (
-                        <span onClick={handleSave}>
-                            <i className="fa-regular fa-bookmark" />
-                        </span>
-                    ) : (
-                        <OverlayTrigger
-                        placement="top"
-                        overlay={<Tooltip>Log in to save stories!</Tooltip>}
-                        >
-                            <i className="fa-regular fa-bookmark" />
-                        </OverlayTrigger>
-                    )}
-                    {is_owner && storyPage && "..."}
-                </div>
+                <Row>
+                    <Col >
+                        <div>
+                            {is_owner ? (
+                                    <OverlayTrigger
+                                    placement="top"
+                                    overlay={<Tooltip>You can't like your own stories!</Tooltip>}
+                                    >
+                                        <i className="fa-regular fa-heart" />
+                                    </OverlayTrigger>
+                                ) : like_id ? (
+                                    <span onClick={handleUnlike}>
+                                        <i className="fa-solid fa-heart" />
+                                    </span>
+                                ) : currentUser ? (
+                                    <span onClick={handleLike}>
+                                        <i className="fa-regular fa-heart" />
+                                    </span>
+                                ) : (
+                                    <OverlayTrigger
+                                    placement="top"
+                                    overlay={<Tooltip>Log in to like stories!</Tooltip>}
+                                    >
+                                        <i className="fa-regular fa-heart" />
+                                    </OverlayTrigger>
+                                )}
+                            {likes_count}
+                            <i className="far fa-comments" /><p>Comments count here</p>
+                        </div>
+                    </Col>
+                    <Col>
+                        <div className='text-right'>
+                            {is_owner ? (
+                                <OverlayTrigger
+                                placement="top"
+                                overlay={<Tooltip>You can't save your own stories!</Tooltip>}
+                                >
+                                    <i className="fa-regular fa-bookmark" />
+                                </OverlayTrigger>
+                            ) : save_id ? (
+                                <span onClick={handleUnsave}>
+                                    <i className="fa-solid fa-bookmark" />
+                                </span>
+                            ) : currentUser ? (
+                                <span onClick={handleSave}>
+                                    <i className="fa-regular fa-bookmark" />
+                                </span>
+                            ) : (
+                                <OverlayTrigger
+                                placement="top"
+                                overlay={<Tooltip>Log in to save stories!</Tooltip>}
+                                >
+                                    <i className="fa-regular fa-bookmark" />
+                                </OverlayTrigger>
+                            )}
+                            {is_owner && storyPage && "..."}
+                        </div>
+                    </Col>
+                </Row>
                 <div className="d-flex">
                     <Media className={`${styles.Media} align-items-center justify-content-between`}>
                         <Link to={`/profiles/${profile_id}`}>
