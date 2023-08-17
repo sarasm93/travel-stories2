@@ -27,7 +27,19 @@ const Destination = (props) => {
                                 <Col>
                                     <Card.Text className='text-right'>
                                         <strong>Priority: </strong>
-                                            
+                                            {priority == "1" ? (
+                                                <span>Now</span>
+                                            ) : priority == "2" ? (
+                                                <span>Soon</span>
+                                            ) : priority == "3" ? (
+                                                <span>Within 3 years</span>
+                                            ) : priority == "4" ? (
+                                                <span>Within 5 years</span>
+                                            ) : priority == "5" ? (
+                                                <span>Might happen</span>
+                                            ): (
+                                                <span>-----</span>
+                                            )}
                                     </Card.Text>
                                 </Col>
                             </Row>
