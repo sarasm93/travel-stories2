@@ -1,0 +1,13 @@
+.DropdownMenu {
+    min-width: 8rem;
+}
+
+.DropdownItem p {
+    margin-bottom: 0;
+}
+
+.DropdownItem:hover {
+    background-color: #ffffff;
+    color: #adb8b8;
+}
+

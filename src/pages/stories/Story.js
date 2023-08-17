@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Avatar from '../../components/Avatar';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { Card, Col, Media, Row } from 'react-bootstrap';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import styles from "../../styles/Story.module.css";
@@ -30,6 +30,20 @@ const Story = (props) => {
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
+    const history = useHistory();
+
+    const handleEdit = () => {
+        history.push(`/stories/${id}/edit`);
+      };
+
+    const handleDelete = async () => {
+        try {
+            await axiosRes.delete(`/stories/${id}/`);
+            history.goBack();
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     const handleLike = async () => {
         try {
@@ -165,7 +179,7 @@ const Story = (props) => {
                                     <i className="fa-regular fa-bookmark" />
                                 </OverlayTrigger>
                             )}
-                            {is_owner && (<MoreDropdown />)}
+                            {is_owner && (<MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />)}
                         </div>
                     </Col>
                 </Row>
