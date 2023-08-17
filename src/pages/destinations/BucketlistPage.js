@@ -18,6 +18,32 @@ function BucketlistPage({filter = "" }) {
     const { id } = useParams();
     const currentUser = useCurrentUser();
         
+    useEffect(() => {
+        const handleMount = async () => {
+            try {
+                const [{ data: destinations }] = await Promise.all([
+                axiosReq.get(`/destinations/?${filter}`),
+                ]);
+                console.log(destinations)
+                setHasLoaded(true);
+                setDestinations({ results: [destinations] });
+                console.log(destinations)
+            } catch (err) {
+                console.log(err);
+            }
+            };
+
+            setHasLoaded(false);
+            const timer = setTimeout(() => {
+                handleMount();
+            }, 1000);
+
+        return () => {
+            clearTimeout(timer);
+        };
+        }, [filter, pathname, currentUser]
+    
+        );
 
     return (
         <div>
