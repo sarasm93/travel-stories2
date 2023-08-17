@@ -15,6 +15,7 @@ import StoryPage from './pages/stories/StoryPage';
 import { Card, Image } from 'react-bootstrap';
 import headerImage from "../src/assets/surfing.jpg";
 import DestinationPage from './pages/destinations/DestinationPage';
+import StoryEditForm from './pages/stories/StoryEditForm';
 
 
 function App() {
@@ -48,7 +49,8 @@ function App() {
           <Route exact path="/login"render={() => <SignInForm />}/>
           <Route exact path="/signup" render={() => <SignUpForm />}/>
           <Route exact path="/stories/create" render={() => <StoryCreateForm />}/>
-          <Route exact path="/stories/:id" render={() => <StoryPage />} />
+          <Route exact path="/stories/:id" render={() => <StoryPage />}/>
+          <Route exact path="/stories/:id/edit" render={() => <StoryEditForm />} />
           <Route exact path="/destinations/:id" render={() => <DestinationPage />} />
           <Route exact path="/bucketlist" render={() => <BucketlistPage 
             filter={`profile=${profile_id}&ordering=-created_at&`}/>}/>
