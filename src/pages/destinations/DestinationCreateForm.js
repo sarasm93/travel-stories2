@@ -32,7 +32,20 @@ function DestinationCreateForm({filter = "" }) {
 
     const currentUser = useCurrentUser();
 
+    useEffect(() => {
+        const fetchSavedStories = async () => {
+          try {
+            const { data } = await axiosReq.get(`/stories/?${filter}`);
+            setSavedStories(data);
+          } catch (err) {
+            console.log(err);
+          }
+        };
 
+        fetchSavedStories(); 
+        }, [filter, currentUser]
+    
+    );
 
     const handleChange = (event) => {
         setDestinationData({
