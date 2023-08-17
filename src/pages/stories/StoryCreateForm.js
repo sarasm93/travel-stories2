@@ -64,7 +64,7 @@ function StoryCreateForm() {
     
         try {
             await axiosReq.post("/stories/", formData);
-            history.push(`/profiles/${currentUser.profile_id}`); /* IS THIS CORRECT? wANT TO GET TO USERS PROFILE WHEN STORY IS POSTED*/
+            history.push(`/profiles/${currentUser.profile_id}`);
           } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {
@@ -148,7 +148,7 @@ function StoryCreateForm() {
                                 </figure>
                                 <div>
                                     <Form.Label
-                                        className={`${btnStyles.Button} ${btnStyles.Orange} btn`}
+                                        className={`${btnStyles.Button} ${btnStyles.Change} btn`}
                                         htmlFor="image-upload">
                                         Change image
                                     </Form.Label>

@@ -14,6 +14,7 @@ import { useCurrentUser } from './contexts/CurrentUserContext';
 import StoryPage from './pages/stories/StoryPage';
 import { Card, Image } from 'react-bootstrap';
 import headerImage from "../src/assets/surfing.jpg";
+import DestinationPage from './pages/destinations/DestinationPage';
 
 
 function App() {
@@ -42,14 +43,21 @@ function App() {
             exact 
             path="/saved" 
             render={() => <StoriesPage 
-              filter={`saves__owner__profile=${profile_id}&ordering=-saves__created_at&`}
+              filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}
               />}/>
           <Route exact path="/login"render={() => <SignInForm />}/>
           <Route exact path="/signup" render={() => <SignUpForm />}/>
           <Route exact path="/stories/create" render={() => <StoryCreateForm />}/>
           <Route exact path="/stories/:id" render={() => <StoryPage />} />
-          <Route exact path="/bucketlist" render={() => <BucketlistPage />}/>
-          <Route exact path="/destination/create" render={() => <DestinationCreateForm />}/>
+          <Route exact path="/destinations/:id" render={() => <DestinationPage />} />
+          <Route exact path="/bucketlist" render={() => <BucketlistPage 
+            filter={`is_owner=${profile_id}&ordering=-created_at&`}/>}/>
+          <Route 
+            exact 
+            path="/destination/create" 
+            render={() => <DestinationCreateForm 
+              filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}
+              />}/>
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -12,47 +12,26 @@ import btnStyles from "../../styles/Button.module.css";
 import Alert from "react-bootstrap/Alert";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 
-function DestinationCreateForm() {
-
+function DestinationCreateForm({filter = "" }) {
+    const [savedStories, setSavedStories] = useState({ results: [] });
     const [errors, setErrors] = useState({});
 
     const [destinationData, setDestinationData] = useState({
         destination: "",
         activities: "",
         priority: "",
+        story_tag: [],
         }
     );
-    const { destination, activities, priority } = destinationData;
+    const { destination, activities, priority, story_tag } = destinationData;
 
     const history = useHistory();
 
-    const handleChange = (event) => {
-        setDestinationData({
-            ...destinationData,
-            [event.target.name]: event.target.value,
-        })
-    };
+    const currentUser = useCurrentUser();
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const formData = new FormData();
-    
-        formData.append("destination", destination);
-        formData.append("activities", activities);
-        formData.append("priority", priority);
-
-        try {
-            await axiosReq.post("/destinations/", formData);
-            history.push("/bucketlist"); /* IS THIS CORRECT? WANT TO GET TO USERS DESTINATIONS WHEN DESTINATION IS POSTED*/
-            } catch (err) {
-                console.log(err);
-            if (err.response?.status !== 401) {
-              setErrors(err.response?.data);
-            }
-        };
-    };
 
     const textFields = (
         <>
@@ -88,21 +67,42 @@ function DestinationCreateForm() {
         </>
     );
 
+    const options = [
+        {
+            label: "Now",
+            value: "1",
+        },
+        {
+            label: "Soon",
+            value: "2",
+        },
+        {
+            label: "Within 3 years",
+            value: "3",
+        },
+        {
+            label: "Within 5 years",
+            value: "4",
+        },
+        {
+            label: "Might happen",
+            value: "5",
+        },
+      ];
+
     const selectFields = (
         <>
             <Form.Group>
                 <Form.Label>Priority:</Form.Label>
                 <Form.Control 
                     as="select"
-                    name ="priority"
                     value={priority}
+                    name="priority"
                     onChange={handleChange}
                     >
-                    <option value={1}>Now</option>
-                    <option value={2}>Soon</option>
-                    <option value={3}>Within 3 years</option>
-                    <option value={4}>Within 5 years</option>
-                    <option value={5}>Might happen</option>
+                        {options.map((option) => (
+                            <option value={option.value} key={option.value}>{option.label}</option>
+                        ))}
                 </Form.Control>
             </Form.Group>
             {errors?.priority?.map((message, idx) => (
@@ -110,6 +110,26 @@ function DestinationCreateForm() {
                     {message}
                 </Alert>
             ))}
+            <Form.Group>
+                <Form.Label>Story tag:</Form.Label>
+                <Form.Control
+                    as="select"
+                    name ="story_tag"
+                    defaultValue={"placeholder"}
+                    onChange={handleChange}
+                >
+                    <option value={"placeholder"}>Select...</option>
+                    {savedStories.results.length ? savedStories.results.map((savedStories) => {
+                        return <option key={savedStories.id} value={savedStories.id}>{savedStories.title}</option>
+                    })
+                    : null }
+                </Form.Control>
+                {errors?.story_tag?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                        {message="Please choose a story"}
+                    </Alert>
+                ))}
+            </Form.Group>
         </>
     )
 

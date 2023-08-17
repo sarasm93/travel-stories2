@@ -15,13 +15,12 @@ function StoriesPage({filter = "" }) {
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
 
-    const [query, setQuery] = useState("");
     const currentUser = useCurrentUser();
 
     useEffect(() => {
         const fetchStories = async () => {
           try {
-            const { data } = await axiosReq.get(`/stories/?${filter}search=${query}`);
+            const { data } = await axiosReq.get(`/stories/?${filter}`);
             setStories(data);
             setHasLoaded(true);
           } catch (err) {
@@ -37,7 +36,7 @@ function StoriesPage({filter = "" }) {
         return () => {
           clearTimeout(timer);
         };
-        }, [filter, query, pathname, currentUser]
+        }, [filter, pathname, currentUser]
     
       );
   
