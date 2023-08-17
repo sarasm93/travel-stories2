@@ -14,6 +14,10 @@
     margin-right: 2.5rem;
 }
 
+.CardImage {
+    width: 95%;
+}
+
 .Media a {
     color: #000000;
 }
@@ -29,4 +33,12 @@
 
 i:hover {
     color: #3cc232;
+}
+
+.CantLike i {
+    color: #ad9696fc;
+}
+
+.Heart i {
+    color: #00a6ff;
 }

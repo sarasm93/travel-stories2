@@ -41,6 +41,11 @@ img:hover {
     padding: 0.9px 8px;
     margin: 7.1px 0;
 }
+
+.Collapse {
+    background-color: #ffffff;
+    padding: 0.5rem;
+}
   
 a:hover {
     color: #adb8b8;

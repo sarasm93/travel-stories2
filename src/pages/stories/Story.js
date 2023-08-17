@@ -6,6 +6,7 @@ import { Card, Col, Media, Row } from 'react-bootstrap';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import styles from "../../styles/Story.module.css";
 import { axiosRes } from '../../api/axiosDefaults';
+import { MoreDropdown } from '../../components/MoreDropdown';
 
 
 const Story = (props) => {
@@ -102,24 +103,26 @@ const Story = (props) => {
                 {destination && <Card.Subtitle className="text-center mb-3"><strong>{destination}</strong></Card.Subtitle>}
                 {created_at && <Card.Text className='text-center mb-0'>created: {created_at}</Card.Text>}
             </Card.Body>
-            <Card.Img src={image} alt={title} />
+                <Card.Img src={image} alt={title} className={`${styles.CardImage} m-auto`}/>
             <Card.Body className={styles.CardContent}>  
                 <Row>
                     <Col >
-                        <div>
+                        <div className="d-flex align-items">
                             {is_owner ? (
                                     <OverlayTrigger
                                     placement="top"
                                     overlay={<Tooltip>You can't like your own stories!</Tooltip>}
                                     >
-                                        <i className="fa-regular fa-heart" />
+                                        <span className={styles.CantLike}>
+                                            <i className={`fa-solid fa-heart`}/>
+                                        </span>
                                     </OverlayTrigger>
                                 ) : like_id ? (
-                                    <span onClick={handleUnlike}>
+                                    <span onClick={handleUnlike} className={styles.Heart}>
                                         <i className="fa-solid fa-heart" />
                                     </span>
                                 ) : currentUser ? (
-                                    <span onClick={handleLike}>
+                                    <span onClick={handleLike} className={styles.Heart}>
                                         <i className="fa-regular fa-heart" />
                                     </span>
                                 ) : (
@@ -127,15 +130,18 @@ const Story = (props) => {
                                     placement="top"
                                     overlay={<Tooltip>Log in to like stories!</Tooltip>}
                                     >
-                                        <i className="fa-regular fa-heart" />
+                                        <span className={styles.Heart}>
+                                            <i className="fa-regular fa-heart" />
+                                        </span>
                                     </OverlayTrigger>
                                 )}
-                            {likes_count}
-                            <i className="far fa-comments" /><p>Comments count here</p>
+                            <span className='pt-1 mr-2'>{likes_count}</span>
+                            <span><i className="far fa-comments" /></span>
+                            <span className='pt-1 mr-2'>Count</span>
                         </div>
                     </Col>
                     <Col>
-                        <div className='text-right'>
+                        <div className='d-flex justify-content-end'>
                             {is_owner ? (
                                 <OverlayTrigger
                                 placement="top"
@@ -159,7 +165,7 @@ const Story = (props) => {
                                     <i className="fa-regular fa-bookmark" />
                                 </OverlayTrigger>
                             )}
-                            {is_owner && storyPage && "..."}
+                            {is_owner && (<MoreDropdown />)}
                         </div>
                     </Col>
                 </Row>

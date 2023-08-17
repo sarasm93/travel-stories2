@@ -36,7 +36,7 @@ function StoryPage() {
             </Col>
             <Col className="py-2 p-0 p-lg-2" lg={9}>
                 <p>Popular stories for mobile</p>
-                <Story {...story.results[0]} setStories={setStory} storyPage />
+                <Story {...story.results[0]} setStories={setStory} />
                 <Container className={appStyles.Content}>
                 Comments
                 </Container>
