@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Col, Image, Row } from 'react-bootstrap';
+import { Badge, Button, Card, Col, Row } from 'react-bootstrap';
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/Destination.module.css";
 
@@ -27,15 +27,15 @@ const Destination = (props) => {
                                 <Col>
                                     <Card.Text className='text-right mr-4'>
                                         <strong>Priority: </strong>
-                                            {priority == "1" ? (
+                                            {priority === "1" ? (
                                                 <span>Now</span>
-                                            ) : priority == "2" ? (
+                                            ) : priority === "2" ? (
                                                 <span>Soon</span>
-                                            ) : priority == "3" ? (
+                                            ) : priority === "3" ? (
                                                 <span>Within 3 years</span>
-                                            ) : priority == "4" ? (
+                                            ) : priority === "4" ? (
                                                 <span>Within 5 years</span>
-                                            ) : priority == "5" ? (
+                                            ) : priority === "5" ? (
                                                 <span>Might happen</span>
                                             ): (
                                                 <span>-----</span>

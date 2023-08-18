@@ -73,10 +73,15 @@ input[type="file"] {
   border-color: #84dbe1;
 }
 
-.Card {
+.Intro {
   padding: 20px;
   border: 0;
   background-color: #ccaf3a;
+}
+
+.IntroCard {
+  background-color: #ccaf3a;
+  border: 0;
 }
 
 .IntroTitle {

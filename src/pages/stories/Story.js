@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Avatar from '../../components/Avatar';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
@@ -7,6 +7,7 @@ import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import styles from "../../styles/Story.module.css";
 import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropdown } from '../../components/MoreDropdown';
+import CommentCreateForm from "../comments/CommentCreateForm";
 
 
 const Story = (props) => {
@@ -24,13 +25,15 @@ const Story = (props) => {
         like_id,
         likes_count,
         save_id,
-        storyPage,
+        setStory,
         setStories,
     } = props;
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
     const history = useHistory();
+
+    const [comments, setComments] = useState({ results: [] });
 
     const handleEdit = () => {
         history.push(`/stories/${id}/edit`);
@@ -111,7 +114,7 @@ const Story = (props) => {
     
 
     return (
-        <Card className='my-4'>
+        <Card className='mb-4'>
             <Card.Body className={styles.CardHeader}>
                 {title && <Card.Title className="text-center">{title}</Card.Title>}
                 {destination && <Card.Subtitle className="text-center mb-3"><strong>{destination}</strong></Card.Subtitle>}
@@ -127,7 +130,7 @@ const Story = (props) => {
                                     placement="top"
                                     overlay={<Tooltip>You can't like your own stories!</Tooltip>}
                                     >
-                                        <span className={styles.CantLike}>
+                                        <span className={styles.CantLikeSave}>
                                             <i className={`fa-solid fa-heart`}/>
                                         </span>
                                     </OverlayTrigger>
@@ -161,7 +164,9 @@ const Story = (props) => {
                                 placement="top"
                                 overlay={<Tooltip>You can't save your own stories!</Tooltip>}
                                 >
-                                    <i className="fa-regular fa-bookmark" />
+                                    <span className={styles.CantLikeSave}>
+                                        <i className="fa-regular fa-bookmark" />
+                                    </span>
                                 </OverlayTrigger>
                             ) : save_id ? (
                                 <span onClick={handleUnsave}>
@@ -183,8 +188,8 @@ const Story = (props) => {
                         </div>
                     </Col>
                 </Row>
-                <div className="d-flex">
-                    <Media className={`${styles.Media} align-items-center justify-content-between`}>
+                <div className="d-flex pt-3">
+                    <Media className={`${styles.Media} align-items-top justify-content-between`}>
                         <Link to={`/profiles/${profile_id}`}>
                             <div>
                                 <Avatar src={profile_image} height={55} />
@@ -195,7 +200,21 @@ const Story = (props) => {
                         </Link>
                     </Media>
                     {content && <Card.Text className={styles.Content}>{content}</Card.Text>}
-                </div>              
+                </div>             
+                <hr className={`${styles.PageDivider}`} /> 
+            </Card.Body>
+            <Card.Body className='pt-2'>
+                {currentUser ? (
+                    <CommentCreateForm
+                        profile_id={currentUser.profile_id}
+                        profileImage={profile_image}
+                        story={id}
+                        setStory={setStory}
+                        setComments={setComments}
+                        />
+                    ) : comments.results.length ? (
+                        "Comments"
+                    ) : null}
             </Card.Body>
         </Card>
     );

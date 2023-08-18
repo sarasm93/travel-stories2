@@ -12,7 +12,7 @@ import DestinationCreateForm from './pages/destinations/DestinationCreateForm';
 import StoriesPage from './pages/stories/StoriesPage';
 import { useCurrentUser } from './contexts/CurrentUserContext';
 import StoryPage from './pages/stories/StoryPage';
-import { Card, Image } from 'react-bootstrap';
+import Image from 'react-bootstrap/Image';
 import headerImage from "../src/assets/surfing.jpg";
 import DestinationPage from './pages/destinations/DestinationPage';
 import StoryEditForm from './pages/stories/StoryEditForm';
@@ -29,15 +29,12 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Image src={headerImage} alt="header image" className={`${styles.HeaderImage} img-fluid`}/>
-            <Card className={`${styles.Card} text-center`}>
-                <Card.Body >
-                    <Card.Title className={styles.IntroTitle}>Share your travel story!</Card.Title>
-                    <Card.Subtitle className={styles.IntroSubtitle}>
-                        Discover new places and meet new people. Be inspired and make your travel bucket list.
-                        Join now!
-                    </Card.Subtitle>
-                </Card.Body>
-            </Card>
+            <div className={`${styles.Intro} text-center`}>
+              <h1 className={styles.IntroTitle}>Share your travel story!</h1>
+              <h2 className={styles.IntroSubtitle}>
+                Discover new places and meet new people. Be inspired and make your travel bucket list. 
+                Join now!</h2>
+            </div>
             <StoriesPage />
           </Route>
           <Route 

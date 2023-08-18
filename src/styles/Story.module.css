@@ -12,6 +12,7 @@
 
 .Media {
     margin-right: 2.5rem;
+    padding-left: 1.5rem;
 }
 
 .CardImage {
@@ -28,17 +29,26 @@
 }
 
 .Content {
-    margin-top: 1rem;
+    padding: 0.2rem 2.5rem 0 0;
 }
 
 i:hover {
     color: #3cc232;
 }
 
-.CantLike i {
+.CantLikeSave i {
     color: #ad9696fc;
 }
 
 .Heart i {
     color: #00a6ff;
+}
+
+.Heart i:hover {
+    color: #75c9f6;
+}
+
+.PageDivider {
+    border-top: solid 2px #00a6ff;
+    margin: 2rem 4rem 0 4rem;
 }

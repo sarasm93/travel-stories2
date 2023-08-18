@@ -44,7 +44,7 @@ function StoriesPage({filter = "" }) {
   
     return (
         <>
-            <Row className="h-100">
+            <Row className="h-100 pt-4">
                 <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
                     <p>Popular stories for desktop</p>
                 </Col>

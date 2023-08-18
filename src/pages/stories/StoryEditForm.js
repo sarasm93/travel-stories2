@@ -6,12 +6,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
-import defaultImage from "../../assets/upload.png";
-
 import styles from "../../styles/StoryCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";

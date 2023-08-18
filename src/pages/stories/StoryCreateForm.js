@@ -123,11 +123,11 @@ function StoryCreateForm() {
 
     return (
         <Form onSubmit={handleSubmit}>
-            <Row>
-                <Col md={5} lg={4} className="p-0 p-md-2 d-flex">
+            <Row className="pt-4">
+                <Col md={5} lg={4} className="pb-2 d-flex">
                     <Container className={appStyles.Content}>{textFields}</Container>
                 </Col>
-                <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+                <Col className="" md={7} lg={8}>
                     <Container
                         className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
                         <Form.Group className="text-center">

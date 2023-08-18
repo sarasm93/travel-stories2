@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import btnStyles from "../../styles/Button.module.css";
 import { Button, Container, Image } from 'react-bootstrap';
-import { Link, useLocation, useParams } from 'react-router-dom/cjs/react-router-dom';
+import { Link, useLocation } from 'react-router-dom/cjs/react-router-dom';
 import headerImage from "../../assets/road.jpg";
 import styles from "../../App.module.css";
 import Destination from './Destination';
@@ -15,7 +15,6 @@ function BucketlistPage({filter = "" }) {
     const [destinations, setDestinations] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
-    const { id } = useParams();
     const currentUser = useCurrentUser();
         
     useEffect(() => {
