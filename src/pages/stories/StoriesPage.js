@@ -6,7 +6,8 @@ import styles from "../../App.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import Story from "./Story";
+import StoryPage from "./StoryPage";
+
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
@@ -55,7 +56,7 @@ function StoriesPage({filter = "" }) {
                                 {stories.results.length ? (
                                     <InfiniteScroll
                                         children={stories.results.map((story) => (
-                                        <Story key={story.id} {...story} setStories={setStories} />
+                                            <StoryPage storyId={story.id} key={story.id} />
                                         ))}
                                         dataLength={stories.results.length}
                                         loader={<Asset spinner />}

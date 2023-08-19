@@ -1,5 +1,5 @@
 .Form {
-    margin-right: 2.5rem;   
+    margin-top: 0;
 }
 
 .FormImage {
@@ -10,12 +10,18 @@
     border: none;
     color:#0a7503; 
     background-color: none;
-    border-radius: 100px;
-    min-width: 75px;
-    margin: 5px;
+    border-radius: 20px;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0;
+    cursor: none;
 }
-  
+
+.Button i {
+    margin-right: 0.2rem;
+    padding-bottom: 0;
+}
+
 .Button i:hover {
-    cursor: pointer;
     color: #4dae46;
 }

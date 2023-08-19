@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Avatar from '../../components/Avatar';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
@@ -7,7 +7,6 @@ import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import styles from "../../styles/Story.module.css";
 import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropdown } from '../../components/MoreDropdown';
-import CommentCreateForm from "../comments/CommentCreateForm";
 
 
 const Story = (props) => {
@@ -24,16 +23,14 @@ const Story = (props) => {
         profile_image,
         like_id,
         likes_count,
+        comments_count,
         save_id,
-        setStory,
-        setStories,
+        setStories, 
     } = props;
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
     const history = useHistory();
-
-    const [comments, setComments] = useState({ results: [] });
 
     const handleEdit = () => {
         history.push(`/stories/${id}/edit`);
@@ -123,9 +120,9 @@ const Story = (props) => {
                 <Card.Img src={image} alt={title} className={`${styles.CardImage} m-auto`}/>
             <Card.Body className={styles.CardContent}>  
                 <Row>
-                    <Col >
-                        <div className="d-flex align-items">
-                            {is_owner ? (
+                    <Col>
+                        <div className='d-flex justify-content-end'>
+                        {is_owner ? (
                                     <OverlayTrigger
                                     placement="top"
                                     overlay={<Tooltip>You can't like your own stories!</Tooltip>}
@@ -153,12 +150,6 @@ const Story = (props) => {
                                     </OverlayTrigger>
                                 )}
                             <span className='pt-1 mr-2'>{likes_count}</span>
-                            <span><i className="far fa-comments" /></span>
-                            <span className='pt-1 mr-2'>Count</span>
-                        </div>
-                    </Col>
-                    <Col>
-                        <div className='d-flex justify-content-end'>
                             {is_owner ? (
                                 <OverlayTrigger
                                 placement="top"
@@ -200,21 +191,12 @@ const Story = (props) => {
                         </Link>
                     </Media>
                     {content && <Card.Text className={styles.Content}>{content}</Card.Text>}
-                </div>             
-                <hr className={`${styles.PageDivider}`} /> 
-            </Card.Body>
-            <Card.Body className='pt-2'>
-                {currentUser ? (
-                    <CommentCreateForm
-                        profile_id={currentUser.profile_id}
-                        profileImage={profile_image}
-                        story={id}
-                        setStory={setStory}
-                        setComments={setComments}
-                        />
-                    ) : comments.results.length ? (
-                        "Comments"
-                    ) : null}
+                </div>   
+                <div className="d-flex justify-content-end">
+                    <span><i className="far fa-comments" /></span>
+                    <span className='pt-1 mr-2'>{comments_count}</span>
+                </div>          
+                {/*<hr className={`${styles.PageDivider}`} /> */}
             </Card.Body>
         </Card>
     );
