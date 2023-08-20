@@ -10,7 +10,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 import { Col, Row } from "react-bootstrap";
 
 function CommentCreateForm(props) {
-  const { story, setStory, setComments, profileImage, profile_id } = props;
+  const { story, setStory, setComments, profileImage, profile_id, } = props;
   const [content, setContent] = useState("");
 
   const handleChange = (event) => {

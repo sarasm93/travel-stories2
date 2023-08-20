@@ -24,7 +24,6 @@ const Story = (props) => {
         profile_image,
         like_id,
         likes_count,
-        comments_count,
         save_id,
         setStories, 
     } = props;
@@ -118,7 +117,7 @@ const Story = (props) => {
                 {destination && <Card.Subtitle className="text-center mb-3"><strong>{destination}</strong></Card.Subtitle>}
                 {created_at && <Card.Text className='text-center mb-0'>created: {created_at}</Card.Text>}
             </Card.Body>
-                <Card.Img src={image} alt={title} className={`${styles.CardImage} m-auto`}/>
+            <Card.Img src={image} alt={title} className={`${styles.CardImage} m-auto`}/>
             <Card.Body className={styles.CardContent}>  
                 <Row>
                     <Col>

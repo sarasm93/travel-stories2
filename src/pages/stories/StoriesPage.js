@@ -11,6 +11,7 @@ import StoryPage from "./StoryPage";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import PopularStoriesSection from "./PopularStoriesSection";
 
 
 function StoriesPage({filter = "" }) {
@@ -47,9 +48,10 @@ function StoriesPage({filter = "" }) {
         <>
             <Row className="h-100 pt-4">
                 <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-                    <p>Popular stories for desktop</p>
+                    <PopularStoriesSection />
                 </Col>
                 <Col className="p-0" lg={8}>
+                    <PopularStoriesSection mobile />
                     <Container>
                         {hasLoaded ? (
                             <>
@@ -73,7 +75,6 @@ function StoriesPage({filter = "" }) {
                             </Container>
                         )}
                     </Container>
-                    <p>Popular stories for mobile</p>
                 </Col>
             </Row>
         </>

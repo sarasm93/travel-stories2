@@ -15,7 +15,6 @@ import styles from "../../styles/StoryPage.module.css";
 
 function StoryPage({storyId}) {
     const [story, setStory] = useState({ results: [] });
-
     const [comments, setComments] = useState({ results: [] });
     const currentUser = useCurrentUser();
     const profile_image = currentUser?.profile_image;
@@ -63,7 +62,7 @@ function StoryPage({storyId}) {
                                         profile_id={currentUser.profile_id}
                                         profileImage={profile_image}
                                         story={storyId}
-                                        setStorys={setStory}
+                                        setStory={setStory}
                                         setComments={setComments}
                                         />
                                     ) : comments.results.length ? (

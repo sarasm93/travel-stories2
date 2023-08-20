@@ -1,0 +1,28 @@
+.WordBreak {
+    word-break: break-all;
+  }
+
+.CardImage {
+    border-radius: 0.25rem;
+    opacity: 50%;
+}
+
+.Card {
+    max-height: 6.5rem;
+    border: none;
+    position: relative;
+    text-align: center;
+}
+
+.Card p {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: fit-content;
+    margin: auto;
+    color: #000000;
+    letter-spacing: 1px;
+}
+
