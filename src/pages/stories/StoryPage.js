@@ -71,12 +71,16 @@ function StoryPage({storyId}) {
                                     ) : null}
                                     {comments.results.length ? (
                                         comments.results.map((comment) => (
-                                            <Comment key={comment.id} {...comment}/>
+                                            <Comment 
+                                                key={comment.id} 
+                                                {...comment}
+                                                setStory={setStory} 
+                                                setComments={setComments}/>
                                         ))
                                     ) : currentUser ? (
-                                        <span>No comments yet, be the first to comment!</span>
+                                        <span className={styles.Message}>No comments yet, be the first to comment!</span>
                                     ) : (
-                                        <span>No comments... yet</span>
+                                        <span className={styles.Message}>No comments... yet</span>
                                     )}
                             </Card.Body>
                         </Accordion.Collapse>

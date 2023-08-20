@@ -193,11 +193,6 @@ const Story = (props) => {
                     </Media>
                     {content && <Card.Text className={styles.Content}>{content}</Card.Text>}
                 </div>   
-                {/*<div className="d-flex justify-content-end">
-                    <span><i className="far fa-comments" /></span>
-                    <span className='pt-1 mr-2'>{comments_count}</span>
-                </div>          
-                <hr className={`${styles.PageDivider}`} /> */}
             </Card.Body>
         </Card>
     );

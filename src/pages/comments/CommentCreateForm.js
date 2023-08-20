@@ -28,6 +28,7 @@ function CommentCreateForm(props) {
           ...prevComments,
           results: [data, ...prevComments.results],
         }));
+        setContent("");
         setStory((prevStory) => ({
           results: [
             {
@@ -36,7 +37,6 @@ function CommentCreateForm(props) {
             },
           ],
         }));
-      setContent("");
     } catch (err) {
       console.log(err);
     }
