@@ -1,0 +1,12 @@
+.Accordion {
+    background-color: #ffffff;
+}
+
+.BorderTop {
+    border-top: 0;
+}
+
+.Collapse {
+    background-color: #eafcf9;
+    border-top: solid 1px rgba(0,0,0,.125);
+}

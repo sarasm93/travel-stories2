@@ -8,6 +8,7 @@
 
 .CardContent {
     padding-top: 0.2rem;
+    padding-bottom: 0;
 }
 
 .Media {
@@ -48,7 +49,6 @@ i:hover {
     color: #75c9f6;
 }
 
-.PageDivider {
-    border-top: solid 2px #00a6ff;
-    margin: 2rem 4rem 0 4rem;
+.BorderBottom {
+    border-bottom: 0;
 }

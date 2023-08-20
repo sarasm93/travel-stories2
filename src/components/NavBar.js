@@ -63,7 +63,7 @@ const NavBar = () => {
                 to={`/profiles/${currentUser?.profile_id}`}
                 className={`${appStyles.NavBar} ${appStyles.NavIcon} ${navStyles.NavLink} mr-auto`}
                 activeClassName={navStyles.ActiveIcon}>        
-            <Avatar src={currentUser?.profile_image} text="Profile" height={38} className={``}/>
+            <Avatar src={currentUser?.profile_image} text="Profile" height={38}/>
             </NavLink>
         </>
 
@@ -93,14 +93,14 @@ const NavBar = () => {
                 expanded={expanded}
             >
                 <NavLink className={navStyles.NavLogo} to="/">
-                    <Image roundedCircle src={logo} alt="logo" height="40" />
+                    <Image roundedCircle src={logo} alt="logo" height="40" className={navStyles.NavImg}/>
                     <Navbar.Brand>Travel Stories</Navbar.Brand>
                 </NavLink>
                 <Navbar.Toggle 
                     ref={ref}
                     onClick={() => setExpanded(!expanded)}
                     aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse className={navStyles.Collapse}id="basic-navbar-nav">
+                <Navbar.Collapse className={navStyles.Collapse} id="basic-navbar-nav">
                     <Nav>
                         <NavLink 
                             exact

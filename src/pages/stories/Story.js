@@ -7,6 +7,7 @@ import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import styles from "../../styles/Story.module.css";
 import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropdown } from '../../components/MoreDropdown';
+import appStyles from "../../App.module.css";
 
 
 const Story = (props) => {
@@ -111,7 +112,7 @@ const Story = (props) => {
     
 
     return (
-        <Card className='mb-4'>
+        <Card className={`${appStyles.Card} ${styles.BorderBottom}`}>
             <Card.Body className={styles.CardHeader}>
                 {title && <Card.Title className="text-center">{title}</Card.Title>}
                 {destination && <Card.Subtitle className="text-center mb-3"><strong>{destination}</strong></Card.Subtitle>}
@@ -179,7 +180,7 @@ const Story = (props) => {
                         </div>
                     </Col>
                 </Row>
-                <div className="d-flex pt-3">
+                <div className="d-flex pt-0">
                     <Media className={`${styles.Media} align-items-top justify-content-between`}>
                         <Link to={`/profiles/${profile_id}`}>
                             <div>
@@ -192,11 +193,11 @@ const Story = (props) => {
                     </Media>
                     {content && <Card.Text className={styles.Content}>{content}</Card.Text>}
                 </div>   
-                <div className="d-flex justify-content-end">
+                {/*<div className="d-flex justify-content-end">
                     <span><i className="far fa-comments" /></span>
                     <span className='pt-1 mr-2'>{comments_count}</span>
                 </div>          
-                {/*<hr className={`${styles.PageDivider}`} /> */}
+                <hr className={`${styles.PageDivider}`} /> */}
             </Card.Body>
         </Card>
     );

@@ -11,7 +11,12 @@
 .Main {
     margin-top: 70px;
     padding: 0;
-    max-width: 1250px;
+    max-width: 1200px;
+}
+
+.Card {
+  border-radius: 0;
+  background-color: #ffffff;
 }
 
 .HeaderImage {

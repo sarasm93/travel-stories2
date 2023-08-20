@@ -44,7 +44,7 @@ function CommentCreateForm(props) {
 
   return (
         
-            <Form className="mt-2 pr-1" onSubmit={handleSubmit}>
+            <Form className="mt-4 pr-1" onSubmit={handleSubmit}>
                 <Row>
                     <Col xs={11} className="p-0">
                         <Form.Group className={`${styles.Form}`}>

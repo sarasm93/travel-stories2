@@ -18,11 +18,11 @@
     background-color: #ffffff;
 }
 
-img {
+.NavImg {
     margin-bottom: 3px;
 }
 
-img:hover {
+.NavImg:hover {
     background-color: #c5ecef;
 }
 
