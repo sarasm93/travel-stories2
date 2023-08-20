@@ -6,6 +6,8 @@ import styles from "../../styles/Comment.module.css";
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { MoreDropdown } from '../../components/MoreDropdown';
 import { axiosRes } from '../../api/axiosDefaults';
+import CommentEditForm from "./CommentEditForm";
+
 
 const Comment = (props) => {
 
@@ -52,11 +54,22 @@ const Comment = (props) => {
           <Media.Body className="align-self-center ml-2">
             <span className={styles.Owner}>{owner} </span>
             <span className={styles.Date}>{created_at}</span>
-            <p>{content}</p>
+            {showEditForm ? (
+              <CommentEditForm 
+                id={id}
+                profile_id={profile_id}
+                content={content}
+                profileImage={profile_image}
+                setComments={setComments}
+                setShowEditForm={setShowEditForm}
+            />
+            ) : (
+              <p>{content}</p>
+            )}
           </Media.Body>
-          {is_owner && (
+          {is_owner && !showEditForm && (
             <MoreDropdown
-              handleEdit={() => {}}
+              handleEdit={() => setShowEditForm(true)}
               handleDelete={handleDelete}
             />
           )}

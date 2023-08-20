@@ -66,7 +66,7 @@ function CommentCreateForm(props) {
                     <Col xs={1} className="pl-0">
                         <div className="d-flex p-0 pt-4 pr-3">
                             <button
-                                className={`${styles.Button} center-align`}
+                                className={`${styles.PostButton} center-align`}
                                 disabled={!content.trim()}
                                 type="submit"
                             >

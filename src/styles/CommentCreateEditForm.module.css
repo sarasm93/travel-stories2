@@ -6,7 +6,7 @@
     padding-left: 1.5rem;
 }
   
-.Button {
+.PostButton {
     border: none;
     color:#0a7503; 
     background-color: none;
@@ -25,3 +25,9 @@
 .Button i:hover {
     color: #4dae46;
 }
+
+.SaveCancel {
+    border-radius: 0.25rem;
+    padding: 0;
+}
+
