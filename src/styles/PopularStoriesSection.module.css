@@ -1,4 +1,10 @@
 .Header {
-    min-width: 14.5rem;
-    min-height: 4rem;
+    min-height: 6.5rem;
+    width: 100%;
+    background-color: #80dade;
+}
+
+.Header h4 {
+    text-transform: uppercase;
+    font-weight: bold;
 }

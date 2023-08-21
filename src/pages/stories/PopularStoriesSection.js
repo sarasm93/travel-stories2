@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Container } from 'react-bootstrap';
-import appStyles from '../../App.module.css'
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosReq } from '../../api/axiosDefaults';
 import Asset from '../../components/Asset';
@@ -37,13 +36,15 @@ const PopularStoriesSection = ( {mobile}) => {
 
   return (
     <Container 
-        className={`${appStyles.Content}
+        className={`
         ${mobile && "d-lg-none text-center mb-3"}`}>
         {popularStories.results.length ? (
         <>
-            <Card className={styles.Header}>
-              Most liked stories
-            </Card>
+          <div className='mx-2 mb-2'>
+              <Card className={`${styles.Header} d-flex`}>
+                <h4 className='m-auto'>Most liked stories</h4>
+              </Card>
+            </div>
             {mobile ? (
             <div className="d-flex justify-content-around">
               {popularStories.results.slice(0, 3).map((story) => (
@@ -51,7 +52,7 @@ const PopularStoriesSection = ( {mobile}) => {
               ))}
             </div>
           ) : (
-            popularStories.results.slice(0, 4).map((story) => (
+            popularStories.results.slice(0, 5).map((story) => (
               <PopularStory key={story.id} story={story} />
               ))
           )}

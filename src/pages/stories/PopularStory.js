@@ -23,7 +23,7 @@ const PopularStory = (props) => {
                     </Card> 
                 </Link>
             </div>
-            <div className={`mx-2 ${styles.WordBreak}`}>
+            <div className={`${styles.WordBreak}`}>
             </div>
         </div>
     )
