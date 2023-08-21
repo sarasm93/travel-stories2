@@ -6,7 +6,7 @@ import Asset from '../../components/Asset';
 import PopularStory from './PopularStory';
 import styles from "../../styles/PopularStoriesSection.module.css";
 
-const PopularStoriesSection = ( {mobile}) => {
+const PopularStoriesSection = ({mobile}) => {
     const [storyData, setStoryData] = useState({
     // we will use the pageProfile later!
     popularStories: { results: [] },

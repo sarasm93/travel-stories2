@@ -16,6 +16,7 @@ import Image from 'react-bootstrap/Image';
 import headerImage from "../src/assets/surfing.jpg";
 import DestinationPage from './pages/destinations/DestinationPage';
 import StoryEditForm from './pages/stories/StoryEditForm';
+import PopularStory from './pages/stories/PopularStory';
 
 
 function App() {
@@ -50,7 +51,7 @@ function App() {
           <Route exact path="/stories/:id/edit" render={() => <StoryEditForm />} />
           <Route exact path="/destinations/:id" render={() => <DestinationPage />} />
           <Route exact path="/bucketlist" render={() => <BucketlistPage 
-            filter={`profile=${profile_id}&ordering=-created_at&`}/>}/>
+            filter={`${profile_id}&ordering=-created_at&`}/>}/>
           <Route 
             exact 
             path="/destination/create" 

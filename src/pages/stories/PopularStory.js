@@ -16,15 +16,14 @@ const PopularStory = (props) => {
             className={`my-3 d-flex align-items-center ${mobile && "flex-column"}`}
         >
             <div>
-                <Link className={`${styles.Popular}`} to={`/profiles/${id}`}>
+                <Link className={`${styles.Popular}`} to={`/stories/${id}`}>
                     <Card className={`${styles.Card} overflow-hidden m-2`}>
                         <Card.Img src={image} alt={title} className={styles.CardImage}/>
                         <p><strong>{title}</strong> | {destination}</p>
                     </Card> 
                 </Link>
             </div>
-            <div className={`${styles.WordBreak}`}>
-            </div>
+
         </div>
     )
 }

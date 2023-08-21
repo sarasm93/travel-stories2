@@ -31,7 +31,7 @@ const NavBar = () => {
     const addStoryItem = (
         <NavLink 
             to="/stories/create"
-            className={`${navStyles.NavLink} ${appStyles.NavIcon} ml-auto`}
+            className={`${navStyles.NavLink} ${appStyles.NavIcon} ml-auto pl-0`}
             activeClassName={navStyles.ActiveIcon}
             >
                 <i className="fa-solid fa-plus" />
@@ -87,14 +87,14 @@ const NavBar = () => {
     return (
         <Container>
             <Navbar 
-                className={`${navStyles.NavBar} shadow-sm`} 
-                expand="md" 
+                className={`${navStyles.NavBar} shadow-sm pr-0`} 
+                expand="lg" 
                 fixed="top"
                 expanded={expanded}
             >
-                <NavLink className={navStyles.NavLogo} to="/">
-                    <Image roundedCircle src={logo} alt="logo" height="40" className={navStyles.NavImg}/>
-                    <Navbar.Brand>Travel Stories</Navbar.Brand>
+                <NavLink className={`${navStyles.NavLogo} d-flex`} to="/">
+                    <Image roundedCircle src={logo} alt="logo" height="40" className={`${navStyles.NavImg} m-auto`}/>
+                    <Navbar.Brand className='pl-2 m-auto'>Travel stories</Navbar.Brand>
                 </NavLink>
                 <Navbar.Toggle 
                     ref={ref}

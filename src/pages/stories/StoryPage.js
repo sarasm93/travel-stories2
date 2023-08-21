@@ -11,13 +11,16 @@ import CommentCreateForm from "../comments/CommentCreateForm";
 import Comment from "../comments/Comment";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/StoryPage.module.css";
+import { useLocation } from "react-router-dom/cjs/react-router-dom";
 
 
 function StoryPage({storyId}) {
     const [story, setStory] = useState({ results: [] });
     const [comments, setComments] = useState({ results: [] });
     const currentUser = useCurrentUser();
+    const [hasLoaded, setHasLoaded] = useState(false);
     const profile_image = currentUser?.profile_image;
+    const { pathname } = useLocation();
 
     useEffect(() => {
         const handleMount = async () => {
@@ -28,13 +31,22 @@ function StoryPage({storyId}) {
             ]);
                 setStory({ results: [story] });
                 setComments(comments);
+                setHasLoaded(true);
             } catch (err) {
                 console.log(err);
             }
             };
 
-        handleMount();
-        }, [storyId]);
+        setHasLoaded(false);
+        const timer = setTimeout(() => {
+            handleMount();
+        }, 1000);
+
+        return () => {
+            clearTimeout(timer);
+        };
+        }, [storyId, pathname, currentUser]);
+
 
     return (
         <Row className="h-100 mx-0">
