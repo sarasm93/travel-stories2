@@ -68,7 +68,7 @@ function StoryPage({storyId}) {
                             </Accordion.Toggle>
                         </Card.Header>
                         <Accordion.Collapse eventKey="comments-section" className={styles.Collapse}>
-                            <Card.Body className="pt-0">
+                            <Card.Body>
                                 {currentUser ? (
                                     <CommentCreateForm
                                         profile_id={currentUser.profile_id}

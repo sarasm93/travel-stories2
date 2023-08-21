@@ -178,7 +178,7 @@ function StoryEditForm() {
                                 Cancel
                             </Button>
                             <Button className={`${btnStyles.Button} ${btnStyles.Bright} mb-4 mt-4`} type="submit">
-                                Create
+                                Update
                             </Button>
                         </div>
                     </Container>

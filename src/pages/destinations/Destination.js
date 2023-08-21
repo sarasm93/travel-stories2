@@ -1,16 +1,34 @@
 import { Badge, Button, Card, Col, Row } from 'react-bootstrap';
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/Destination.module.css";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { axiosRes } from '../../api/axiosDefaults';
 
 
 const Destination = (props) => {
 
     const {
+        id,
         destination,
         activities,
         priority,
         story_tag,
     } = props;
+
+    const history = useHistory();
+
+    const handleEdit = () => {
+        history.push(`/destinations/${id}/edit`);
+      };
+
+    const handleDelete = async () => {
+        try {
+            await axiosRes.delete(`/destinations/${id}/`);
+            history.goBack();
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     return (
         <>
@@ -27,15 +45,15 @@ const Destination = (props) => {
                                 <Col>
                                     <Card.Text className='text-right mr-4'>
                                         <strong>Priority: </strong>
-                                            {priority === "1" ? (
+                                            {priority == "1" ? (
                                                 <span>Now</span>
-                                            ) : priority === "2" ? (
+                                            ) : priority == "2" ? (
                                                 <span>Soon</span>
-                                            ) : priority === "3" ? (
+                                            ) : priority == "3" ? (
                                                 <span>Within 3 years</span>
-                                            ) : priority === "4" ? (
+                                            ) : priority == "4" ? (
                                                 <span>Within 5 years</span>
-                                            ) : priority === "5" ? (
+                                            ) : priority == "5" ? (
                                                 <span>Might happen</span>
                                             ): (
                                                 <span>-----</span>
@@ -63,10 +81,10 @@ const Destination = (props) => {
                                         <span><Badge pill variant="light" className={`${styles.Badge} m-1`}>{story_tag}</Badge></span>
                                 </Col>
                                 <Col sm={12} md={5} className='text-right pb-3'>
-                                    <Button className={`${btnStyles.Button} p-0`} type="submit">
+                                    <Button className={`${btnStyles.Button} p-0`} type="submit" onClick={handleDelete}>
                                         Delete
                                     </Button>
-                                    <Button className={`${btnStyles.Button} ${btnStyles.Change} p-0`} type="submit">
+                                    <Button className={`${btnStyles.Button} ${btnStyles.Change} p-0`} type="submit" onClick={handleEdit}>
                                         Edit
                                     </Button>
                                 </Col>

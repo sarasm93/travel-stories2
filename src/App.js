@@ -17,6 +17,7 @@ import headerImage from "../src/assets/surfing.jpg";
 import DestinationPage from './pages/destinations/DestinationPage';
 import StoryEditForm from './pages/stories/StoryEditForm';
 import PopularStory from './pages/stories/PopularStory';
+import DestinationEditForm from './pages/destinations/DestinationEditForm';
 
 
 function App() {
@@ -49,7 +50,6 @@ function App() {
           <Route exact path="/stories/create" render={() => <StoryCreateForm />}/>
           <Route exact path="/stories/:id" render={() => <StoryPage />}/>
           <Route exact path="/stories/:id/edit" render={() => <StoryEditForm />} />
-          <Route exact path="/destinations/:id" render={() => <DestinationPage />} />
           <Route exact path="/bucketlist" render={() => <BucketlistPage 
             filter={`${profile_id}&ordering=-created_at&`}/>}/>
           <Route 
@@ -58,6 +58,12 @@ function App() {
             render={() => <DestinationCreateForm 
               filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}
               />}/>
+          <Route exact path="/destinations/:id" render={() => <DestinationPage />} />
+          <Route 
+            exact 
+            path="/destinations/:id/edit" 
+            render={() => <DestinationEditForm 
+              filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}/>} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
