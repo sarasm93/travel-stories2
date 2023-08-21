@@ -16,7 +16,6 @@ import Image from 'react-bootstrap/Image';
 import headerImage from "../src/assets/surfing.jpg";
 import DestinationPage from './pages/destinations/DestinationPage';
 import StoryEditForm from './pages/stories/StoryEditForm';
-import PopularStory from './pages/stories/PopularStory';
 import DestinationEditForm from './pages/destinations/DestinationEditForm';
 
 
