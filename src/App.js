@@ -45,13 +45,14 @@ function App() {
             render={() => <StoriesPage 
               filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}
               />}/>
-          <Route exact path="/login"render={() => <SignInForm />}/>
+          <Route exact path="/login" render={() => <SignInForm />}/>
           <Route exact path="/signup" render={() => <SignUpForm />}/>
           <Route exact path="/stories/create" render={() => <StoryCreateForm />}/>
           <Route exact path="/stories/:id" render={() => <PopularStoryPage />}/>
           <Route exact path="/stories/:id/edit" render={() => <StoryEditForm />} />
           <Route exact path="/bucketlist" render={() => <BucketlistPage 
-            filter={`${profile_id}&ordering=-created_at&`}/>}/>
+            filter={`owner__profile=${profile_id}&ordering=-created_at&`}
+              />}/>
           <Route 
             exact 
             path="/destination/create" 
