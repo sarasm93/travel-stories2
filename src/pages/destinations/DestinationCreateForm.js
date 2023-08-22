@@ -35,7 +35,7 @@ function DestinationCreateForm({filter = "" }) {
     useEffect(() => {
         const fetchSavedStories = async () => {
           try {
-            const { data } = await axiosReq.get(`/stories/?${filter}`);
+            const { data } = await axiosReq.get(`/stories/?${filter}/`);
             setSavedStories(data);
           } catch (err) {
             console.log(err);
