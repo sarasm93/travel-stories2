@@ -78,7 +78,10 @@ const Destination = (props) => {
                             <Row>
                                 <Col sm={12} md={7} className='pb-3'>
                                     <span className='mr-2'>Stories:</span>
-                                        <span><Badge pill variant="light" className={`${styles.Badge} m-1`}>{story_tag}</Badge></span>
+                                        {story_tag && (story_tag.map((story)=>{
+                                            return (<span><Badge pill variant="light" className={`${styles.Badge} m-1`}>{story}</Badge></span>)
+                                        }))}
+                                       
                                 </Col>
                                 <Col sm={12} md={5} className='text-right pb-3'>
                                     <Button className={`${btnStyles.Button} p-0`} type="submit" onClick={handleDelete}>
