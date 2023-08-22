@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
@@ -6,11 +6,11 @@ import InputGroup from "react-bootstrap/InputGroup";
 
 import styles from "../../styles/CommentCreateEditForm.module.css";
 import Avatar from "../../components/Avatar";
-import { axiosRes } from "../../api/axiosDefaults";
+import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import { Col, Row } from "react-bootstrap";
 
 function CommentCreateForm(props) {
-  const { story, setStory, setComments, profileImage, profile_id, } = props;
+  const { story, setStory, setComments, profileImage, profile_id } = props;
   const [content, setContent] = useState("");
 
   const handleChange = (event) => {
@@ -37,6 +37,7 @@ function CommentCreateForm(props) {
             },
           ],
         }));
+        
     } catch (err) {
       console.log(err);
     }

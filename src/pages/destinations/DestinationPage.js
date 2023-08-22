@@ -3,19 +3,17 @@ import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-import { useParams } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import Destination from "./Destination";
 
-function DestinationPage() {
-    const { id } = useParams();
+function DestinationPage({destinationId}) {
     const [destination, setDestination] = useState({ results: [] });
 
     useEffect(() => {
         const handleMount = async () => {
             try {
                 const [{ data: destination }] = await Promise.all([
-                axiosReq.get(`/destinations/${id}`),
+                axiosReq.get(`/destinations/${destinationId}/`),
                 ]);
                 setDestination({ results: [destination] });
                 console.log(destination)
@@ -25,7 +23,7 @@ function DestinationPage() {
             };
 
         handleMount();
-        }, [id]);
+        }, [destinationId]);
 
     return (
         <Row>

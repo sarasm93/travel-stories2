@@ -21,10 +21,8 @@ function BucketlistPage() {
         const fetchDestinations = async () => {
             try {
                 const { data } = await axiosReq.get(`/destinations/?owner__profile=${currentUser.profile_id}&ordering=-created_at`);
-                console.log(destinations)
                 setDestinations(data);
                 setHasLoaded(true);
-                console.log(destinations)
             } catch (err) {
                 console.log(err);
             }
