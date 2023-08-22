@@ -8,7 +8,6 @@ import styles from "../../styles/PopularStoriesSection.module.css";
 
 const PopularStoriesSection = ({mobile}) => {
     const [storyData, setStoryData] = useState({
-    // we will use the pageProfile later!
     popularStories: { results: [] },
   });
 
