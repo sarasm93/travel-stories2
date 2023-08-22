@@ -174,6 +174,7 @@ function DestinationEditForm({filter = "" }) {
                     name ="story_tag"
                     defaultValue={"placeholder"}
                     onChange={handleChange}
+                    multiple
                 >
                     <option value={"placeholder"}>{story_tag}</option>
                     {savedStories.results.length ? savedStories.results.map((savedStories) => {
