@@ -4,28 +4,26 @@ import { Button, Container, Image } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom/cjs/react-router-dom';
 import headerImage from "../../assets/road.jpg";
 import styles from "../../App.module.css";
-import Destination from './Destination';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Asset from '../../components/Asset';
+import DestinationPage from './DestinationPage';
 
 
-function BucketlistPage({filter = "" }) {
+function BucketlistPage() {
 
     const [destinations, setDestinations] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
     const currentUser = useCurrentUser();
-        
+    
     useEffect(() => {
-        const handleMount = async () => {
+        const fetchDestinations = async () => {
             try {
-                const [{ data: destinations }] = await Promise.all([
-                axiosReq.get(`/destinations/?${filter}`),
-                ]);
+                const { data } = await axiosReq.get(`/destinations/?owner__profile=${currentUser.profile_id}&ordering=-created_at`);
                 console.log(destinations)
+                setDestinations(data);
                 setHasLoaded(true);
-                setDestinations({ results: [destinations] });
                 console.log(destinations)
             } catch (err) {
                 console.log(err);
@@ -34,13 +32,13 @@ function BucketlistPage({filter = "" }) {
 
             setHasLoaded(false);
             const timer = setTimeout(() => {
-                handleMount();
+                fetchDestinations();
             }, 1000);
 
         return () => {
             clearTimeout(timer);
         };
-        }, [filter, pathname, currentUser]
+        }, [ pathname, currentUser, setDestinations]
     
         );
 
@@ -59,7 +57,7 @@ function BucketlistPage({filter = "" }) {
                     <>
                         {destinations.results.length ? (
                             destinations.results.map(destination=> (
-                                <Destination key={destination.id} value={destination.id} {...destination} setDestinations={setDestinations} />
+                                <DestinationPage destinationId={destination.id} key={destination.id} setDestinations={setDestinations} />
                             ))
                         ) : (
                             <p>You have no destinations in your bucketlist</p>
