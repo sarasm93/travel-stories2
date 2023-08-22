@@ -16,7 +16,7 @@ const PopularStoryPage = () => {
   useEffect(() => {
     const fetchData = async () => {
         try {
-            const [ { data: story } ] = await Promise.all([ axiosReq.get(`/stories/${id}/`)
+            const [{ data: story }] = await Promise.all([ axiosReq.get(`/stories/${id}/`)
             ]);
             setStory({ results: [story] });
             setHasLoaded(true);
@@ -34,7 +34,7 @@ const PopularStoryPage = () => {
         <Col className="p-0 m-auto" lg={8}>
             <Container>
                 {hasLoaded ? (
-                    <StoryPage storyId={id}/>
+                    <StoryPage storyId={id} num_of_comments={story.comments_count}/>
                 ) : (
                     <Container className={styles.Content}>
                         <Asset spinner />
