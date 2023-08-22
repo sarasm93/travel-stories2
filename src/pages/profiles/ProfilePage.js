@@ -71,7 +71,7 @@ function ProfilePage() {
     </>
   );
 
-  const mainProfilePosts = (
+  const mainProfileStories = (
     <>
       <hr className={`${styles.PageDivider} mx-5 mt-4`}/>
       <p className={`${styles.Stories} text-center`}><strong>Stories</strong></p>
@@ -79,7 +79,7 @@ function ProfilePage() {
       {profileStories.results.length ? (
         <InfiniteScroll
           children={profileStories.results.map((story) => (
-            <StoryPage storyId={story.id} key={story.id} {...story} setStories={setProfileStories} />
+            <StoryPage storyId={story.id} key={story.id} setStories={setProfileStories} />
           ))}
           dataLength={profileStories.results.length}
           loader={<Asset spinner />}
@@ -113,7 +113,7 @@ function ProfilePage() {
         </Container>
         {hasLoaded ? (
             <>
-              {mainProfilePosts}
+              {mainProfileStories}
             </>
           ) : (
             <Asset spinner />

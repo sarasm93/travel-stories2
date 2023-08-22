@@ -1,15 +1,11 @@
 import React from 'react'
 import styles from "../../styles/PopularStory.module.css";
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import Card from 'react-bootstrap/Card';
 
 const PopularStory = (props) => {
     const { story, mobile } = props;
-    const { id, title, destination, owner, image } = story;
-
-    const currentUser = useCurrentUser();
-    const is_owner = currentUser?.username === owner;
+    const { id, title, destination, image } = story;
 
     return (
         <div

@@ -11,13 +11,13 @@ import BucketlistPage from './pages/destinations/BucketlistPage';
 import DestinationCreateForm from './pages/destinations/DestinationCreateForm';
 import StoriesPage from './pages/stories/StoriesPage';
 import { useCurrentUser } from './contexts/CurrentUserContext';
-import StoryPage from './pages/stories/StoryPage';
 import Image from 'react-bootstrap/Image';
 import headerImage from "../src/assets/surfing.jpg";
 import DestinationPage from './pages/destinations/DestinationPage';
 import StoryEditForm from './pages/stories/StoryEditForm';
 import DestinationEditForm from './pages/destinations/DestinationEditForm';
 import ProfilePage from './pages/profiles/ProfilePage';
+import PopularStoryPage from './pages/stories/PopularStoryPage';
 
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
           <Route exact path="/login"render={() => <SignInForm />}/>
           <Route exact path="/signup" render={() => <SignUpForm />}/>
           <Route exact path="/stories/create" render={() => <StoryCreateForm />}/>
-          <Route exact path="/stories/:id" render={() => <StoryPage />}/>
+          <Route exact path="/stories/:id" render={() => <PopularStoryPage />}/>
           <Route exact path="/stories/:id/edit" render={() => <StoryEditForm />} />
           <Route exact path="/bucketlist" render={() => <BucketlistPage 
             filter={`${profile_id}&ordering=-created_at&`}/>}/>
@@ -65,7 +65,7 @@ function App() {
             render={() => <DestinationEditForm 
               filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}/>} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
-          <Route render={() => <p>Page not found!</p>} />
+          <Route render={() => <p>Sorry, this page could not be found.</p>} />
         </Switch>
       </Container>
     </div>

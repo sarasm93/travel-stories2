@@ -26,7 +26,6 @@ function StoriesPage({filter = "" }) {
           try {
             const { data } = await axiosReq.get(`/stories/?${filter}`);
             setStories(data);
-            console.log(data)
             setHasLoaded(true);
           } catch (err) {
             console.log(err);
