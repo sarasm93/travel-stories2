@@ -37,14 +37,13 @@ function ProfilePage() {
         const [{ data: pageProfile }, { data: profileStories }] =
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
-            axiosReq.get(`/stories/?owner__profile=${id}`),
+            axiosReq.get(`/stories/?profile__owner=${id}/`),
           ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
         setProfileStories(profileStories);
-        console.log(profileStories)
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -79,7 +78,7 @@ function ProfilePage() {
       {profileStories.results.length ? (
         <InfiniteScroll
           children={profileStories.results.map((story) => (
-            <StoryPage storyId={story.id} key={story.id} setStories={setProfileStories} />
+            <StoryPage storyId={story.id} num_of_comments={story.comments_count} key={story.id} setStories={setProfileStories} />
           ))}
           dataLength={profileStories.results.length}
           loader={<Asset spinner />}
