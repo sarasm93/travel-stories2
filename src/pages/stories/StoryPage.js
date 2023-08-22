@@ -14,11 +14,10 @@ import styles from "../../styles/StoryPage.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 
 
-function StoryPage({storyId}) {
+function StoryPage({ storyId, num_of_comments }) {
     const [story, setStory] = useState({ results: [] });
     const [comments, setComments] = useState({ results: [] });
     const currentUser = useCurrentUser();
-    const [hasLoaded, setHasLoaded] = useState(false);
     const profile_image = currentUser?.profile_image;
     const { pathname } = useLocation();
 
@@ -31,27 +30,19 @@ function StoryPage({storyId}) {
             ]);
                 setStory({ results: [story] });
                 setComments(comments);
-                setHasLoaded(true);
             } catch (err) {
                 console.log(err);
             }
             };
 
-        setHasLoaded(false);
-        const timer = setTimeout(() => {
-            handleMount();
-        }, 1000);
-
-        return () => {
-            clearTimeout(timer);
-        };
-        }, [storyId, pathname, currentUser]);
+        handleMount();
+        }, [storyId]);
 
 
     return (
         <Row className="h-100 mx-0">
             <Col className="py-2 p-0 p-lg-2">
-                <Story {...story.results[0]} setStories={setStory} />
+                <Story {...story.results[0]} setStories={setStory} {...comments} />
                 <Container className="px-0">
                 <Accordion>
                     <Card className={`${appStyles.Card} ${styles.BorderTop}`}>
@@ -63,7 +54,7 @@ function StoryPage({storyId}) {
                             >
                                 <div>
                                     <span><i className="far fa-comments" /></span>
-                                    <span className='pt-1 mr-2'>count</span>
+                                    <span className='pt-1 mr-2'>{comments ? comments.results.length : num_of_comments}</span>
                                 </div>  
                             </Accordion.Toggle>
                         </Card.Header>
