@@ -41,7 +41,7 @@ const PopularStoriesSection = ({mobile}) => {
         {popularStories.results.length ? (
         <>
           <div className='mx-2 mb-2'>
-              <Card className={`${styles.Header} d-flex`}>
+              <Card className={`${styles.Header} d-flex shadow-sm`}>
                 <h4 className='m-auto'>Most liked stories</h4>
               </Card>
             </div>

@@ -16,6 +16,10 @@ import { useParams } from "react-router-dom/cjs/react-router-dom";
 import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
 import { Image } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
+import NoStories from "../../assets/no-stories.png";
+import StoryPage from "../stories/StoryPage";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -24,19 +28,23 @@ function ProfilePage() {
   const { setProfileData } = useSetProfileData();
   const { pageProfile } = useProfileData();
   const [profile] = pageProfile.results;
+  const [profileStories, setProfileStories] = useState({ results: [] });
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }] =
+        const [{ data: pageProfile }, { data: profileStories }] =
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
+            axiosReq.get(`/stories/?owner__profile=${id}`),
           ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
+        setProfileStories(profileStories);
+        console.log(profileStories)
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -65,9 +73,25 @@ function ProfilePage() {
 
   const mainProfilePosts = (
     <>
-      <hr />
-      <p className={`${styles.Stories} text-center`}>Stories</p>
-      <hr />
+      <hr className={`${styles.PageDivider} mx-5 mt-4`}/>
+      <p className={`${styles.Stories} text-center`}><strong>Stories</strong></p>
+      <hr className={`${styles.PageDivider} mx-5`}/>
+      {profileStories.results.length ? (
+        <InfiniteScroll
+          children={profileStories.results.map((story) => (
+            <StoryPage storyId={story.id} key={story.id} {...story} setStories={setProfileStories} />
+          ))}
+          dataLength={profileStories.results.length}
+          loader={<Asset spinner />}
+          hasMore={!!profileStories.next}
+          next={() => fetchMoreData(profileStories, setProfileStories)}
+        />
+      ) : (
+        <Asset
+          src={NoStories}
+          message={`${profile?.owner} hasn't made any stories yet.`}
+        />
+      )}
     </>
   );
 
@@ -82,12 +106,18 @@ function ProfilePage() {
           {hasLoaded ? (
             <>
               {mainProfile}
-              {mainProfilePosts}
             </>
           ) : (
             <Asset spinner />
           )}
         </Container>
+        {hasLoaded ? (
+            <>
+              {mainProfilePosts}
+            </>
+          ) : (
+            <Asset spinner />
+          )}
       </Col>
     </Row>
   );

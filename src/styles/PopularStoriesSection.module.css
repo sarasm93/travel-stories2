@@ -2,6 +2,7 @@
     min-height: 6.5rem;
     width: 100%;
     background-color: #80dade;
+    border: 1.5px solid #54dde4;
 }
 
 .Header h4 {
