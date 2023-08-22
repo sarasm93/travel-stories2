@@ -58,7 +58,7 @@ function StoriesPage({filter = "" }) {
                                 {stories.results.length ? (
                                     <InfiniteScroll
                                         children={stories.results.map((story) => (
-                                            <StoryPage storyId={story.id} key={story.id} />
+                                            <StoryPage storyId={story.id} num_of_comments={story.comments_count} key={story.id} />
                                         ))}
                                         dataLength={stories.results.length}
                                         loader={<Asset spinner />}
