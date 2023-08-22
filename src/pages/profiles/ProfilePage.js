@@ -6,19 +6,24 @@ import Container from "react-bootstrap/Container";
 
 import Asset from "../../components/Asset";
 
-// import styles from "../../styles/ProfilePage.module.css";
+import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import PopularStoriesSection from "./PopularStoriesSection";
+import PopularStoriesSection from "../stories/PopularStoriesSection";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
+import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
+import { Image } from "react-bootstrap";
+import { axiosReq } from "../../api/axiosDefaults";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const currentUser = useCurrentUser();
   const { id } = useParams();
   const { setProfileData } = useSetProfileData();
+  const { pageProfile } = useProfileData();
+  const [profile] = pageProfile.results;
 
 
   useEffect(() => {
@@ -42,18 +47,18 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
-      <Row noGutters className="px-3 text-center">
+      <Row noGutters className="mx-3">
         <Col lg={3} className="text-lg-left">
-          <p>Image</p>
+          <Image className={styles.ProfileImage} roundedCircle src={profile?.image}></Image>
         </Col>
-        <Col lg={6}>
-          <h3 className="m-2">Profile username</h3>
-          <p>Profile stats</p>
+        <Col lg={6} className="mt-4 pl-5">
+          <h3 className="mb-3"><strong>{profile?.owner}</strong></h3>
+          <p>Location: {profile?.location}</p>
+          <p>Bio: {profile?.content}</p>
         </Col>
-        <Col lg={3} className="text-lg-right">
-        <p>Follow button</p>
+        <Col lg={3} className="mt-4 pr-3 text-right">
+          <p className={`${styles.StoryCount}`}>{profile?.stories_count} stories</p>
         </Col>
-        <Col className="p-3">Profile content</Col>
       </Row>
     </>
   );
@@ -61,13 +66,13 @@ function ProfilePage() {
   const mainProfilePosts = (
     <>
       <hr />
-      <p className="text-center">Profile owner's posts</p>
+      <p className={`${styles.Stories} text-center`}>Stories</p>
       <hr />
     </>
   );
 
   return (
-    <Row>
+    <Row className="pt-4">
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         <PopularStoriesSection />
       </Col>

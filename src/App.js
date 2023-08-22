@@ -17,6 +17,7 @@ import headerImage from "../src/assets/surfing.jpg";
 import DestinationPage from './pages/destinations/DestinationPage';
 import StoryEditForm from './pages/stories/StoryEditForm';
 import DestinationEditForm from './pages/destinations/DestinationEditForm';
+import ProfilePage from './pages/profiles/ProfilePage';
 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
             path="/destinations/:id/edit" 
             render={() => <DestinationEditForm 
               filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}/>} />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
