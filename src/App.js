@@ -50,9 +50,7 @@ function App() {
           <Route exact path="/stories/create" render={() => <StoryCreateForm />}/>
           <Route exact path="/stories/:id" render={() => <PopularStoryPage />}/>
           <Route exact path="/stories/:id/edit" render={() => <StoryEditForm />} />
-          <Route exact path="/bucketlist" render={() => <BucketlistPage 
-            filter={`owner__profile=${profile_id}&ordering=-created_at&`}
-              />}/>
+          <Route exact path="/bucketlist" render={() => <BucketlistPage />}/>
           <Route 
             exact 
             path="/destination/create" 
