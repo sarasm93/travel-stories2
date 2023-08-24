@@ -11,3 +11,7 @@
     color: #adb8b8;
 }
 
+.Absolute {
+    position: absolute;
+    z-index: 99;
+  }

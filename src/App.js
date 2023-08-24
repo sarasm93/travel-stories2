@@ -18,6 +18,9 @@ import StoryEditForm from './pages/stories/StoryEditForm';
 import DestinationEditForm from './pages/destinations/DestinationEditForm';
 import ProfilePage from './pages/profiles/ProfilePage';
 import PopularStoryPage from './pages/stories/PopularStoryPage';
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/PasswordForm";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 
 function App() {
@@ -66,7 +69,19 @@ function App() {
             render={() => <DestinationEditForm 
               filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}/>} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
-          <Route render={() => <p>Sorry, this page could not be found.</p>} />
+          <Route
+            exact
+            path="/profiles/:id/edit/username"
+            render={() => <UsernameForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit/password"
+            render={() => <UserPasswordForm />}
+          />
+          <Route 
+            render={() => 
+              <p className='pt-4 text-center'><strong>Sorry, this page could not be found.</strong></p>} />
         </Switch>
       </Container>
     </div>

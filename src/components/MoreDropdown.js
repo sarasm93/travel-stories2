@@ -14,6 +14,16 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
     }}/>
 ));
 
+const Pen = React.forwardRef(({ onClick }, ref) => (
+  <i
+  className="fa-solid fa-pencil"
+  ref={ref}
+  onClick={(e) => {
+    e.preventDefault();
+    onClick(e);
+  }}/>
+));
+
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
   return (
     <Dropdown className='ml-1'>
@@ -45,26 +55,29 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
 export function ProfileEditDropdown({ id }) {
   const history = useHistory();
   return (
-    <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
-      <Dropdown.Toggle as={ThreeDots} />
+    <Dropdown className={styles.Absolute} drop="left">
+      <Dropdown.Toggle as={Pen} />
       <Dropdown.Menu>
         <Dropdown.Item
-          onClick={() => history.push(`/profiles/${id}/edit`)}
-          aria-label="edit-profile"
-        >
-          <i className="fa-solid fa-pencil" />
-        </Dropdown.Item>
-        <Dropdown.Item
+          className={styles.DropdownItem}
           onClick={() => history.push(`/profiles/${id}/edit/username`)}
           aria-label="edit-username"
         >
           Edit username
         </Dropdown.Item>
         <Dropdown.Item
+          className={styles.DropdownItem}
           onClick={() => history.push(`/profiles/${id}/edit/password`)}
           aria-label="edit-password"
         >
           Change password
+        </Dropdown.Item>
+        <Dropdown.Item
+          className={styles.DropdownItem}
+          onClick={() => history.push(`/profiles/${id}/edit/profileinfo`)}
+          aria-label="edit-profileinfo"
+        >
+          Edit profile information
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

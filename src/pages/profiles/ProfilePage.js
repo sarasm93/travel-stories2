@@ -57,16 +57,16 @@ function ProfilePage() {
   const mainProfile = (
     <>
       {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
-      <Row noGutters className="mx-3">
-        <Col lg={3} className="text-lg-left">
-          <Image className={styles.ProfileImage} roundedCircle src={profile?.image}></Image>
+      <Row noGutters className="mr-3 px-3">
+        <Col lg={3} className="text-lg-left d-flex">
+          <span><Image className={styles.ProfileImage} rounded src={profile?.image}></Image></span>
         </Col>
         <Col lg={6} className="mt-4 pl-5">
           <h3 className="mb-3"><strong>{profile?.owner}</strong></h3>
           <p>Location: {profile?.location}</p>
           <p>Bio: {profile?.content}</p>
         </Col>
-        <Col lg={3} className="mt-4 pr-3 text-right">
+        <Col lg={3} className="mt-4 text-right">
           <p className={`${styles.StoryCount}`}>{profile?.stories_count} stories</p>
         </Col>
       </Row>
