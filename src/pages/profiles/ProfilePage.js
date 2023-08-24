@@ -20,6 +20,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import NoStories from "../../assets/no-stories.png";
 import StoryPage from "../stories/StoryPage";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
+
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -37,7 +39,7 @@ function ProfilePage() {
         const [{ data: pageProfile }, { data: profileStories }] =
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
-            axiosReq.get(`/stories/?profile__owner=${id}/`),
+            axiosReq.get(`/stories/?owner__profile=${currentUser.profile_id}&ordering=-created_at`),
           ]);
         setProfileData((prevState) => ({
           ...prevState,
@@ -46,14 +48,15 @@ function ProfilePage() {
         setProfileStories(profileStories);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+          console.log(err);
       }
     };
     fetchData();
-  }, [id, setProfileData]);
+  }, [id, setProfileData, currentUser]);
 
   const mainProfile = (
     <>
+      {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
       <Row noGutters className="mx-3">
         <Col lg={3} className="text-lg-left">
           <Image className={styles.ProfileImage} roundedCircle src={profile?.image}></Image>

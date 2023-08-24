@@ -13,10 +13,9 @@ function DestinationPage({destinationId}) {
         const handleMount = async () => {
             try {
                 const [{ data: destination }] = await Promise.all([
-                axiosReq.get(`/destinations/${destinationId}/`),
+                axiosReq.get(`/destinations/${destinationId}`),
                 ]);
                 setDestination({ results: [destination] });
-                console.log(destination)
             } catch (err) {
                 console.log(err);
             }

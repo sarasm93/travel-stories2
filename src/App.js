@@ -44,18 +44,20 @@ function App() {
             path="/saved" 
             render={() => <StoriesPage 
               filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}
+              message="You haven't saved any stories yet."
               />}/>
           <Route exact path="/login" render={() => <SignInForm />}/>
           <Route exact path="/signup" render={() => <SignUpForm />}/>
           <Route exact path="/stories/create" render={() => <StoryCreateForm />}/>
           <Route exact path="/stories/:id" render={() => <PopularStoryPage />}/>
           <Route exact path="/stories/:id/edit" render={() => <StoryEditForm />} />
-          <Route exact path="/bucketlist" render={() => <BucketlistPage />}/>
+          <Route exact path="/bucketlist" render={() => <BucketlistPage 
+            filter={`owner__profile=${profile_id}&ordering=priority&`} />}/>
           <Route 
             exact 
             path="/destination/create" 
             render={() => <DestinationCreateForm 
-              filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}
+              filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`} 
               />}/>
           <Route exact path="/destinations/:id" render={() => <DestinationPage />} />
           <Route 

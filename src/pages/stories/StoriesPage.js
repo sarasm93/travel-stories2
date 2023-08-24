@@ -14,7 +14,7 @@ import { fetchMoreData } from "../../utils/utils";
 import PopularStoriesSection from "./PopularStoriesSection";
 
 
-function StoriesPage({filter = "" }) {
+function StoriesPage({filter = "", message}) {
     const [stories, setStories] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
@@ -66,7 +66,9 @@ function StoriesPage({filter = "" }) {
                                         next={() => fetchMoreData(stories, setStories)}
                                     />
                                 ) : (
-                                    console.log("use asset component to display not found message?")
+                                    <div className="mt-5 text-center">
+                                        <p>{message}</p>
+                                    </div>
                                 )}
                             </>
                         ) : (

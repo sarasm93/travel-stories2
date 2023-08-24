@@ -23,7 +23,7 @@ function DestinationEditForm({filter = "" }) {
         destination: "",
         activities: "",
         priority: "",
-        story_tag: [],
+        story_tag: "",
         }
     );
     const { destination, activities, priority, story_tag } = destinationData;
@@ -68,6 +68,7 @@ function DestinationEditForm({filter = "" }) {
         setDestinationData({
             ...destinationData, [event.target.name]: event.target.value,
         })
+        console.log(destinationData.story_tag)
     };
 
     const handleSubmit = async (event) => {
@@ -124,7 +125,7 @@ function DestinationEditForm({filter = "" }) {
         </>
     );
 
-    const options = [
+    const priorityOptions = [
         {
             label: "Now",
             value: "1",
@@ -157,7 +158,7 @@ function DestinationEditForm({filter = "" }) {
                     name="priority"
                     onChange={handleChange}
                     >
-                        {options.map((option) => (
+                        {priorityOptions.map((option) => (
                             <option value={option.value} key={option.value}>{option.label}</option>
                         ))}
                 </Form.Control>

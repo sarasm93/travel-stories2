@@ -11,7 +11,6 @@ import CommentCreateForm from "../comments/CommentCreateForm";
 import Comment from "../comments/Comment";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/StoryPage.module.css";
-import { useLocation } from "react-router-dom/cjs/react-router-dom";
 
 
 function StoryPage({ storyId, num_of_comments }) {
@@ -19,7 +18,6 @@ function StoryPage({ storyId, num_of_comments }) {
     const [comments, setComments] = useState({ results: [] });
     const currentUser = useCurrentUser();
     const profile_image = currentUser?.profile_image;
-    const { pathname } = useLocation();
 
     useEffect(() => {
         const handleMount = async () => {

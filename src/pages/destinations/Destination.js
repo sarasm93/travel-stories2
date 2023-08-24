@@ -15,6 +15,7 @@ const Destination = (props) => {
         story_tag,
     } = props;
 
+    console.log('story_tag: ', story_tag)
     const history = useHistory();
 
     const handleEdit = () => {
@@ -39,13 +40,13 @@ const Destination = (props) => {
                             <Row>
                                 <Col>
                                     <Card.Title>
-                                        <strong>{destination}</strong>
+                                        {destination && <strong>{destination}</strong>}
                                     </Card.Title>
                                 </Col>
                                 <Col>
                                     <Card.Text className='text-right mr-4'>
                                         <strong>Priority: </strong>
-                                            {priority == "1" ? (
+                                            {priority && priority == "1" ? (
                                                 <span>Now</span>
                                             ) : priority == "2" ? (
                                                 <span>Soon</span>
@@ -67,9 +68,9 @@ const Destination = (props) => {
                         <Card.Body>
                             <Col className="p-0" sm={9}>
                                 <Card.Subtitle className='mb-2'><strong>Activities:</strong></Card.Subtitle>
-                                <Card.Text>
+                                {activities && <Card.Text>
                                     {activities}
-                                </Card.Text>
+                                </Card.Text>}
                             </Col>
                         </Card.Body>
                     </Row>
@@ -78,9 +79,10 @@ const Destination = (props) => {
                             <Row>
                                 <Col sm={12} md={7} className='pb-3'>
                                     <span className='mr-2'>Stories:</span>
-                                        {story_tag && (story_tag.map((story)=>{
-                                            return (<span><Badge pill variant="light" className={`${styles.Badge} m-1`}>{story}</Badge></span>)
-                                        }))}
+                                    {story_tag && <span key={id}><Badge pill variant="light" className={`${styles.Badge} m-1`}>{story_tag}</Badge></span>}
+                                        {/*{story_tag && (story_tag.map((story)=>{
+                                            return (<span key={id}><Badge pill variant="light" className={`${styles.Badge} m-1`}>{story}</Badge></span>)
+                                        }))}*/}
                                        
                                 </Col>
                                 <Col sm={12} md={5} className='text-right pb-3'>

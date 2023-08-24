@@ -1,44 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import btnStyles from "../../styles/Button.module.css";
 import { Button, Container, Image } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom/cjs/react-router-dom';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 import headerImage from "../../assets/road.jpg";
 import styles from "../../App.module.css";
 import { axiosReq } from '../../api/axiosDefaults';
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Asset from '../../components/Asset';
 import DestinationPage from './DestinationPage';
+import NoDestinations from "../../assets/no-stories.png";
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchMoreData } from '../../utils/utils';
 
 
-function BucketlistPage() {
-
-    const [destinations, setDestinations] = useState({ results: [] });
+function BucketlistPage({filter = ""}) {
     const [hasLoaded, setHasLoaded] = useState(false);
-    const { pathname } = useLocation();
-    const currentUser = useCurrentUser();
-    
+    const [profileDestinations, setProfileDestinations] = useState({ results: [] });
+
     useEffect(() => {
-        const fetchDestinations = async () => {
-            try {
-                const { data } = await axiosReq.get(`/destinations/?owner__profile=${currentUser.profile_id}&ordering=-created_at`);
-                setDestinations(data);
-                setHasLoaded(true);
-            } catch (err) {
-                console.log(err);
-            }
-            };
+      const fetchData = async () => {
+        try {
+          const {data: profileDestinations } = await axiosReq.get(`/destinations/?${filter}`);
+          setProfileDestinations(profileDestinations);
+          setHasLoaded(true);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchData();
+    }, [filter]);
 
-            setHasLoaded(false);
-            const timer = setTimeout(() => {
-                fetchDestinations();
-            }, 1000);
-
-        return () => {
-            clearTimeout(timer);
-        };
-        }, [ pathname, currentUser, setDestinations]
     
-        );
+const bucketlist = (
+    <>
+      {profileDestinations.results.length ? (
+        <InfiniteScroll
+          children={profileDestinations.results.map((destination) => (
+            <DestinationPage destinationId={destination.id} key={destination.id} />
+          ))}
+          dataLength={profileDestinations.results.length}
+          loader={<Asset spinner />}
+          hasMore={!!profileDestinations.next}
+          next={() => fetchMoreData(profileDestinations, setProfileDestinations)}
+        />
+      ) : (
+        <Asset
+          src={NoDestinations}
+          message={"You haven't made any destinations yet."}
+        />
+      )}
+    </>
+  );
+
 
     return (
         <div>
@@ -53,13 +65,8 @@ function BucketlistPage() {
                 </div>
                 {hasLoaded ? (
                     <>
-                        {destinations.results.length ? (
-                            destinations.results.map(destination=> (
-                                <DestinationPage destinationId={destination.id} key={destination.id} setDestinations={setDestinations} />
-                            ))
-                        ) : (
-                            <p>You have no destinations in your bucketlist</p>
-                        )}
+                      {bucketlist}
+                
                     </>
                 ) : (
                     <Container className={styles.Content}>
