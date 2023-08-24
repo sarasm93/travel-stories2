@@ -16,6 +16,8 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import formStyles from "../../styles/ProfileEditForms.module.css";
+
 
 const UsernameForm = () => {
   const [username, setUsername] = useState("");
@@ -54,13 +56,14 @@ const UsernameForm = () => {
 
   return (
     <Row>
-      <Col className="py-2 mx-auto text-center" md={6}>
-        <Container className={appStyles.Content}>
+      <Col className="py-2 mx-auto mt-4" md={6}>
+      <Container className={`${appStyles.Content} ${appStyles.BlueBorder}`}>
           <Form onSubmit={handleSubmit} className="my-2">
             <Form.Group>
-              <Form.Label>Edit username</Form.Label>
+              <Form.Label><strong>Edit username</strong></Form.Label>
               <Form.Control
                 placeholder="username"
+                className={formStyles.Input}
                 type="text"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
@@ -71,18 +74,20 @@ const UsernameForm = () => {
                 {message}
               </Alert>
             ))}
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Cancel}`}
-              onClick={() => history.goBack()}
-            >
-              Cancel
-            </Button>
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Change}`}
-              type="submit"
-            >
-              Update
-            </Button>
+            <div className="text-right">
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Cancel}`}
+                onClick={() => history.goBack()}
+              >
+                Cancel
+              </Button>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Change}`}
+                type="submit"
+              >
+                Update
+              </Button>
+            </div>
           </Form>
         </Container>
       </Col>

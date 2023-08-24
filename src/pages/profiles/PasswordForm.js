@@ -13,6 +13,8 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import formStyles from "../../styles/ProfileEditForms.module.css";
+
 
 const UserPasswordForm = () => {
   const history = useHistory();
@@ -53,13 +55,14 @@ const UserPasswordForm = () => {
 
   return (
     <Row>
-      <Col className="py-2 mx-auto text-center" md={6}>
-        <Container className={appStyles.Content}>
+      <Col className="py-2 mx-auto mt-4" md={6}>
+        <Container className={`${appStyles.Content} ${appStyles.BlueBorder}`}>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label>New password</Form.Label>
+              <Form.Label><strong>New password</strong></Form.Label>
               <Form.Control
                 placeholder="new password"
+                className={formStyles.Input}
                 type="password"
                 value={new_password1}
                 onChange={handleChange}
@@ -72,9 +75,10 @@ const UserPasswordForm = () => {
               </Alert>
             ))}
             <Form.Group>
-              <Form.Label>Confirm password</Form.Label>
+              <Form.Label><strong>Confirm password</strong></Form.Label>
               <Form.Control
                 placeholder="confirm new password"
+                className={formStyles.Input}
                 type="password"
                 value={new_password2}
                 onChange={handleChange}
@@ -86,18 +90,20 @@ const UserPasswordForm = () => {
                 {message}
               </Alert>
             ))}
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Cancel}`}
-              onClick={() => history.goBack()}
-            >
-              Cancel
-            </Button>
-            <Button
-              type="submit"
-              className={`${btnStyles.Button} ${btnStyles.Change}`}
-            >
-              Update
-            </Button>
+            <div className="text-right">
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Cancel}`}
+                onClick={() => history.goBack()}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                className={`${btnStyles.Button} ${btnStyles.Change}`}
+              >
+                Update
+              </Button>
+            </div>
           </Form>
         </Container>
       </Col>
