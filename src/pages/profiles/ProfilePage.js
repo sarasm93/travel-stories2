@@ -8,7 +8,6 @@ import Asset from "../../components/Asset";
 
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
 
 import PopularStoriesSection from "../stories/PopularStoriesSection";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -23,7 +22,7 @@ import StoryPage from "../stories/StoryPage";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
 
-function ProfilePage() {
+function ProfilePage({ filter }) {
   const [hasLoaded, setHasLoaded] = useState(false);
   const currentUser = useCurrentUser();
   const { id } = useParams();
@@ -39,7 +38,7 @@ function ProfilePage() {
         const [{ data: pageProfile }, { data: profileStories }] =
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
-            axiosReq.get(`/stories/?owner__profile=${currentUser.profile_id}&ordering=-created_at`),
+            axiosReq.get(`/stories/?${filter}`),
           ]);
         setProfileData((prevState) => ({
           ...prevState,
@@ -52,7 +51,7 @@ function ProfilePage() {
       }
     };
     fetchData();
-  }, [id, setProfileData, currentUser]);
+  }, [id, setProfileData, currentUser, filter]);
 
   const mainProfile = (
     <>

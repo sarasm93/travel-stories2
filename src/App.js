@@ -68,7 +68,8 @@ function App() {
             path="/destinations/:id/edit" 
             render={() => <DestinationEditForm 
               filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}/>} />
-          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage 
+            filter={`owner__profile=${profile_id}&ordering=-created_at`} />} />
           <Route
             exact
             path="/profiles/:id/edit/username"

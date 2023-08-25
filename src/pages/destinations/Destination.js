@@ -25,7 +25,8 @@ const Destination = (props) => {
     const handleDelete = async () => {
         try {
             await axiosRes.delete(`/destinations/${id}/`);
-            history.goBack();
+            history.push("/bucketlist"); 
+            window.location.reload();
         } catch (err) {
             console.log(err);
         }
@@ -46,15 +47,16 @@ const Destination = (props) => {
                                 <Col>
                                     <Card.Text className='text-right mr-4'>
                                         <strong>Priority: </strong>
-                                            {priority && priority == "1" ? (
+                                            {priority && 
+                                                priority === 1 ? (
                                                 <span>Now</span>
-                                            ) : priority == "2" ? (
+                                            ) : priority === 2 ? (
                                                 <span>Soon</span>
-                                            ) : priority == "3" ? (
+                                            ) : priority === 3 ? (
                                                 <span>Within 3 years</span>
-                                            ) : priority == "4" ? (
+                                            ) : priority === 4 ? (
                                                 <span>Within 5 years</span>
-                                            ) : priority == "5" ? (
+                                            ) : priority === 5 ? (
                                                 <span>Might happen</span>
                                             ): (
                                                 <span>-----</span>
