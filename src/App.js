@@ -20,7 +20,7 @@ import ProfilePage from './pages/profiles/ProfilePage';
 import PopularStoryPage from './pages/stories/PopularStoryPage';
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/PasswordForm";
-import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import ProfilePresentationForm from "./pages/profiles/ProfilePresentationForm";
 
 
 function App() {
@@ -78,6 +78,11 @@ function App() {
             exact
             path="/profiles/:id/edit/password"
             render={() => <UserPasswordForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit/presentation"
+            render={() => <ProfilePresentationForm />}
           />
           <Route 
             render={() => 

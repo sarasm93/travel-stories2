@@ -99,7 +99,7 @@ const UserPasswordForm = () => {
               </Button>
               <Button
                 type="submit"
-                className={`${btnStyles.Button} ${btnStyles.Change}`}
+                className={`${btnStyles.Button} ${btnStyles.Bright}`}
               >
                 Update
               </Button>

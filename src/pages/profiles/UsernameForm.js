@@ -82,7 +82,7 @@ const UsernameForm = () => {
                 Cancel
               </Button>
               <Button
-                className={`${btnStyles.Button} ${btnStyles.Change}`}
+                className={`${btnStyles.Button} ${btnStyles.Bright}`}
                 type="submit"
               >
                 Update

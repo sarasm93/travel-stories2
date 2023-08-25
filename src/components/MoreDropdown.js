@@ -74,10 +74,10 @@ export function ProfileEditDropdown({ id }) {
         </Dropdown.Item>
         <Dropdown.Item
           className={styles.DropdownItem}
-          onClick={() => history.push(`/profiles/${id}/edit/profileinfo`)}
-          aria-label="edit-profileinfo"
+          onClick={() => history.push(`/profiles/${id}/edit/presentation`)}
+          aria-label="edit-profile-info"
         >
-          Edit profile information
+          Edit profile presentation
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
