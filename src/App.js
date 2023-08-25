@@ -21,6 +21,7 @@ import PopularStoryPage from './pages/stories/PopularStoryPage';
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/PasswordForm";
 import ProfilePresentationForm from "./pages/profiles/ProfilePresentationForm";
+import NotFound from './components/NotFound';
 
 
 function App() {
@@ -87,7 +88,7 @@ function App() {
           />
           <Route 
             render={() => 
-              <p className='pt-4 text-center'><strong>Sorry, this page could not be found.</strong></p>} />
+              <NotFound />} />
         </Switch>
       </Container>
     </div>
