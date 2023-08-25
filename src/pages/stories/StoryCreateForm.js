@@ -17,8 +17,10 @@ import Image from "react-bootstrap/Image";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function StoryCreateForm() {
+    useRedirect('loggedOut');
 
     const [errors, setErrors] = useState({});
 

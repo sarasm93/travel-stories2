@@ -13,9 +13,11 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import axios from "axios";
+import { useRedirect } from "../../hooks/useRedirect";
 
 
 const SignUpForm = () => {
+    useRedirect('loggedIn');
 
     const [signUpData, setSignUpData] = useState({
         username: "",
