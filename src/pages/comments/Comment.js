@@ -42,7 +42,9 @@ const Comment = (props) => {
         ...prevComments,
         results: prevComments.results.filter((comment) => comment.id !== id),
       }));
-    } catch (err) {}
+    } catch (err) {
+      // comment to prevent eslint error about empty block
+    }
   };
 
   return (

@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import headerImage from "../../assets/road.jpg";
-import styles from "../../App.module.css";
+import appStyles from "../../App.module.css";
 import { axiosReq } from '../../api/axiosDefaults';
 import Asset from '../../components/Asset';
 import DestinationPage from './DestinationPage';
@@ -36,14 +36,15 @@ const bucketlist = (
     <>
       {profileDestinations.results.length ? (
         <InfiniteScroll
-          children={profileDestinations.results.map((destination) => (
-            <DestinationPage destinationId={destination.id} key={destination.id} />
-          ))}
           dataLength={profileDestinations.results.length}
           loader={<Asset spinner />}
           hasMore={!!profileDestinations.next}
           next={() => fetchMoreData(profileDestinations, setProfileDestinations)}
-        />
+        >
+          {profileDestinations.results.map((destination) => (
+            <DestinationPage destinationId={destination.id} key={destination.id} />
+          ))}
+        </InfiniteScroll>
       ) : (
         <Asset
           src={NoDestinations}
@@ -56,7 +57,7 @@ const bucketlist = (
 
     return (
         <div>
-            <Image src={headerImage} alt="header image" className={`${styles.HeaderImage} img-fluid`}/>
+            <Image src={headerImage} alt="header image" className={`${appStyles.HeaderImage} img-fluid`}/>
             <Container className='mt-5'>
                 <div className='text-right'>
                     <Button className={`${btnStyles.Button} ${btnStyles.Bright} py-0 mb-3`}>
@@ -71,7 +72,7 @@ const bucketlist = (
                 
                     </>
                 ) : (
-                    <Container className={styles.Content}>
+                    <Container className={appStyles.Content}>
                         <Asset spinner />
                     </Container>
                 )}

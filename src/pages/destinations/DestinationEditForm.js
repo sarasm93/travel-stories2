@@ -88,7 +88,7 @@ function DestinationEditForm({filter = "" }) {
             if (err.response?.status !== 401) {
               setErrors(err.response?.data);
             }
-        };
+        }
     };
 
     const textFields = (
@@ -232,6 +232,6 @@ function DestinationEditForm({filter = "" }) {
             </Form>
         </>
     );
-};
+}
 
 export default DestinationEditForm;

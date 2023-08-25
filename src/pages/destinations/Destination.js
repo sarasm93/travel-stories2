@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Col, Row } from 'react-bootstrap';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';

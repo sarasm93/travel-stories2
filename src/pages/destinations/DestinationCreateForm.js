@@ -70,7 +70,7 @@ function DestinationCreateForm({filter = "" }) {
             if (err.response?.status !== 401) {
               setErrors(err.response?.data);
             }
-        };
+        }
     };
 
     const textFields = (
@@ -214,6 +214,6 @@ function DestinationCreateForm({filter = "" }) {
             </Form>
         </>
     );
-};
+}
 
 export default DestinationCreateForm;

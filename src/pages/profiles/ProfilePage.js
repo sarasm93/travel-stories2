@@ -79,14 +79,15 @@ function ProfilePage({ filter }) {
       <hr className={`${styles.PageDivider} mx-5`}/>
       {profileStories.results.length ? (
         <InfiniteScroll
-          children={profileStories.results.map((story) => (
-            <StoryPage storyId={story.id} num_of_comments={story.comments_count} key={story.id} setStories={setProfileStories} />
-          ))}
           dataLength={profileStories.results.length}
           loader={<Asset spinner />}
           hasMore={!!profileStories.next}
           next={() => fetchMoreData(profileStories, setProfileStories)}
-        />
+        >
+          {profileStories.results.map((story) => (
+            <StoryPage storyId={story.id} num_of_comments={story.comments_count} key={story.id} setStories={setProfileStories} />
+          ))}
+        </InfiniteScroll>
       ) : (
         <Asset
           src={NoStories}

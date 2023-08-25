@@ -129,7 +129,7 @@ const Story = (props) => {
                         {is_owner ? (
                                     <OverlayTrigger
                                     placement="top"
-                                    overlay={<Tooltip>You can't like your own stories!</Tooltip>}
+                                    overlay={<Tooltip>You can`t like your own stories!</Tooltip>}
                                     >
                                         <span className={styles.CantLikeSave}>
                                             <i className={`fa-solid fa-heart`}/>
@@ -157,7 +157,7 @@ const Story = (props) => {
                             {is_owner ? (
                                 <OverlayTrigger
                                 placement="top"
-                                overlay={<Tooltip>You can't save your own stories!</Tooltip>}
+                                overlay={<Tooltip>You can`t save your own stories!</Tooltip>}
                                 >
                                     <span className={styles.CantLikeSave}>
                                         <i className="fa-regular fa-bookmark" />

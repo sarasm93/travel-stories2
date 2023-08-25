@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import "./api/axiosDefaults";
 import styles from "./App.module.css";
@@ -93,6 +94,6 @@ function App() {
       </Container>
     </div>
   );
-};
+}
 
 export default App;

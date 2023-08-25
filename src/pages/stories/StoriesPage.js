@@ -18,7 +18,6 @@ function StoriesPage({filter = "", message}) {
     const [stories, setStories] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
-
     const currentUser = useCurrentUser();
 
     useEffect(() => {
@@ -40,9 +39,7 @@ function StoriesPage({filter = "", message}) {
         return () => {
           clearTimeout(timer);
         };
-        }, [filter, pathname, currentUser]
-    
-      );
+        }, [filter, pathname, currentUser]);
   
     return (
         <>

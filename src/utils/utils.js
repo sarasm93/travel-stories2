@@ -13,7 +13,9 @@ export const fetchMoreData = async (resource, setResource) => {
           : [...acc, cur];
       }, prevResource.results),
     }));
-  } catch (err) {}
+  } catch (err) {
+    // comment to prevent eslint error about empty block
+  }
 };
 
 export const setTokenTimestamp = (data) => {
