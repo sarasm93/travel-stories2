@@ -13,7 +13,7 @@ import PopularStoriesSection from "../stories/PopularStoriesSection";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
-import { Image } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
 import { axiosReq } from "../../api/axiosDefaults";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";

@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import StoryPage from "../stories/StoryPage";
-import { Col, Container, Row } from "react-bootstrap";
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import Asset from "../../components/Asset";
 import styles from "../../App.module.css";
   

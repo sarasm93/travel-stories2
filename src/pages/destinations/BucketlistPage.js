@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import btnStyles from "../../styles/Button.module.css";
-import { Button, Container, Image } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import headerImage from "../../assets/road.jpg";
 import styles from "../../App.module.css";

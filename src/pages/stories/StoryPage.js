@@ -5,7 +5,9 @@ import Row from "react-bootstrap/Row";
 
 import { axiosReq } from "../../api/axiosDefaults";
 import Story from "./Story";
-import { Accordion, Card, Container } from "react-bootstrap";
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import CommentCreateForm from "../comments/CommentCreateForm";
 import Comment from "../comments/Comment";

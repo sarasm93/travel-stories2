@@ -1,4 +1,9 @@
 import { Badge, Button, Card, Col, Row } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Badge from 'react-bootstrap/Badge';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/Destination.module.css";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';

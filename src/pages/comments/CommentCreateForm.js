@@ -7,7 +7,9 @@ import InputGroup from "react-bootstrap/InputGroup";
 import styles from "../../styles/CommentCreateEditForm.module.css";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
-import { Col, Row } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+
 
 function CommentCreateForm(props) {
   const { story, setStory, setComments, profileImage, profile_id } = props;
