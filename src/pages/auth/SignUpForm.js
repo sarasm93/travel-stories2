@@ -24,6 +24,7 @@ const SignUpForm = () => {
         password1: "",
         password2: "",
     });
+
     const { username, password1, password2 } = signUpData;
 
     const [errors, setErrors] = useState({});
@@ -55,7 +56,11 @@ const SignUpForm = () => {
             </div>
             <Row className={styles.Row}>
                 <Col className="mx-auto mt-3 py-2 p-md-2" md={6}>
-                    <Container className={`${appStyles.Content} ${appStyles.BlueBorder} p-4 `}>
+                    <Container 
+                        className={`
+                            ${appStyles.Content} 
+                            ${appStyles.BlueBorder} p-4 `}
+                    >
                         <h1 className={styles.Header}>Sign Up</h1>
                         <Form onSubmit={handleSubmit}>
                             <Form.Group controlId="username">
@@ -70,9 +75,9 @@ const SignUpForm = () => {
                                 />
                             </Form.Group>
                             {errors.username?.map((message, idx) => (
-                            <Alert variant="warning" key={idx}>
-                                {message}
-                            </Alert>
+                                <Alert variant="warning" key={idx}>
+                                    {message}
+                                </Alert>
                             ))}
                             <Form.Group controlId="password1">
                                 <Form.Label className="d-none">Password:</Form.Label>
@@ -86,9 +91,9 @@ const SignUpForm = () => {
                                 />
                             </Form.Group>
                             {errors.password1?.map((message, idx) => (
-                            <Alert variant="warning" key={idx}>
-                                {message}
-                            </Alert>
+                                <Alert variant="warning" key={idx}>
+                                    {message}
+                                </Alert>
                             ))}
                             <Form.Group controlId="password2">
                                 <Form.Label className="d-none">Confirm the password:</Form.Label>
@@ -102,26 +107,35 @@ const SignUpForm = () => {
                                 />
                             </Form.Group>
                             {errors.password2?.map((message, idx) => (
-                            <Alert variant="warning" key={idx}>
-                                {message}
-                            </Alert>
+                                <Alert variant="warning" key={idx}>
+                                    {message}
+                                </Alert>
                             ))}
                             <div className="text-center">
                                 <Button
-                                    className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
-                                    type="submit">
+                                    className={`
+                                        ${btnStyles.Button} 
+                                        ${btnStyles.Wide} 
+                                        ${btnStyles.Bright}`}
+                                    type="submit"
+                                >
                                     Register
                                 </Button>
                                 {errors.non_field_errors?.map((message, idx) => (
-                                <Alert key={idx} variant="warning" className="mt-3">
-                                    {message}
-                                </Alert>
+                                    <Alert key={idx} variant="warning" className="mt-3">
+                                        {message}
+                                    </Alert>
                                 ))}
                             </div>
                         </Form>
                     </Container>
                     <Container className='mt-3'>
-                        <Link className={styles.Link} to="/login">Already have an account? Sign in<span> here.</span></Link>
+                        <Link 
+                            className={styles.Link} 
+                            to="/login"
+                        >
+                            Already have an account? Sign in<span> here.</span>
+                        </Link>
                     </Container>
                 </Col>
             </Row>

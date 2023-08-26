@@ -14,38 +14,39 @@ const PopularStoryPage = () => {
     const { id } = useParams();
     const [story, setStory] = useState({ results: [] });
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const [{ data: story }] = await Promise.all([ axiosReq.get(`/stories/${id}/`)
+                ]);
+                setStory({ results: [story] });
+                setHasLoaded(true);
+            } catch (err) {
+                console.log(err);
+            }
+        };
 
-  useEffect(() => {
-    const fetchData = async () => {
-        try {
-            const [{ data: story }] = await Promise.all([ axiosReq.get(`/stories/${id}/`)
-            ]);
-            setStory({ results: [story] });
-            setHasLoaded(true);
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    fetchData();
+        fetchData();
     }, [id, setStory]);
 
-
-  return (
-    <Row className="h-100 pt-4">
-        <Col className="p-0 m-auto" lg={8}>
-            <Container>
-                {hasLoaded ? (
-                    <StoryPage storyId={id} num_of_comments={story.comments_count}/>
-                ) : (
-                    <Container className={styles.Content}>
-                        <Asset spinner />
-                    </Container>
-                )}
-            </Container>
-        </Col>
-    </Row>
-  )
+    return (
+        <Row className="h-100 pt-4">
+            <Col className="p-0 m-auto" lg={8}>
+                <Container>
+                    {hasLoaded ? (
+                        <StoryPage 
+                            storyId={id} 
+                            num_of_comments={story.comments_count}
+                        />
+                    ) : (
+                        <Container className={styles.Content}>
+                            <Asset spinner />
+                        </Container>
+                    )}
+                </Container>
+            </Col>
+        </Row>
+    )
 }
 
 export default PopularStoryPage

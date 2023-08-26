@@ -22,11 +22,11 @@ const NavBar = () => {
 
     const handleSignOut = async () => {
         try {
-          await axios.post("dj-rest-auth/logout/");
-          setCurrentUser(null);
-          removeTokenTimestamp();
+            await axios.post("dj-rest-auth/logout/");
+            setCurrentUser(null);
+            removeTokenTimestamp();
         } catch (err) {
-          console.log(err);
+            console.log(err);
         }
     };
 
@@ -47,23 +47,29 @@ const NavBar = () => {
                 to="/saved"
                 className={`${navStyles.NavLink} mr-auto`}
                 activeClassName={navStyles.Active}
-            >Saved
+            >
+                Saved
             </NavLink>
             <NavLink 
                 to="/bucketlist"
                 className={`${navStyles.NavLink} mr-auto`}
                 activeClassName={navStyles.Active}
-            >Bucket List
+            >
+                Bucket List
             </NavLink>
             <NavLink 
                 to="/"
                 className={`${navStyles.NavLink} mr-auto`}
                 onClick={handleSignOut}
-            >Log Out
+            >
+                Log Out
             </NavLink>
             <NavLink 
                 to={`/profiles/${currentUser?.profile_id}`}
-                className={`${appStyles.NavBar} ${appStyles.NavIcon} ${navStyles.NavLink} mr-auto`}
+                className={`
+                    ${appStyles.NavBar} 
+                    ${appStyles.NavIcon} 
+                    ${navStyles.NavLink} mr-auto`}
                 activeClassName={navStyles.ActiveIcon}>        
             <Avatar src={currentUser?.profile_image} text="Profile" height={38}/>
             </NavLink>
@@ -75,13 +81,15 @@ const NavBar = () => {
                 to="/login"
                 className={`${navStyles.NavLink} mr-auto`}
                 activeClassName={navStyles.Active}
-            >Log In
+            >
+                Log In
             </NavLink>
             <NavLink 
                 to="/signup"
                 className={`${navStyles.NavLink} mr-auto`}
                 activeClassName={navStyles.Active}
-            >Sign Up
+            >
+                Sign Up
             </NavLink>
         </>
       );
@@ -95,7 +103,13 @@ const NavBar = () => {
                 expanded={expanded}
             >
                 <NavLink className={`${navStyles.NavLogo} d-flex`} to="/">
-                    <Image roundedCircle src={logo} alt="logo" height="40" className={`${navStyles.NavImg} m-auto`}/>
+                    <Image 
+                        roundedCircle 
+                        src={logo} 
+                        alt="logo" 
+                        height="40" 
+                        className={`${navStyles.NavImg} m-auto`}
+                    />
                     <Navbar.Brand className='pl-2 m-auto'>Travel stories</Navbar.Brand>
                 </NavLink>
                 <Navbar.Toggle 
@@ -109,7 +123,8 @@ const NavBar = () => {
                             to="/" 
                             className={`${navStyles.NavLink} mr-auto`}
                             activeClassName={navStyles.Active}
-                        >Home
+                        >
+                            Home
                         </NavLink>
                         {currentUser ? loggedInNavItems : loggedOutNavItems}
                     </Nav>

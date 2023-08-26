@@ -25,7 +25,7 @@ const Destination = (props) => {
 
     const handleEdit = () => {
         history.push(`/destinations/${id}/edit`);
-      };
+    };
 
     const handleDelete = async () => {
         try {
@@ -54,18 +54,18 @@ const Destination = (props) => {
                                         <strong>Priority: </strong>
                                             {priority && 
                                                 priority === 1 ? (
-                                                <span>Now</span>
-                                            ) : priority === 2 ? (
-                                                <span>Soon</span>
-                                            ) : priority === 3 ? (
-                                                <span>Within 3 years</span>
-                                            ) : priority === 4 ? (
-                                                <span>Within 5 years</span>
-                                            ) : priority === 5 ? (
-                                                <span>Might happen</span>
-                                            ): (
-                                                <span>-----</span>
-                                            )}
+                                                    <span>Now</span>
+                                                ) : priority === 2 ? (
+                                                    <span>Soon</span>
+                                                ) : priority === 3 ? (
+                                                    <span>Within 3 years</span>
+                                                ) : priority === 4 ? (
+                                                    <span>Within 5 years</span>
+                                                ) : priority === 5 ? (
+                                                    <span>Might happen</span>
+                                                ) : (
+                                                    <span>-----</span>
+                                                )}
                                     </Card.Text>
                                 </Col>
                             </Row>
@@ -74,10 +74,10 @@ const Destination = (props) => {
                     <Row>
                         <Card.Body>
                             <Col className="p-0" sm={9}>
-                                <Card.Subtitle className='mb-2'><strong>Activities:</strong></Card.Subtitle>
-                                {activities && <Card.Text>
-                                    {activities}
-                                </Card.Text>}
+                                <Card.Subtitle className='mb-2'>
+                                    <strong>Activities:</strong>
+                                </Card.Subtitle>
+                                {activities && <Card.Text>{activities}</Card.Text>}
                             </Col>
                         </Card.Body>
                     </Row>
@@ -86,17 +86,31 @@ const Destination = (props) => {
                             <Row>
                                 <Col sm={12} md={7} className='pb-3'>
                                     <span className='mr-2'>Stories:</span>
-                                    {story_tag && <span key={id}><Badge pill variant="light" className={`${styles.Badge} m-1`}>{story_tag}</Badge></span>}
+                                    {story_tag && 
+                                        <span key={id}>
+                                            <Badge pill variant="light" className={`${styles.Badge} m-1`}>
+                                                {story_tag}
+                                            </Badge>
+                                        </span>
+                                    }
                                         {/*{story_tag && (story_tag.map((story)=>{
                                             return (<span key={id}><Badge pill variant="light" className={`${styles.Badge} m-1`}>{story}</Badge></span>)
                                         }))}*/}
                                        
                                 </Col>
                                 <Col sm={12} md={5} className='text-right pb-3'>
-                                    <Button className={`${btnStyles.Button} p-0`} type="submit" onClick={handleDelete}>
+                                    <Button 
+                                        className={`${btnStyles.Button} p-0`} 
+                                        type="submit" 
+                                        onClick={handleDelete}
+                                    >
                                         Delete
                                     </Button>
-                                    <Button className={`${btnStyles.Button} ${btnStyles.Change} p-0`} type="submit" onClick={handleEdit}>
+                                    <Button 
+                                        className={`${btnStyles.Button} ${btnStyles.Change} p-0`} 
+                                        type="submit" 
+                                        onClick={handleEdit}
+                                    >
                                         Edit
                                     </Button>
                                 </Col>

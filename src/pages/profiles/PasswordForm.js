@@ -17,98 +17,99 @@ import formStyles from "../../styles/ProfileEditForms.module.css";
 
 
 const UserPasswordForm = () => {
-  const history = useHistory();
-  const { id } = useParams();
-  const currentUser = useCurrentUser();
+    const history = useHistory();
+    const { id } = useParams();
+    const currentUser = useCurrentUser();
 
-  const [userData, setUserData] = useState({
-    new_password1: "",
-    new_password2: "",
-  });
-  const { new_password1, new_password2 } = userData;
-
-  const [errors, setErrors] = useState({});
-
-  const handleChange = (event) => {
-    setUserData({
-      ...userData,
-      [event.target.name]: event.target.value,
+    const [userData, setUserData] = useState({
+        new_password1: "",
+        new_password2: "",
     });
-  };
 
-  useEffect(() => {
-    if (currentUser?.profile_id?.toString() !== id) {
-      history.push("/");
-    }
-  }, [currentUser, history, id]);
+    const { new_password1, new_password2 } = userData;
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      await axiosRes.post("/dj-rest-auth/password/change/", userData);
-      history.goBack();
-    } catch (err) {
-      console.log(err);
-      setErrors(err.response?.data);
-    }
-  };
+    const [errors, setErrors] = useState({});
 
-  return (
-    <Row>
-      <Col className="py-2 mx-auto mt-4" md={6}>
-        <Container className={`${appStyles.Content} ${appStyles.BlueBorder}`}>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group>
-              <Form.Label><strong>New password</strong></Form.Label>
-              <Form.Control
-                placeholder="new password"
-                className={formStyles.Input}
-                type="password"
-                value={new_password1}
-                onChange={handleChange}
-                name="new_password1"
-              />
-            </Form.Group>
-            {errors?.new_password1?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
-            <Form.Group>
-              <Form.Label><strong>Confirm password</strong></Form.Label>
-              <Form.Control
-                placeholder="confirm new password"
-                className={formStyles.Input}
-                type="password"
-                value={new_password2}
-                onChange={handleChange}
-                name="new_password2"
-              />
-            </Form.Group>
-            {errors?.new_password2?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
-            <div className="text-right">
-              <Button
-                className={`${btnStyles.Button} ${btnStyles.Cancel}`}
-                onClick={() => history.goBack()}
-              >
-                Cancel
-              </Button>
-              <Button
-                type="submit"
-                className={`${btnStyles.Button} ${btnStyles.Bright}`}
-              >
-                Update
-              </Button>
-            </div>
-          </Form>
-        </Container>
-      </Col>
-    </Row>
-  );
+    const handleChange = (event) => {
+        setUserData({
+            ...userData,
+            [event.target.name]: event.target.value,
+        });
+    };
+
+    useEffect(() => {
+        if (currentUser?.profile_id?.toString() !== id) {
+            history.push("/");
+        }
+    }, [currentUser, history, id]);
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            await axiosRes.post("/dj-rest-auth/password/change/", userData);
+            history.goBack();
+        } catch (err) {
+            console.log(err);
+            setErrors(err.response?.data);
+        }
+    };
+
+    return (
+        <Row>
+            <Col className="py-2 mx-auto mt-4" md={6}>
+                <Container className={`${appStyles.Content} ${appStyles.BlueBorder}`}>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group>
+                            <Form.Label><strong>New password</strong></Form.Label>
+                            <Form.Control
+                                placeholder="new password"
+                                className={formStyles.Input}
+                                type="password"
+                                value={new_password1}
+                                onChange={handleChange}
+                                name="new_password1"
+                            />
+                        </Form.Group>
+                        {errors?.new_password1?.map((message, idx) => (
+                            <Alert key={idx} variant="warning">
+                                {message}
+                            </Alert>
+                        ))}
+                        <Form.Group>
+                            <Form.Label><strong>Confirm password</strong></Form.Label>
+                            <Form.Control
+                                placeholder="confirm new password"
+                                className={formStyles.Input}
+                                type="password"
+                                value={new_password2}
+                                onChange={handleChange}
+                                name="new_password2"
+                            />
+                        </Form.Group>
+                        {errors?.new_password2?.map((message, idx) => (
+                            <Alert key={idx} variant="warning">
+                                {message}
+                            </Alert>
+                        ))}
+                        <div className="text-right">
+                            <Button
+                                className={`${btnStyles.Button} ${btnStyles.Cancel}`}
+                                onClick={() => history.goBack()}
+                            >
+                                Cancel
+                            </Button>
+                            <Button
+                                type="submit"
+                                className={`${btnStyles.Button} ${btnStyles.Bright}`}
+                            >
+                                Update
+                            </Button>
+                        </div>
+                    </Form>
+                </Container>
+            </Col>
+        </Row>
+    );
 };
 
 export default UserPasswordForm;

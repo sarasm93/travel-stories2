@@ -22,24 +22,25 @@ function StoriesPage({filter = "", message}) {
 
     useEffect(() => {
         const fetchStories = async () => {
-          try {
-            const { data } = await axiosReq.get(`/stories/?${filter}`);
-            setStories(data);
-            setHasLoaded(true);
-          } catch (err) {
-            console.log(err);
-          }
+            try {
+                const { data } = await axiosReq.get(`/stories/?${filter}`);
+                setStories(data);
+                setHasLoaded(true);
+            } catch (err) {
+                console.log(err);
+            }
         };
     
         setHasLoaded(false);
         const timer = setTimeout(() => {
-          fetchStories();
+            fetchStories();
         }, 1000);
     
         return () => {
-          clearTimeout(timer);
+            clearTimeout(timer);
         };
-        }, [filter, pathname, currentUser]);
+
+    }, [filter, pathname, currentUser]);
   
     return (
         <>
@@ -55,7 +56,11 @@ function StoriesPage({filter = "", message}) {
                                 {stories.results.length ? (
                                     <InfiniteScroll
                                         children={stories.results.map((story) => (
-                                            <StoryPage storyId={story.id} num_of_comments={story.comments_count} key={story.id} />
+                                            <StoryPage 
+                                                storyId={story.id} 
+                                                num_of_comments={story.comments_count}
+                                                key={story.id} 
+                                            />
                                         ))}
                                         dataLength={stories.results.length}
                                         loader={<Asset spinner />}

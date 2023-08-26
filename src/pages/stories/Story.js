@@ -38,7 +38,7 @@ const Story = (props) => {
 
     const handleEdit = () => {
         history.push(`/stories/${id}/edit`);
-      };
+    };
 
     const handleDelete = async () => {
         try {
@@ -55,8 +55,10 @@ const Story = (props) => {
             setStories((prevStories) => ({
                 ...prevStories,
                 results: prevStories.results.map((story) => {
-                return story.id === id
-                    ? { ...story, likes_count: story.likes_count + 1, like_id: data.id }
+                    return story.id === id
+                        ? { ...story, 
+                            likes_count: story.likes_count + 1, 
+                            like_id: data.id }
                     : story;
                 }),
             }));
@@ -71,9 +73,9 @@ const Story = (props) => {
             setStories((prevStories) => ({
                 ...prevStories,
                 results: prevStories.results.map((story) => {
-                return story.id === id
-                    ? { ...story, save_id: data.id }
-                    : story;
+                    return story.id === id
+                        ? { ...story, save_id: data.id }
+                        : story;
                 }),
             }));
         } catch (err) {
@@ -87,8 +89,10 @@ const Story = (props) => {
             setStories((prevStories) => ({
                 ...prevStories,
                 results: prevStories.results.map((story) => {
-                return story.id === id
-                    ? { ...story, likes_count: story.likes_count - 1, like_id: null }
+                    return story.id === id
+                        ? { ...story, 
+                            likes_count: story.likes_count - 1, 
+                            like_id: null }
                     : story;
                 }),
             }));
@@ -103,8 +107,8 @@ const Story = (props) => {
             setStories((prevStories) => ({
                 ...prevStories,
                 results: prevStories.results.map((story) => {
-                return story.id === id
-                    ? { ...story, save_id: null }
+                    return story.id === id
+                        ? { ...story, save_id: null }
                     : story;
                 }),
             }));
@@ -118,46 +122,59 @@ const Story = (props) => {
         <Card className={`${appStyles.Card} ${styles.BorderBottom}`}>
             <Card.Body className={styles.CardHeader}>
                 {title && <Card.Title className="text-center">{title}</Card.Title>}
-                {destination && <Card.Subtitle className="text-center mb-3"><strong>{destination}</strong></Card.Subtitle>}
-                {created_at && <Card.Text className='text-center mb-0'>created: {created_at}</Card.Text>}
+                {destination && 
+                    <Card.Subtitle className="text-center mb-3">
+                        <strong>{destination}</strong>
+                    </Card.Subtitle>
+                }
+                {created_at && 
+                    <Card.Text className='text-center mb-0'>
+                        created: {created_at}
+                    </Card.Text>}
             </Card.Body>
             <Card.Img src={image} alt={title} className={`${styles.CardImage} m-auto`}/>
             <Card.Body className={styles.CardContent}>  
                 <Row>
                     <Col>
                         <div className='d-flex justify-content-end'>
-                        {is_owner ? (
-                                    <OverlayTrigger
+                            {is_owner ? (
+                                <OverlayTrigger
                                     placement="top"
-                                    overlay={<Tooltip>You can`t like your own stories!</Tooltip>}
-                                    >
-                                        <span className={styles.CantLikeSave}>
-                                            <i className={`fa-solid fa-heart`}/>
-                                        </span>
-                                    </OverlayTrigger>
-                                ) : like_id ? (
-                                    <span onClick={handleUnlike} className={styles.Heart}>
-                                        <i className="fa-solid fa-heart" />
+                                    overlay={
+                                        <Tooltip>
+                                            You can`t like your own stories!
+                                        </Tooltip>}
+                                >
+                                    <span className={styles.CantLikeSave}>
+                                        <i className={`fa-solid fa-heart`}/>
                                     </span>
-                                ) : currentUser ? (
-                                    <span onClick={handleLike} className={styles.Heart}>
-                                        <i className="fa-regular fa-heart" />
-                                    </span>
-                                ) : (
-                                    <OverlayTrigger
+                                </OverlayTrigger>
+                            ) : like_id ? (
+                                <span onClick={handleUnlike} className={styles.Heart}>
+                                    <i className="fa-solid fa-heart" />
+                                </span>
+                            ) : currentUser ? (
+                                <span onClick={handleLike} className={styles.Heart}>
+                                    <i className="fa-regular fa-heart" />
+                                </span>
+                            ) : (
+                                <OverlayTrigger
                                     placement="top"
                                     overlay={<Tooltip>Log in to like stories!</Tooltip>}
-                                    >
-                                        <span className={styles.Heart}>
-                                            <i className="fa-regular fa-heart" />
-                                        </span>
-                                    </OverlayTrigger>
-                                )}
+                                >
+                                    <span className={styles.Heart}>
+                                        <i className="fa-regular fa-heart" />
+                                    </span>
+                                </OverlayTrigger>
+                            )}
                             <span className='pt-1 mr-2'>{likes_count}</span>
                             {is_owner ? (
                                 <OverlayTrigger
-                                placement="top"
-                                overlay={<Tooltip>You can`t save your own stories!</Tooltip>}
+                                    placement="top"
+                                    overlay={
+                                        <Tooltip>
+                                            You can`t save your own stories!
+                                        </Tooltip>}
                                 >
                                     <span className={styles.CantLikeSave}>
                                         <i className="fa-regular fa-bookmark" />
@@ -173,18 +190,25 @@ const Story = (props) => {
                                 </span>
                             ) : (
                                 <OverlayTrigger
-                                placement="top"
-                                overlay={<Tooltip>Log in to save stories!</Tooltip>}
+                                    placement="top"
+                                    overlay={<Tooltip>Log in to save stories!</Tooltip>}
                                 >
                                     <i className="fa-regular fa-bookmark" />
                                 </OverlayTrigger>
                             )}
-                            {is_owner && (<MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />)}
+                            {is_owner && (
+                                <MoreDropdown 
+                                    handleEdit={handleEdit} 
+                                    handleDelete={handleDelete} 
+                                />
+                            )}
                         </div>
                     </Col>
                 </Row>
                 <div className="d-flex pt-0">
-                    <Media className={`${styles.Media} align-items-top justify-content-between`}>
+                    <Media className={`
+                        ${styles.Media} align-items-top justify-content-between`}
+                    >
                         <Link to={`/profiles/${profile_id}`}>
                             <div>
                                 <Avatar src={profile_image} height={55} />
@@ -194,12 +218,15 @@ const Story = (props) => {
                             </div>
                         </Link>
                     </Media>
-                    {content && <Card.Text className={styles.Content}>{content}</Card.Text>}
+                    {content && 
+                        <Card.Text className={styles.Content}>
+                            {content}
+                        </Card.Text>
+                    }
                 </div>   
             </Card.Body>
         </Card>
     );
-
 };
 
 export default Story

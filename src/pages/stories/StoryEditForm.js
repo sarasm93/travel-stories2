@@ -25,6 +25,7 @@ function StoryEditForm() {
         content: "",
         image: "",
     });
+
     const { title, destination, content, image } = storyData;
 
     const imageInput = useRef(null);
@@ -33,25 +34,26 @@ function StoryEditForm() {
     const currentUser = useCurrentUser();
     const { id } = useParams();
 
-  useEffect(() => {
-    const handleMount = async () => {
-      try {
-        const { data } = await axiosReq.get(`/stories/${id}/`);
-        const { title, destination, content, image, is_owner } = data;
+    useEffect(() => {
+        const handleMount = async () => {
+            try {
+                const { data } = await axiosReq.get(`/stories/${id}/`);
+                const { title, destination, content, image, is_owner } = data;
+                is_owner ? 
+                    setStoryData({ title, destination, content, image }) 
+                : history.push("/");
+            } catch (err) {
+                console.log(err);
+            }
+        };
 
-        is_owner ? setStoryData({ title, destination, content, image }) : history.push("/");
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    handleMount();
-  }, [history, id]);
+        handleMount();
+    }, [history, id]);
 
     const handleChange = (event) => {
         setStoryData({
-        ...storyData,
-        [event.target.name]: event.target.value,
+            ...storyData,
+            [event.target.name]: event.target.value,
         });
     };
 
@@ -75,17 +77,17 @@ function StoryEditForm() {
 
         if (imageInput?.current?.files[0]) {
             formData.append("image", imageInput.current.files[0]);
-          }
+        }
     
         try {
             await axiosReq.put(`/stories/${id}/`, formData);
             history.push(`/profiles/${currentUser.profile_id}`);
-          } catch (err) {
+        } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {
-              setErrors(err.response?.data);
+                setErrors(err.response?.data);
             }
-          }
+        }
     };
 
     const textFields = (
@@ -144,15 +146,26 @@ function StoryEditForm() {
                 </Col>
                 <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
                     <Container
-                        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
+                        className={`
+                        ${appStyles.Content} 
+                        ${styles.Container} 
+                        d-flex flex-column justify-content-center`}
+                    >
                         <Form.Group className="text-center">
                             <figure>
-                                <Image className={appStyles.Image} src={image} rounded />
+                                <Image 
+                                    className={appStyles.Image} 
+                                    src={image} 
+                                    rounded 
+                                />
                             </figure>
                             <div>
                                 <Form.Label
-                                    className={`${btnStyles.Button} ${btnStyles.Change} btn`}
-                                    htmlFor="image-upload">
+                                    className={`
+                                        ${btnStyles.Button} 
+                                        ${btnStyles.Change} btn`}
+                                    htmlFor="image-upload"
+                                >
                                     Change image
                                 </Form.Label>
                             </div>
@@ -161,7 +174,7 @@ function StoryEditForm() {
                             accept="image/*"
                             onChange={handleChangeImage}
                             ref={imageInput}
-                            />
+                        />
                         </Form.Group>
                         {errors?.image?.map((message, idx) => (
                             <Alert variant="warning" key={idx}>
@@ -173,11 +186,19 @@ function StoryEditForm() {
                     <Container>
                         <div className="text-center">
                             <Button
-                                className={`${btnStyles.Button} ${btnStyles.Cancel} mb-4 mt-4`}
-                                onClick={() => history.goBack()}>
+                                className={`
+                                    ${btnStyles.Button} 
+                                    ${btnStyles.Cancel} mb-4 mt-4`}
+                                onClick={() => history.goBack()}
+                            >
                                 Cancel
                             </Button>
-                            <Button className={`${btnStyles.Button} ${btnStyles.Bright} mb-4 mt-4`} type="submit">
+                            <Button 
+                                className={`
+                                    ${btnStyles.Button} 
+                                    ${btnStyles.Bright} mb-4 mt-4`} 
+                                type="submit"
+                            >
                                 Update
                             </Button>
                         </div>

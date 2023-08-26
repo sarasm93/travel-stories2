@@ -20,79 +20,79 @@ import formStyles from "../../styles/ProfileEditForms.module.css";
 
 
 const UsernameForm = () => {
-  const [username, setUsername] = useState("");
-  const [errors, setErrors] = useState({});
+    const [username, setUsername] = useState("");
+    const [errors, setErrors] = useState({});
 
-  const history = useHistory();
-  const { id } = useParams();
+    const history = useHistory();
+    const { id } = useParams();
 
-  const currentUser = useCurrentUser();
-  const setCurrentUser = useSetCurrentUser();
+    const currentUser = useCurrentUser();
+    const setCurrentUser = useSetCurrentUser();
 
-  useEffect(() => {
-    if (currentUser?.profile_id?.toString() === id) {
-      setUsername(currentUser.username);
-    } else {
-      history.push("/");
-    }
-  }, [currentUser, history, id]);
+    useEffect(() => {
+        if (currentUser?.profile_id?.toString() === id) {
+            setUsername(currentUser.username);
+        } else {
+            history.push("/");
+        }
+    }, [currentUser, history, id]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      await axiosRes.put("/dj-rest-auth/user/", {
-        username,
-      });
-      setCurrentUser((prevUser) => ({
-        ...prevUser,
-        username,
-      }));
-      history.goBack();
-    } catch (err) {
-      console.log(err);
-      setErrors(err.response?.data);
-    }
-  };
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            await axiosRes.put("/dj-rest-auth/user/", {
+                username,
+            });
+            setCurrentUser((prevUser) => ({
+                ...prevUser,
+                username,
+            }));
+            history.goBack();
+        } catch (err) {
+            console.log(err);
+            setErrors(err.response?.data);
+        }
+    };
 
-  return (
-    <Row>
-      <Col className="py-2 mx-auto mt-4" md={6}>
-      <Container className={`${appStyles.Content} ${appStyles.BlueBorder}`}>
-          <Form onSubmit={handleSubmit} className="my-2">
-            <Form.Group>
-              <Form.Label><strong>Edit username</strong></Form.Label>
-              <Form.Control
-                placeholder="username"
-                className={formStyles.Input}
-                type="text"
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-              />
-            </Form.Group>
-            {errors?.username?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
-            <div className="text-right">
-              <Button
-                className={`${btnStyles.Button} ${btnStyles.Cancel}`}
-                onClick={() => history.goBack()}
-              >
-                Cancel
-              </Button>
-              <Button
-                className={`${btnStyles.Button} ${btnStyles.Bright}`}
-                type="submit"
-              >
-                Update
-              </Button>
-            </div>
-          </Form>
-        </Container>
-      </Col>
-    </Row>
-  );
+    return (
+        <Row>
+            <Col className="py-2 mx-auto mt-4" md={6}>
+                <Container className={`${appStyles.Content} ${appStyles.BlueBorder}`}>
+                    <Form onSubmit={handleSubmit} className="my-2">
+                        <Form.Group>
+                            <Form.Label><strong>Edit username</strong></Form.Label>
+                            <Form.Control
+                                placeholder="username"
+                                className={formStyles.Input}
+                                type="text"
+                                value={username}
+                                onChange={(event) => setUsername(event.target.value)}
+                            />
+                        </Form.Group>
+                        {errors?.username?.map((message, idx) => (
+                            <Alert key={idx} variant="warning">
+                                {message}
+                            </Alert>
+                        ))}
+                        <div className="text-right">
+                            <Button
+                                className={`${btnStyles.Button} ${btnStyles.Cancel}`}
+                                onClick={() => history.goBack()}
+                            >
+                                Cancel
+                            </Button>
+                            <Button
+                                className={`${btnStyles.Button} ${btnStyles.Bright}`}
+                                type="submit"
+                            >
+                                Update
+                            </Button>
+                        </div>
+                    </Form>
+                </Container>
+            </Col>
+        </Row>
+    );
 };
 
 export default UsernameForm;

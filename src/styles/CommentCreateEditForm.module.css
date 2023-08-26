@@ -9,7 +9,7 @@
 .PostButton {
     border: none;
     color:#0a7503; 
-    background-color: none;
+    background-color: transparent;
     border-radius: 20px;
     min-width: 40px;
     min-height: 40px;

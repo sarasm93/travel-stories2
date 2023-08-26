@@ -14,12 +14,15 @@ const PopularStory = (props) => {
             <div>
                 <Link className={`${styles.Popular}`} to={`/stories/${id}`}>
                     <Card className={`${styles.Card} overflow-hidden m-2`}>
-                        <Card.Img src={image} alt={title} className={styles.CardImage}/>
+                        <Card.Img 
+                            src={image} 
+                            alt={title} 
+                            className={styles.CardImage}
+                        />
                         <p><strong>{title}</strong> | {destination}</p>
                     </Card> 
                 </Link>
             </div>
-
         </div>
     )
 }

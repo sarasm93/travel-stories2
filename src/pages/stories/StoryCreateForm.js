@@ -30,6 +30,7 @@ function StoryCreateForm() {
         content: "",
         image: "",
     });
+
     const { title, destination, content, image } = storyData;
 
     const imageInput = useRef(null);
@@ -39,8 +40,8 @@ function StoryCreateForm() {
 
     const handleChange = (event) => {
         setStoryData({
-        ...storyData,
-        [event.target.name]: event.target.value,
+            ...storyData,
+            [event.target.name]: event.target.value,
         });
     };
 
@@ -67,12 +68,12 @@ function StoryCreateForm() {
         try {
             await axiosReq.post("/stories/", formData);
             history.push(`/profiles/${currentUser.profile_id}`);
-          } catch (err) {
+        } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {
-              setErrors(err.response?.data);
+                setErrors(err.response?.data);
             }
-          }
+        }
     };
 
     const textFields = (
@@ -129,37 +130,46 @@ function StoryCreateForm() {
                 <Col md={5} lg={4} className="pb-2 d-flex">
                     <Container className={appStyles.Content}>{textFields}</Container>
                 </Col>
-                <Col className="" md={7} lg={8}>
+                <Col md={7} lg={8}>
                     <Container
-                        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
+                        className={`
+                            ${appStyles.Content} 
+                            ${styles.Container} 
+                            d-flex flex-column justify-content-center`}>
                         <Form.Group className="text-center">
-                        {image ? (
-                            <>
-                                <figure>
-                                    <Image className={appStyles.Image} src={image} rounded />
-                                </figure>
-                                <div>
-                                    <Form.Label
-                                        className={`${btnStyles.Button} ${btnStyles.Change} btn`}
-                                        htmlFor="image-upload">
-                                        Change image
-                                    </Form.Label>
-                                </div>
-                            </>
-                        ) : (
-                            <Form.Label
-                                className="d-flex justify-content-center"
-                                htmlFor="image-upload">
-                            <Asset
-                                src={defaultImage}
-                                message="Click the camera to upload an image"/>
-                            </Form.Label>
-                        )}
-                        <Form.File
-                            id="image-upload"
-                            accept="image/*"
-                            onChange={handleChangeImage}
-                            ref={imageInput}
+                            {image ? (
+                                <>
+                                    <figure>
+                                        <Image 
+                                            className={appStyles.Image} 
+                                            src={image} 
+                                            rounded 
+                                        />
+                                    </figure>
+                                    <div>
+                                        <Form.Label
+                                            className={`
+                                                ${btnStyles.Button} 
+                                                ${btnStyles.Change} btn`}
+                                            htmlFor="image-upload">
+                                            Change image
+                                        </Form.Label>
+                                    </div>
+                                </>
+                            ) : (
+                                <Form.Label
+                                    className="d-flex justify-content-center"
+                                    htmlFor="image-upload">
+                                    <Asset
+                                        src={defaultImage}
+                                        message="Click the camera to upload an image"/>
+                                </Form.Label>
+                            )}
+                            <Form.File
+                                id="image-upload"
+                                accept="image/*"
+                                onChange={handleChangeImage}
+                                ref={imageInput}
                             />
                         </Form.Group>
                         {errors?.image?.map((message, idx) => (
@@ -172,11 +182,19 @@ function StoryCreateForm() {
                     <Container>
                         <div className="text-center">
                             <Button
-                                className={`${btnStyles.Button} ${btnStyles.Cancel} mb-4 mt-4`}
-                                onClick={() => history.goBack()}>
+                                className={`
+                                    ${btnStyles.Button} 
+                                    ${btnStyles.Cancel} mb-4 mt-4`}
+                                onClick={() => history.goBack()}
+                            >
                                 Cancel
                             </Button>
-                            <Button className={`${btnStyles.Button} ${btnStyles.Bright} mb-4 mt-4`} type="submit">
+                            <Button 
+                                className={`
+                                    ${btnStyles.Button} 
+                                    ${btnStyles.Bright} mb-4 mt-4`} 
+                                type="submit"
+                            >
                                 Create
                             </Button>
                         </div>

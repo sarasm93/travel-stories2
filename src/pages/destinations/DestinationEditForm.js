@@ -24,8 +24,8 @@ function DestinationEditForm({filter = "" }) {
         activities: "",
         priority: "",
         story_tag: "",
-        }
-    );
+        });
+    
     const { destination, activities, priority, story_tag } = destinationData;
 
     const history = useHistory();
@@ -35,33 +35,33 @@ function DestinationEditForm({filter = "" }) {
 
     useEffect(() => {
         const fetchSavedStories = async () => {
-          try {
-            const { data } = await axiosReq.get(`/stories/?${filter}`);
-            setSavedStories(data);
-          } catch (err) {
-            console.log(err);
-          }
+            try {
+                const { data } = await axiosReq.get(`/stories/?${filter}`);
+                setSavedStories(data);
+            } catch (err) {
+                console.log(err);
+            }
         };
 
         fetchSavedStories(); 
-        }, [filter, currentUser]
-    
-    );
+    }, [filter, currentUser]);
 
     useEffect(() => {
         const handleMount = async () => {
-          try {
-            const { data } = await axiosReq.get(`/destinations/${id}/`);
-            const { destination, activities, priority, story_tag, is_owner } = data;
-    
-            is_owner ? setDestinationData({ destination, activities, priority, story_tag }) : history.push("/");
-          } catch (err) {
-            console.log(err);
-          }
+            try {
+                const { data } = await axiosReq.get(`/destinations/${id}/`);
+                const { destination, activities, priority, story_tag, is_owner } = data;
+        
+                is_owner ? 
+                    setDestinationData({ destination, activities, priority, story_tag }) 
+                : history.push("/");
+            } catch (err) {
+                console.log(err);
+            }
         };
     
         handleMount();
-      }, [history, id]);
+    }, [history, id]);
 
 
     const handleChange = (event) => {
@@ -83,8 +83,8 @@ function DestinationEditForm({filter = "" }) {
         try {
             await axiosReq.put(`/destinations/${id}/`, formData);
             history.push("/bucketlist"); 
-            } catch (err) {
-                console.log(err);
+        } catch (err) {
+            console.log(err);
             if (err.response?.status !== 401) {
               setErrors(err.response?.data);
             }
@@ -146,7 +146,7 @@ function DestinationEditForm({filter = "" }) {
             label: "Might happen",
             value: "5",
         },
-      ];
+    ];
 
     const selectFields = (
         <>
@@ -159,7 +159,12 @@ function DestinationEditForm({filter = "" }) {
                     onChange={handleChange}
                     >
                         {priorityOptions.map((option) => (
-                            <option value={option.value} key={option.value}>{option.label}</option>
+                            <option 
+                                value={option.value} 
+                                key={option.value}
+                            >
+                                {option.label}
+                            </option>
                         ))}
                 </Form.Control>
             </Form.Group>
@@ -177,9 +182,15 @@ function DestinationEditForm({filter = "" }) {
                     onChange={handleChange}
                 >
                     <option value={"placeholder"}>{story_tag}</option>
-                    {savedStories.results.length ? savedStories.results.map((savedStories) => {
-                        return <option key={savedStories.id} value={savedStories.id}>{savedStories.title}</option>
-                    })
+                    {savedStories.results.length ? 
+                        savedStories.results.map((savedStories) => {
+                        return <option 
+                            key={savedStories.id} 
+                            value={savedStories.id}
+                        >
+                            {savedStories.title}
+                        </option>
+                        })
                     : null }
                 </Form.Control>
                 {errors?.story_tag?.map((message, idx) => (
@@ -198,7 +209,10 @@ function DestinationEditForm({filter = "" }) {
                 onClick={() => history.goBack()}>
                 Cancel
             </Button>
-            <Button className={`${btnStyles.Button} ${btnStyles.Bright} my-5`} type="submit">
+            <Button 
+                className={`${btnStyles.Button} ${btnStyles.Bright} my-5`} 
+                type="submit"
+            >
                 Update
             </Button>
         </>
@@ -207,7 +221,8 @@ function DestinationEditForm({filter = "" }) {
     return (
         <>
             <div className="pt-5 pb-1">
-                <p>All created destinations are added to your bucket list and sorted based on the selected priority.</p>
+                <p>All created destinations are added to your bucket list 
+                    and sorted based on the selected priority.</p>
             </div> 
             <Form onSubmit={handleSubmit}>
                 <Row className={`${appStyles.Content} ${styles.Container}`}>

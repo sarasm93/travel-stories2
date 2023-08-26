@@ -13,7 +13,7 @@ function DestinationPage({destinationId}) {
         const handleMount = async () => {
             try {
                 const [{ data: destination }] = await Promise.all([
-                axiosReq.get(`/destinations/${destinationId}`),
+                    axiosReq.get(`/destinations/${destinationId}`),
                 ]);
                 setDestination({ results: [destination] });
             } catch (err) {
@@ -22,12 +22,15 @@ function DestinationPage({destinationId}) {
             };
 
         handleMount();
-        }, [destinationId]);
+    }, [destinationId]);
 
     return (
         <Row>
             <Col>
-                <Destination {...destination.results[0]} setDestinations={setDestination} />
+                <Destination 
+                    {...destination.results[0]} 
+                    setDestinations={setDestination}
+                />
             </Col>
         </Row>
     );

@@ -55,7 +55,11 @@ function SignInForm() {
     return (
         <Row className={styles.Row}>
             <Col className="m-auto p-0 p-md-2" md={6}>
-                <Container className={`${appStyles.Content} ${appStyles.BlueBorder} p-4 `}>
+                <Container 
+                    className={`
+                        ${appStyles.Content} 
+                        ${appStyles.BlueBorder} p-4`}
+                >
                 <h1 className={styles.Header}>Log In</h1>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="username">
@@ -92,8 +96,12 @@ function SignInForm() {
                         ))}
                         <div className="text-center">
                             <Button
-                                className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
-                                type="submit">
+                                className={`
+                                    ${btnStyles.Button} 
+                                    ${btnStyles.Wide} 
+                                    ${btnStyles.Bright}`}
+                                type="submit"
+                            >
                                 Log in
                             </Button>
                             {errors.non_field_errors?.map((message, idx) => (
@@ -105,9 +113,9 @@ function SignInForm() {
                     </Form>
                 </Container>
                 <Container className="mt-3">
-                <Link className={styles.Link} to="/signup">
-                    Don`t have an account? <span>Sign up here!</span>
-                </Link>
+                    <Link className={styles.Link} to="/signup">
+                        Don`t have an account? <span>Sign up here!</span>
+                    </Link>
                 </Container>
             </Col>
         </Row>
