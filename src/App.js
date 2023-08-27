@@ -23,6 +23,7 @@ import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/PasswordForm";
 import ProfilePresentationForm from "./pages/profiles/ProfilePresentationForm";
 import NotFound from './components/NotFound';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -30,70 +31,77 @@ function App() {
   const profile_id = currentUser?.profile_id || "";
 
   return (
-    <div className={styles.App}>
-      <NavBar />
-      <Container className={styles.Main}>
-        <Switch>
-          <Route exact path="/">
-            <Image src={headerImage} alt="header image" className={`${styles.HeaderImage} img-fluid`}/>
-            <div className={`${styles.Intro} text-center`}>
-              <h1 className={styles.IntroTitle}>Share your travel story!</h1>
-              <h2 className={styles.IntroSubtitle}>
-                Discover new places and meet new people. Be inspired and make your travel bucket list. 
-                Join now!</h2>
-            </div>
-            <StoriesPage />
-          </Route>
-          <Route 
-            exact 
-            path="/saved" 
-            render={() => <StoriesPage 
-              filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}
-              message="You haven't saved any stories yet."
-              />}/>
-          <Route exact path="/login" render={() => <SignInForm />}/>
-          <Route exact path="/signup" render={() => <SignUpForm />}/>
-          <Route exact path="/stories/create" render={() => <StoryCreateForm />}/>
-          <Route exact path="/stories/:id" render={() => <PopularStoryPage />}/>
-          <Route exact path="/stories/:id/edit" render={() => <StoryEditForm />} />
-          <Route exact path="/bucketlist" render={() => <BucketlistPage 
-            filter={`owner__profile=${profile_id}&ordering=priority&`} />}/>
-          <Route 
-            exact 
-            path="/destination/create" 
-            render={() => <DestinationCreateForm 
-              filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`} 
-              />}/>
-          <Route exact path="/destinations/:id" render={() => <DestinationPage />} />
-          <Route 
-            exact 
-            path="/destinations/:id/edit" 
-            render={() => <DestinationEditForm 
-              filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}/>} />
-          <Route exact path="/profiles/:id" render={() => <ProfilePage 
-            filter={`owner__profile=${profile_id}&ordering=-created_at`} />} />
-          <Route
-            exact
-            path="/profiles/:id/edit/username"
-            render={() => <UsernameForm />}
-          />
-          <Route
-            exact
-            path="/profiles/:id/edit/password"
-            render={() => <UserPasswordForm />}
-          />
-          <Route
-            exact
-            path="/profiles/:id/edit/presentation"
-            render={() => <ProfilePresentationForm />}
-          />
-          <Route 
-            render={() => 
-              <NotFound />} />
-        </Switch>
-      </Container>
-    </div>
-  );
+        <div className={styles.App}>
+            <NavBar />
+            <Container className={styles.Main}>
+                <Switch>
+                    <Route exact path="/">
+                        <Image src={headerImage} alt="header image" className={`${styles.HeaderImage} img-fluid`}/>
+                        <div className={`${styles.Intro} text-center`}>
+                        <h1 className={styles.IntroTitle}>Share your travel story!</h1>
+                        <h2 className={styles.IntroSubtitle}>
+                            Discover new places and meet new people. Be inspired and make your travel bucket list. 
+                            Join now!</h2>
+                        </div>
+                        <StoriesPage />
+                    </Route>
+                    <Route 
+                        exact 
+                        path="/saved" 
+                        render={() => <StoriesPage 
+                        filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}
+                        message="You haven't saved any stories yet."
+                        />}
+                    />
+                    <Route exact path="/login" render={() => <SignInForm />}/>
+                    <Route exact path="/signup" render={() => <SignUpForm />}/>
+                    <Route exact path="/stories/create" render={() => <StoryCreateForm />}/>
+                    <Route exact path="/stories/:id" render={() => <PopularStoryPage />}/>
+                    <Route exact path="/stories/:id/edit" render={() => <StoryEditForm />} />
+                    <Route exact path="/bucketlist" render={() => <BucketlistPage 
+                        filter={`owner__profile=${profile_id}&ordering=priority&`} />}
+                    />
+                    <Route 
+                        exact 
+                        path="/destination/create" 
+                        render={() => <DestinationCreateForm 
+                        filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`} 
+                        />}
+                    />
+                    <Route exact path="/destinations/:id" render={() => <DestinationPage />} />
+                    <Route 
+                        exact 
+                        path="/destinations/:id/edit" 
+                        render={() => <DestinationEditForm 
+                        filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}/>} 
+                    />
+                    <Route exact path="/profiles/:id" render={() => <ProfilePage 
+                        filter={`owner__profile=${profile_id}&ordering=-created_at`} />} 
+                    />
+                    <Route
+                        exact
+                        path="/profiles/:id/edit/username"
+                        render={() => <UsernameForm />}
+                    />
+                    <Route
+                        exact
+                        path="/profiles/:id/edit/password"
+                        render={() => <UserPasswordForm />}
+                    />
+                    <Route
+                        exact
+                        path="/profiles/:id/edit/presentation"
+                        render={() => <ProfilePresentationForm />}
+                    />
+                    <Route 
+                        render={() => 
+                        <NotFound />} 
+                    />
+                </Switch>
+            </Container>
+            <Footer />
+        </div>
+    );
 }
 
 export default App;
