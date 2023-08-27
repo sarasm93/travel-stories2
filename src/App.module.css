@@ -20,10 +20,10 @@
 }
 
 .HeaderImage {
-  object-fit: cover;
-  height: 35vh;
-  width: 100%;
-  margin-bottom: 0;
+    object-fit: cover;
+    height: 35vh;
+    width: 100%;
+    margin-bottom: 0;
 }
 
 .Content {
@@ -48,7 +48,7 @@ a:hover i {
 }
 
 .NavIcon:hover {
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 i {
@@ -65,51 +65,51 @@ i:hover {
 }
 
 .Image {
-  max-height: 40vh;
-  max-width: 100%;
-  object-fit: contain;
+    max-height: 40vh;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 input[type="file"] {
-  display: none;
+    display: none;
 }
 
 .BlueBorder {
-  border-color: #84dbe1;
+    border-color: #84dbe1;
 }
 
 .Intro {
-  padding: 20px;
-  border: 0;
-  background-color: #ccaf3a;
+    padding: 20px;
+    border: 0;
+    background-color: #ccaf3a;
 }
 
 .IntroCard {
-  background-color: #ccaf3a;
-  border: 0;
+    background-color: #ccaf3a;
+    border: 0;
 }
 
 .IntroTitle {
-  font-size: xx-large;
-  font-weight: bold;
-  text-transform: uppercase;
+    font-size: xx-large;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .IntroSubtitle {
-  font-size: large;
+    font-size: large;
 }
 
 
-  /* scrollbar */
-  *::-webkit-scrollbar {
-    width: 5px;
-  }
-  *::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  *::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-  *::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+    /* scrollbar */
+    *::-webkit-scrollbar {
+        width: 5px;
+    }
+    *::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    *::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    *::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }

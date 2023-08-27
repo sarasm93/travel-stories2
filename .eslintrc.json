@@ -9,14 +9,15 @@
         "plugin:react/recommended"
     ],
     "parserOptions": {
-        "ecmaVersion": "latest",
+        "ecmaVersion": 13,
         "sourceType": "module"
     },
     "plugins": [
         "react"
     ],
     "rules": {
-        "react/prop-types": 0
+        "react/prop-types": 0,
+        "react/no-children-prop": 0
     },
     "settings": {
         "react": {

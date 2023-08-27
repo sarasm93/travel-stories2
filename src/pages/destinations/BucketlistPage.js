@@ -80,9 +80,7 @@ function BucketlistPage({filter = ""}) {
                     </Button>
                 </div>
                 {hasLoaded ? (
-                    <>
-                      {bucketlist}
-                    </>
+                    {bucketlist}
                 ) : (
                     <Container className={appStyles.Content}>
                         <Asset spinner />
