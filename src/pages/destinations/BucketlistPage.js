@@ -36,19 +36,18 @@ function BucketlistPage({filter = ""}) {
         <>
             {profileDestinations.results.length ? (
                 <InfiniteScroll
-                    dataLength={profileDestinations.results.length}
-                    loader={<Asset spinner />}
-                    hasMore={!!profileDestinations.next}
-                    next={() => 
-                        fetchMoreData(profileDestinations, setProfileDestinations)}
-                >
-                    {profileDestinations.results.map((destination) => (
+                    children={profileDestinations.results.map((destination) => (
                         <DestinationPage 
                             destinationId={destination.id} 
                             key={destination.id} 
                         />
                     ))}
-                </InfiniteScroll>
+                    dataLength={profileDestinations.results.length}
+                    loader={<Asset spinner />}
+                    hasMore={!!profileDestinations.next}
+                    next={() => 
+                        fetchMoreData(profileDestinations, setProfileDestinations)}
+                />
             ) : (
                 <Asset
                     src={NoDestinations}

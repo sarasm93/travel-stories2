@@ -9,7 +9,7 @@ const PopularStory = (props) => {
 
     return (
         <div
-            className={`my-3 d-flex align-items-center ${mobile && "flex-column"}`}
+            className={`mb-3 d-flex align-items-center ${mobile && "flex-column"}`}
         >
             <div>
                 <Link className={`${styles.Popular}`} to={`/stories/${id}`}>
