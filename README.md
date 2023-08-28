@@ -232,7 +232,7 @@ The sign up, log in and log out functionality was created with Django allauth.
 
 The above feature is listed in a GitHub Project used as backlog for the app. The backlog is found [here](https://github.com/sarasm93/travel-stories-api2/issues).
 
-## **Components / Hook / Serializers m.m.**
+## **Components**
 
 ### **Navbar**
 The navbar component is displayed on all pages, with conditional rendering of the navlinks depending on authentication of the user. 
@@ -332,7 +332,6 @@ The site was deployed to Heroku from GitHub with the following steps:
 
 2. In Gitpod, save all files, add, commit and push your code to GitHub. Then go to Heroku. Scroll to the top menu and click the "Deploy"-tab. Scroll to the "Deployment method"-sction and select GitHub. In the "Connect to Github"-section that shows up, click on "Connect to GitHub". When the connecting is done you will see a search bar where you can search for the repository name. Click on the "Connect"-button that shows up when Heroku has found your repository. Scroll further down and choose either to deploy automatically by clicking the "Enable Automatic Deploys" or deploy manually by clicking the "Deploy Branch"-button. When the deployment is finished you can go to the "Settings"-tab again and scroll down to the "Domains"-section where you can find the link to your deployed app.
 
-
 ## **Technologies, Languages, Frameworks, Libraries, software and Sites used**
 
 ### **Languages**
@@ -347,7 +346,6 @@ The site was deployed to Heroku from GitHub with the following steps:
 - [react-dom](https://www.npmjs.com/package/react-dom) - the entry point to the DOM and server renderers for React
 - [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component) - component to implement infinite scrolling
 - [react-scripts](https://www.npmjs.com/package/react-scripts) - scripts and configuration used by Create React App
-- 
 
 ### **Extensions**
 - [JSONView](https://chrome.google.com/webstore/detail/jsonvue/chklaanhfefbnpoihckbnefhakgolnmc) - to view correctly formatted JSON in the browser
@@ -356,7 +354,7 @@ The site was deployed to Heroku from GitHub with the following steps:
 
 ### **Software and sites**
 - [ElephantSQL](https://www.elephantsql.com/) - PostgreSQL database system (cloud based) used for the database for this app
-- [GitHub](https://github.com/) - version control and as agile tool
+- [Git and GitHub](https://github.com/) - version control and as agile tool
 - [Lucidchart](https://www.lucidchart.com/pages/landing?utm_source=google&utm_medium=cpc&utm_campaign=_chart_en_tier2_mixed_search_brand_exact_&km_CPC_CampaignId=1520850463&km_CPC_AdGroupID=57697288545&km_CPC_Keyword=lucidchart&km_CPC_MatchType=e&km_CPC_ExtensionID=&km_CPC_Network=g&km_CPC_AdPosition=&km_CPC_Creative=442433237648&km_CPC_TargetID=kwd-33511936169&km_CPC_Country=9062397&km_CPC_Device=c&km_CPC_placement=&km_CPC_target=&gclid=Cj0KCQjwnMWkBhDLARIsAHBOftrLqk9mpk7BpbSpfCB82TCw4CoQ4k4-1IqLKE5G5i3Cs5Q-3_ysvx4aAtpTEALw_wcB) - create database model schema
 - [Cloudinary](https://cloudinary.com/) - image hosting and management 
 - [Lucidspark](https://lucidspark.com/landing?utm_source=google&utm_medium=cpc&utm_campaign=_spark_en_tier2_mixed_search_brand_exact_&km_CPC_CampaignId=11277231989&km_CPC_AdGroupID=111001815336&km_CPC_Keyword=lucidspark&km_CPC_MatchType=e&km_CPC_ExtensionID=&km_CPC_Network=g&km_CPC_AdPosition=&km_CPC_Creative=470704657836&km_CPC_TargetID=kwd-949956719693&km_CPC_Country=9062397&km_CPC_Device=c&km_CPC_placement=&km_CPC_target=&cq_cmp=11277231989&gclid=CjwKCAjwxaanBhBQEiwA84TVXKQNvVHxVJakGCqhU5psJMpyaLND2-0NbzWie1Sf7iLZyeyqbCW13RoCv3AQAvD_BwE) - create wireframes
@@ -387,3 +385,6 @@ Images:
 	- [hero image on bucketlist page](https://pixabay.com/sv/photos/death-valley-v%C3%A4g-%C3%B6ken-landskap-4250244/)
 	- default profile image is taken from the [Code Institute Moments project](https://github.com/Code-Institute-Solutions/moments)
 
+
+## **Acknowledgements**
+I want to thank Code institute and my mentor Antonio Rodriguez for all the valuable support and help during the development of this project.
