@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import { axiosReq } from "../../api/axiosDefaults";
 import Destination from "./Destination";
 
+
 function DestinationPage({destinationId}) {
     const [destination, setDestination] = useState({ results: [] });
 
@@ -25,11 +26,12 @@ function DestinationPage({destinationId}) {
     }, [destinationId]);
 
     return (
-        <Row>
-            <Col>
+        <Row className="h-100 mx-0">
+            <Col className="py-2 p-0 p-lg-2">
                 <Destination 
                     {...destination.results[0]} 
                     setDestinations={setDestination}
+                    
                 />
             </Col>
         </Row>

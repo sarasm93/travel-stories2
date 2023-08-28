@@ -377,6 +377,8 @@ CSS code was taken from [this site](https://www.upbeatcode.com/react/how-to-writ
 
 CSS code for box-shadow on most-liked-stories-cards was taken from [this Codepen.io page](https://codepen.io/ovdojoey/pen/BomKyZ). 
 
+The footer was hiding content on the page (see image). This was solved giving the main app container a bottom margin of 70px.
+
 Images:
 - Pixabay.com
 	- [default upload image](https://pixabay.com/sv/vectors/kamera-ikon-symbol-foto-svart-2008479/)

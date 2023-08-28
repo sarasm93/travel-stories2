@@ -57,7 +57,6 @@ function BucketlistPage({filter = ""}) {
         </>
     );
 
-
     return (
         <div>
             <Image 
@@ -65,21 +64,23 @@ function BucketlistPage({filter = ""}) {
                 alt="header image" 
                 className={`${appStyles.HeaderImage} img-fluid`}
             />
-            <Container className='mt-5'>
-                <div className='text-right'>
-                    <Button 
-                        className={`
-                            ${btnStyles.Button} 
-                            ${btnStyles.Bright} py-0 mb-3`}
-                    >
-                        <Link to="/destination/create">
-                            <i className="fa-solid fa-plus" />
-                            Add destination
-                        </Link>
-                    </Button>
-                </div>
+            <Container className="mt-5">
                 {hasLoaded ? (
-                    {bucketlist}
+                    <>
+                        <div className="text-right mx-1">
+                            <Button 
+                                className={`
+                                    ${btnStyles.Button} 
+                                    ${btnStyles.Bright} py-0 mb-2 mx-0`}
+                            >
+                                <Link to="/destination/create">
+                                    <i className="fa-solid fa-plus" />
+                                    Add destination
+                                </Link>
+                            </Button>
+                        </div>
+                        {bucketlist}
+                    </>
                 ) : (
                     <Container className={appStyles.Content}>
                         <Asset spinner />

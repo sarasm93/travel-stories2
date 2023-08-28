@@ -31,9 +31,9 @@ function App() {
   const profile_id = currentUser?.profile_id || "";
 
   return (
-        <div className={styles.App}>
+        <div className={`${styles.App} `}>
             <NavBar />
-            <Container className={styles.Main}>
+            <Container className={`${styles.Main} `}>
                 <Switch>
                     <Route exact path="/">
                         <Image src={headerImage} alt="header image" className={`${styles.HeaderImage} img-fluid`}/>

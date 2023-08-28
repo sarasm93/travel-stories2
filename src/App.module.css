@@ -12,6 +12,7 @@
     margin-top: 70px;
     padding: 0;
     max-width: 1200px;
+    margin-bottom: 70px;
 }
 
 .Card {
@@ -98,7 +99,6 @@ input[type="file"] {
 .IntroSubtitle {
     font-size: large;
 }
-
 
     /* scrollbar */
     *::-webkit-scrollbar {
