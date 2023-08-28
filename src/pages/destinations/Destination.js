@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/Destination.module.css";
-import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
 
 
@@ -17,10 +17,10 @@ const Destination = (props) => {
         destination,
         activities,
         priority,
-        story_tag,
+        story_tag_list,
     } = props;
 
-    console.log('story_tag: ', story_tag)
+    console.log('story_tag_list: ', story_tag_list)
     const history = useHistory();
 
     const handleEdit = () => {
@@ -86,16 +86,19 @@ const Destination = (props) => {
                             <Row>
                                 <Col sm={12} md={7} className='pb-3'>
                                     <span className='mr-2'>Stories:</span>
-                                    {story_tag && 
-                                        <span key={id}>
-                                            <Badge pill variant="light" className={`${styles.Badge} m-1`}>
-                                                {story_tag}
-                                            </Badge>
-                                        </span>
-                                    }
-                                        {/*{story_tag && (story_tag.map((story)=>{
-                                            return (<span key={id}><Badge pill variant="light" className={`${styles.Badge} m-1`}>{story}</Badge></span>)
-                                        }))}*/}
+                                    {/* {story_tag_list && (story_tag_list.map((story)=>{
+                                            return (<span key={id}><Badge pill variant="light" className={`${styles.Badge} m-1`}>{story.title}</Badge></span>)
+                                        }))} */}
+                                    
+                                        {story_tag_list && (story_tag_list.map((story)=>{ return (
+                                            <Link to={`stories/${story.id}`} key={story.id}>
+                                                <span >
+                                                    <Badge pill variant="light" className={`${styles.Badge} m-1`}>
+                                                        {story.story}
+                                                    </Badge>
+                                                </span>
+                                            </Link>
+                                        )}))}
                                        
                                 </Col>
                                 <Col sm={12} md={5} className='text-right pb-3'>

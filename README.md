@@ -386,7 +386,14 @@ Images:
 	- [hero image on home page](https://pixabay.com/sv/photos/bl%C3%A5-strand-surfa-resa-surfare-4145659/)
 	- [hero image on bucketlist page](https://pixabay.com/sv/photos/death-valley-v%C3%A4g-%C3%B6ken-landskap-4250244/)
 	- default profile image is taken from the [Code Institute Moments project](https://github.com/Code-Institute-Solutions/moments)
+	- [whale](https://pixabay.com/sv/photos/val-hav-vatten-4424846/)
 
+Information for story destinations:
+- [Whale safari](https://www.newzealand.com/int/plan/business/auckland-whale-and-dolphin-safari/)
+- [Laugavegur trek](https://adventures.com/blog/best-hikes-iceland/)
+- [The Alpine Pass Route](https://www.utracks.com/Switzerland/Self-Guided-Walking/The-Alpine-Pass-Route)
+- [The Grand Canyon](https://www.getyourguide.com/arizona-l488/grand-canyon-south-rim-self-guided-tour-t401021/)
+- 
 
 ## **Acknowledgements**
 I want to thank Code institute and my mentor Antonio Rodriguez for all the valuable support and help during the development of this project.

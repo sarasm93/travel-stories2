@@ -18,6 +18,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 function DestinationCreateForm({filter = "" }) {
     const [savedStories, setSavedStories] = useState({ results: [] });
     const [errors, setErrors] = useState({});
+    
 
     const [destinationData, setDestinationData] = useState({
         destination: "",
@@ -27,7 +28,7 @@ function DestinationCreateForm({filter = "" }) {
         });
     
     const { destination, activities, priority, story_tag } = destinationData;
-
+    const [multiValues, setMultiValues] = useState(story_tag ? story_tag: []);
     const history = useHistory();
 
     const currentUser = useCurrentUser();
@@ -45,6 +46,12 @@ function DestinationCreateForm({filter = "" }) {
         fetchSavedStories(); 
         }, [filter, currentUser]);
 
+    const handleChangeMulti = (e) => {
+        let value = Array.from(e.target.selectedOptions, option => parseInt(option.value));
+        setMultiValues(value);
+      
+    }
+
     const handleChange = (event) => {
         setDestinationData({
             ...destinationData, [event.target.name]: event.target.value,
@@ -58,11 +65,11 @@ function DestinationCreateForm({filter = "" }) {
         formData.append("destination", destination);
         formData.append("activities", activities);
         formData.append("priority", priority);
-        formData.append("story_tag", story_tag);
+        formData.append("story_tag", multiValues);
 
         try {
             await axiosReq.post("/destinations/", formData);
-            history.push("/bucketlist"); 
+            // history.push("/bucketlist"); 
         } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {
@@ -158,8 +165,9 @@ function DestinationCreateForm({filter = "" }) {
                 <Form.Control
                     as="select"
                     name ="story_tag"
-                    defaultValue={"placeholder"}
-                    onChange={handleChange}
+                    defaultValue={["placeholder"]}
+                    onChange={handleChangeMulti}
+                    multiple
                 >
                     <option value={"placeholder"}>Select...</option>
                     {savedStories.results.length ? 
