@@ -20,7 +20,6 @@ const Destination = (props) => {
         saved_story_tag,
     } = props;
 
-    console.log('story_tag: ', saved_story_tag)
     const history = useHistory();
 
     const handleEdit = () => {

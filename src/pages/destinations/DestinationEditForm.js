@@ -68,7 +68,6 @@ function DestinationEditForm({filter = "" }) {
         setDestinationData({
             ...destinationData, [event.target.name]: event.target.value,
         })
-        console.log(destinationData.story_tag)
     };
 
     const handleSubmit = async (event) => {

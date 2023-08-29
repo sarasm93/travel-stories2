@@ -50,7 +50,6 @@ function DestinationCreateForm({filter = "" }) {
         setDestinationData({
             ...destinationData, [event.target.name]: event.target.value,
         })
-        console.log("story_tag: ", story_tag)
     };
 
     const handleSubmit = async (event) => {
