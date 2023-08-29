@@ -321,7 +321,11 @@ On medium screen sizes, the nav item text was too big and made the items render 
 
 The comments count on storypage.js wasn´t updating when the user has made a comment unless the page was refreshed. This was solved by adding a ternary to check if comments has length and if so show that number, otherwise show the previous number of comments.
 
-After deleting a destination at the bucketlist page, the user is kept on the bucketlist page by the handleDelete function, i.e. the page where the deletion is made from. This meant that the deleted post was still shown in the browser window after deletion. The bucketlist needed to be refreshed in order to show the updated list of destinations. I used [this page](https://timmousk.com/blog/react-reload-page/) to figure out how to do that, namely by adding `window.location.reload();` in the handleDeletefunction.  
+After deleting a destination at the bucketlist page, the user is kept on the bucketlist page by the handleDelete function, i.e. the page where the deletion is made from. This meant that the deleted post was still shown in the browser window after deletion. The bucketlist needed to be refreshed in order to show the updated list of destinations. I used [this page](https://timmousk.com/blog/react-reload-page/) to figure out how to do that, namely by adding `window.location.reload();` in the handleDeletefunction. 
+
+When using the finished app in Google Chrome with the Google Chrome Dev Tools open, the console sometimes show a warning saying "Can't perform a React state update on an unmounted component", see image below. At first the warning seemed to show up at random but after some testing it seems to only show up when refreshing the page with the browser refresh button and at the same time holding down the Ctrl-button. I tried to find any relevant information on the Code Institute Slack chanels and by google searching but I think most information/solutions I found didn´t quite fit in to the description of my problem. A Code Institute tutor was also consulted with this issue but the tutor couldn´t see the warning, not even when refreshing the page like described above. As testing hasn´t found that the warning affects any functionality on the page, the warning has been left without any action. 
+
+![Console log warning in Google Chrome](documentation/readme-bug-console-warning)
 
 ## **Deployment**
 The site was deployed to Heroku from GitHub with the following steps:
