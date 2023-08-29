@@ -69,7 +69,6 @@ function DestinationCreateForm({filter = "" }) {
             try {
                 await axiosReq.post("/destinations/", formData);
                 history.push("/bucketlist"); 
-                console.log("story tag: ", story_tag)
             } catch (err) {
                 console.log(err);
                 if (err.response?.status !== 401) {

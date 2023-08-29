@@ -51,7 +51,7 @@ function DestinationEditForm({filter = "" }) {
             try {
                 const { data } = await axiosReq.get(`/destinations/${id}/`);
                 const { destination, activities, priority, story_tag, is_owner } = data;
-                console.log("story tag: ", story_tag) 
+                
                 is_owner ? 
                     setDestinationData({ destination, activities, priority, story_tag })
                 : history.push("/");
