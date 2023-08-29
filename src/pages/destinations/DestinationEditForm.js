@@ -51,9 +51,9 @@ function DestinationEditForm({filter = "" }) {
             try {
                 const { data } = await axiosReq.get(`/destinations/${id}/`);
                 const { destination, activities, priority, story_tag, is_owner } = data;
-        
+                console.log("story tag: ", story_tag) 
                 is_owner ? 
-                    setDestinationData({ destination, activities, priority, story_tag }) 
+                    setDestinationData({ destination, activities, priority, story_tag })
                 : history.push("/");
             } catch (err) {
                 console.log(err);
@@ -72,25 +72,27 @@ function DestinationEditForm({filter = "" }) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const formData = new FormData();
     
+        const formData = new FormData();
         formData.append("destination", destination);
         formData.append("activities", activities);
         formData.append("priority", priority);
-
-        if (story_tag !== "") 
+    
+        if (story_tag.length !== 0) {
             formData.append("story_tag", story_tag);
-
+        }
+    
         try {
             await axiosReq.put(`/destinations/${id}/`, formData);
-            history.push("/bucketlist"); 
+            history.push("/bucketlist");
         } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {
-              setErrors(err.response?.data);
+                setErrors(err.response?.data);
             }
         }
     };
+    
 
     const textFields = (
         <>
@@ -185,12 +187,12 @@ function DestinationEditForm({filter = "" }) {
                     <option>{savedStories.save_id}</option>
                     {savedStories.results.length ? 
                         savedStories.results.map((savedStories) => {
-                        return <option 
-                            key={savedStories.id} 
-                            value={savedStories.save_id}
-                        >
-                            {savedStories.title}
-                        </option>
+                            return <option 
+                                key={savedStories.id} 
+                                value={savedStories.save_id}
+                            >
+                                {savedStories.title}
+                            </option>
                         })
                     : null }
                 </Form.Control>

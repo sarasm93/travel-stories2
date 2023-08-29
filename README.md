@@ -313,6 +313,17 @@ The stories saved by a user wasn´t showing on the saved stories page under the 
 
 On the create destination page, there was a problem with rendering the name of the priority options (e.g. "Now" for option with value 1, "Soon" for value 2 aso.). This was solved by adding a ternary that renders the names depending on which value is fetched from the api. There was also a problem with making the priority field required and show an alert message if no option is selected. This was solved by adding if statements to the handleSubmit function in the DestinationCreateForm.js - if `priority == ""` show an alert message; if `priority !== ""` submit the form. 
 
+When creating a destination (bucketlist item) this statement was added to the handleSubmit function to make it possible to submit the create form without selecting a story tag:
+```
+if (story_tag !== "") 
+    formData.append("story_tag", story_tag);
+```
+When editing the destination there were problems with submitting the form without a story tag due to the value of story tag being undefined when submitting. The solution to this was adding a slightly different statement saying if story tag is not 0, and edits were made, append story tag to formData:
+```
+if (story_tag.length !== 0) {
+    formData.append("story_tag", story_tag);
+}
+``` 
 When submitting a comment, instead of showing the placeholder text "Comment here" in the form, the comment text that was just submitted was still displayed. This was caused by a missplacement of the call to the setContent()-function in CommentCreateForm.js, which was placed after the setStory(). To solve this the setContent(""); was simply moved ahead of setStory(), see image below.
 
 ![Comment form bug](documentation/readme/readme-bug-comment-form.png)
@@ -393,13 +404,27 @@ Images:
 	- [hero image on bucketlist page](https://pixabay.com/sv/photos/death-valley-v%C3%A4g-%C3%B6ken-landskap-4250244/)
 	- default profile image is taken from the [Code Institute Moments project](https://github.com/Code-Institute-Solutions/moments)
 	- [whale](https://pixabay.com/sv/photos/val-hav-vatten-4424846/)
+	- [Margret](https://pixabay.com/sv/photos/kvinna-strand-hoppa-glad-kvinna-332278/)
+	- [new york](https://pixabay.com/sv/photos/gl%C3%A4dje-v%C3%A4lkommen-vi-ses-kram-tur-370387/)
+	- [Trinity College Library](https://pixabay.com/sv/photos/dublin-bibliotek-trinity-college-2450620/)
+	- [daniel](https://pixabay.com/sv/photos/lycklig-man-vuxen-stad-ansikte-1836445/)
+	- [mary](https://pixabay.com/sv/photos/lycklig-par-k%C3%A4rlek-m%C3%A4nniskor-lycka-4191133/)
+	- [layla](https://pixabay.com/sv/photos/par-turister-b%C3%A5t-leende-selfie-5941079/)
+	- [jim](https://pixabay.com/sv/photos/par-turister-b%C3%A5t-leende-selfie-5941079/)
+	- [Hoi an](https://pixabay.com/sv/photos/m%C3%A4nniskor-gata-hoi-en-trottoar-5528959/)
+	- [sailing](https://pixabay.com/sv/photos/fartyg-b%C3%A5t-sj%C3%B6-segelb%C3%A5t-italien-952292/)
+	- [rome](https://pixabay.com/sv/photos/colosseum-rom-italien-romare-1014310/)
+	- [iceland](https://pixabay.com/sv/photos/island-vattenfall-flod-vatten-5217702/)
+	- [tokyo](https://pixabay.com/sv/photos/japan-asien-neon-streetm-city-resa-4141581/)
+	- [Alpine hike](https://pixabay.com/sv/photos/%C3%A4ventyr-h%C3%B6jd-%C3%B6ver-havet-ryggs%C3%A4ck-1850912/)
+	- [zanzibar](https://pixabay.com/sv/photos/strand-h%C3%A4ngmatta-bl%C3%A5-himmel-moln-1868047/)
+	- [Grand Canyon](https://pixabay.com/sv/photos/grand-canyon-amerikas-f%C3%B6renta-stater-2411051/)
 
 Information for story destinations:
 - [Whale safari](https://www.newzealand.com/int/plan/business/auckland-whale-and-dolphin-safari/)
 - [Laugavegur trek](https://adventures.com/blog/best-hikes-iceland/)
 - [The Alpine Pass Route](https://www.utracks.com/Switzerland/Self-Guided-Walking/The-Alpine-Pass-Route)
 - [The Grand Canyon](https://www.getyourguide.com/arizona-l488/grand-canyon-south-rim-self-guided-tour-t401021/)
-- 
 
 ## **Acknowledgements**
-I want to thank Code institute and my mentor Antonio Rodriguez for all the valuable support and help during the development of this project.
+I want to thank all the Code institute tutors that has help me and my mentor Antonio Rodriguez for all the valuable support and help during the development of this project. 
