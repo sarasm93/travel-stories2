@@ -17,10 +17,10 @@ const Destination = (props) => {
         destination,
         activities,
         priority,
-        story_tag_list,
+        saved_story_tag,
     } = props;
 
-    console.log('story_tag_list: ', story_tag_list)
+    console.log('story_tag: ', saved_story_tag)
     const history = useHistory();
 
     const handleEdit = () => {
@@ -85,21 +85,16 @@ const Destination = (props) => {
                         <Card.Body className='py-0'>
                             <Row>
                                 <Col sm={12} md={7} className='pb-3'>
-                                    <span className='mr-2'>Stories:</span>
-                                    {/* {story_tag_list && (story_tag_list.map((story)=>{
-                                            return (<span key={id}><Badge pill variant="light" className={`${styles.Badge} m-1`}>{story.title}</Badge></span>)
-                                        }))} */}
-                                    
-                                        {story_tag_list && (story_tag_list.map((story)=>{ return (
-                                            <Link to={`stories/${story.id}`} key={story.id}>
-                                                <span >
-                                                    <Badge pill variant="light" className={`${styles.Badge} m-1`}>
-                                                        {story.story}
-                                                    </Badge>
-                                                </span>
-                                            </Link>
-                                        )}))}
-                                       
+                                    <span className='mr-2'>Story tag:</span>
+                                    {saved_story_tag && (saved_story_tag.map((story)=>{ return (
+                                        <Link to={`stories/${story.id}`} key={story.id}>
+                                            <span >
+                                                <Badge pill variant="light" className={`${styles.Badge} m-1`}>
+                                                    {story.story}
+                                                </Badge>
+                                            </span>
+                                        </Link>
+                                    )}))}
                                 </Col>
                                 <Col sm={12} md={5} className='text-right pb-3'>
                                     <Button 

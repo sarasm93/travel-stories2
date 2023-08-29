@@ -311,7 +311,7 @@ Throughout the development, the JSX and React Bootstrap code had been validated 
 ### **Resolved problems and bugs**
 The stories saved by a user wasn´t showing on the saved stories page under the Saved tab in the navbar. A 500 error was thrown. This was solved by putting debug=True in the back end so a all errors could be shown in the front end app that was related to the back end. Then it was obvious that there was a typo in the filter on the front end to filter out the saved stories. 
 
-On the create destination page, there was a problem with rendering the name of the priority options (e.g. "Now" for option with value 1, "Soon" for value 2 aso.). This was solved by adding a ternary that renders the names depending on which value is fetched from the api. 
+On the create destination page, there was a problem with rendering the name of the priority options (e.g. "Now" for option with value 1, "Soon" for value 2 aso.). This was solved by adding a ternary that renders the names depending on which value is fetched from the api. There was also a problem with making the priority field required and show an alert message if no option is selected. This was solved by adding if statements to the handleSubmit function in the DestinationCreateForm.js - if `priority == ""` show an alert message; if `priority !== ""` submit the form. 
 
 When submitting a comment, instead of showing the placeholder text "Comment here" in the form, the comment text that was just submitted was still displayed. This was caused by a missplacement of the call to the setContent()-function in CommentCreateForm.js, which was placed after the setStory(). To solve this the setContent(""); was simply moved ahead of setStory(), see image below.
 
@@ -378,6 +378,8 @@ CSS code was taken from [this site](https://www.upbeatcode.com/react/how-to-writ
 CSS code for box-shadow on most-liked-stories-cards was taken from [this Codepen.io page](https://codepen.io/ovdojoey/pen/BomKyZ). 
 
 The footer was hiding content on the page (see image). This was solved giving the main app container a bottom margin of 70px.
+
+[This stack overflow page](https://stackoverflow.com/questions/65546190/alert-not-working-with-react-hooks-bootstrap) was used to figure out how to display a custom alert message for the priority field in the DestinationCreateForm.js form. 
 
 Images:
 - Pixabay.com

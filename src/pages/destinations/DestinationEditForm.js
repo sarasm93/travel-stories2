@@ -78,7 +78,9 @@ function DestinationEditForm({filter = "" }) {
         formData.append("destination", destination);
         formData.append("activities", activities);
         formData.append("priority", priority);
-        formData.append("story_tag", story_tag);
+
+        if (story_tag !== "") 
+            formData.append("story_tag", story_tag);
 
         try {
             await axiosReq.put(`/destinations/${id}/`, formData);
@@ -178,15 +180,15 @@ function DestinationEditForm({filter = "" }) {
                 <Form.Control
                     as="select"
                     name ="story_tag"
-                    defaultValue={"placeholder"}
+                    value={story_tag}
                     onChange={handleChange}
                 >
-                    <option value={"placeholder"}>{story_tag}</option>
+                    <option>{savedStories.save_id}</option>
                     {savedStories.results.length ? 
                         savedStories.results.map((savedStories) => {
                         return <option 
                             key={savedStories.id} 
-                            value={savedStories.id}
+                            value={savedStories.save_id}
                         >
                             {savedStories.title}
                         </option>

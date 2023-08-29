@@ -18,17 +18,17 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 function DestinationCreateForm({filter = "" }) {
     const [savedStories, setSavedStories] = useState({ results: [] });
     const [errors, setErrors] = useState({});
+    const [showAlert, setShowAlert] = useState(false);
     
 
     const [destinationData, setDestinationData] = useState({
         destination: "",
         activities: "",
         priority: "",
-        story_tag: [],
+        story_tag: "",
         });
     
     const { destination, activities, priority, story_tag } = destinationData;
-    const [multiValues, setMultiValues] = useState(story_tag ? story_tag: []);
     const history = useHistory();
 
     const currentUser = useCurrentUser();
@@ -46,37 +46,39 @@ function DestinationCreateForm({filter = "" }) {
         fetchSavedStories(); 
         }, [filter, currentUser]);
 
-    const handleChangeMulti = (e) => {
-        let value = Array.from(e.target.selectedOptions, option => parseInt(option.value));
-        setMultiValues(value);
-      
-    }
-
     const handleChange = (event) => {
         setDestinationData({
             ...destinationData, [event.target.name]: event.target.value,
         })
+        console.log("story_tag: ", story_tag)
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const formData = new FormData();
-    
-        formData.append("destination", destination);
-        formData.append("activities", activities);
-        formData.append("priority", priority);
-        formData.append("story_tag", multiValues);
+        if (priority == "")
+            setShowAlert(true);
+        if (priority !== "") {
+            const formData = new FormData();
+        
+            formData.append("destination", destination);
+            formData.append("activities", activities);
+            formData.append("priority", priority);
 
-        try {
-            await axiosReq.post("/destinations/", formData);
-            // history.push("/bucketlist"); 
-        } catch (err) {
-            console.log(err);
-            if (err.response?.status !== 401) {
-                setErrors(err.response?.data);
+            if (story_tag !== "") 
+                formData.append("story_tag", story_tag);
+            
+            try {
+                await axiosReq.post("/destinations/", formData);
+                history.push("/bucketlist"); 
+            } catch (err) {
+                console.log(err);
+                if (err.response?.status !== 401) {
+                    setErrors(err.response?.data);
+                }
             }
         }
     };
+    
 
     const textFields = (
         <>
@@ -145,6 +147,7 @@ function DestinationCreateForm({filter = "" }) {
                     name="priority"
                     onChange={handleChange}
                     >
+                        <option>Select...</option>
                         {options.map((option) => (
                             <option 
                                 value={option.value} 
@@ -155,31 +158,30 @@ function DestinationCreateForm({filter = "" }) {
                         ))}
                 </Form.Control>
             </Form.Group>
-            {errors?.priority?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                    {message}
+            {showAlert && (
+                <Alert variant="warning">
+                    Choose a priority                   
                 </Alert>
-            ))}
+            )}
             <Form.Group>
                 <Form.Label>Story tag:</Form.Label>
                 <Form.Control
                     as="select"
-                    name ="story_tag"
-                    defaultValue={["placeholder"]}
-                    onChange={handleChangeMulti}
-                    multiple
+                    name="story_tag"
+                    value={story_tag}
+                    onChange={handleChange}
                 >
-                    <option value={"placeholder"}>Select...</option>
+                    <option>----</option>
                     {savedStories.results.length ? 
                         savedStories.results.map((savedStories) => {
                             return <option 
                                 key={savedStories.id} 
-                                value={savedStories.id}
+                                value={[savedStories.save_id]}
                             >
                                 {savedStories.title}
                             </option>
                         })
-                    : null }
+                    : <option>----</option> }
                 </Form.Control>
                 {errors?.story_tag?.map((message, idx) => (
                     <Alert variant="warning" key={idx}>
