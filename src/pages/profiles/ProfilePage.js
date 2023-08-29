@@ -126,13 +126,15 @@ function ProfilePage({ filter }) {
                         <Asset spinner />
                     )}
                 </Container>
-                {hasLoaded ? (
-                    <>
-                        {mainProfileStories}
-                    </>
-                ) : (
-                    <Asset spinner />
-                )}
+                <Container>
+                    {hasLoaded ? (
+                        <>
+                            {mainProfileStories}
+                        </>
+                    ) : (
+                        <Asset spinner />
+                    )}
+                </Container>
             </Col>
         </Row>
     );
