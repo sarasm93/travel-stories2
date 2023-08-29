@@ -61,6 +61,7 @@ function ProfilePage({ filter }) {
                 <Col lg={3} className="text-lg-left d-flex">
                     <span>
                         <Image 
+                            roundedCircle
                             className={styles.ProfileImage} 
                             rounded src={profile?.image}>
                         </Image>
