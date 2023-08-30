@@ -358,7 +358,7 @@ Used to render a story everywhere a story is shown on the site, for example on t
 Used on several pages to redirect the user depending on the authorization status of the user.
 
 ## **Testing**
-The site has been tested so that it works on different browsers. It has been tested on Google Chrome, Microsoft Edge, Firefox and Samsung Internet.
+The site has been tested so that it works on different browsers. It has been tested on Google Chrome, Microsoft Edge and Firefox.
 
 The site is responsive. The responsivness was tested with Google Chrome Dev Tools and [Am I responsive](https://ui.dev/amiresponsive). 
 
