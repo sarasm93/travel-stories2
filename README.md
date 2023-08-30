@@ -75,8 +75,81 @@ Wireframes has been used to create the design of the pages of this site.
 
 <summary>Home page</summary>
 
-![Home Page](documentation/wireframes/home-page1.png)
-![Home Page mobile](documentation/wireframes/home-page2.png)
+![Home Page](documentation/readme-wireframe-home1.png)
+![Home Page](documentation/readme-wireframe-home2.png)
+![Home Page](documentation/readme-wireframe-home3.png)
+</details>
+
+<details>
+
+<summary>Log in page</summary>
+
+![Log in Page](documentation/readme-wireframe-login.png)
+</details>
+
+<details>
+
+<summary>Sign up page</summary>
+
+![Sign up Page](documentation/readme-wireframe-signup.png)
+</details>
+
+<details>
+
+<summary>Create story page</summary>
+
+![Create story Page](documentation/readme-wireframe-create-story.png)
+</details>
+
+<details>
+
+<summary>Edit story page</summary>
+
+![Edit story Page](documentation/readme-wireframe-edit-story1.png)
+![Edit story Page](documentation/readme-wireframe-edit-story2.png)
+</details>
+
+<details>
+
+<summary>Profile page</summary>
+
+![Profile Page](documentation/readme-wireframe-profile.png)
+</details>
+
+<details>
+
+<summary>Edit profile page</summary>
+
+![Edit profile Page](documentation/readme-wireframe-edit-profile.png)
+</details>
+
+<details>
+
+<summary>Bucketlist page</summary>
+
+![Bucketlist Page](documentation/readme-wireframe-bucketlist.png)
+</details>
+
+<details>
+
+<summary>Add destination page</summary>
+
+![Add destination Page](documentation/readme-wireframe-add-destination.png)
+</details>
+
+<details>
+
+<summary>Edit destination page</summary>
+
+![Edit destination Page](documentation/readme-wireframe-edit-destination.png)
+</details>
+
+<details>
+
+<summary>Saved stories page</summary>
+
+![Saved stories Page](documentation/readme-wireframe-saved-stories1.png)
+![Saved stories Page](documentation/readme-wireframe-saved-stories2.png)
 </details>
 
 ## **Agile Development**
@@ -99,8 +172,7 @@ The like model holds all information about a like, i.e. which user has made it a
 
 The comment model holds all information about a comment - which user has made it and on which story, the content of the comment and the creation date. 
 
-![ERD diagram showing the project data models and the relationships between them - image 1](documentation/models1.png)
-![ERD diagram showing the project data models and the relationships between them - image 2](documentation/models2.png)
+![ERD diagram showing the project data models and the relationships between them - image 1](documentation/data-model.png)
 
 ## **Features**
 
@@ -127,35 +199,45 @@ The comment model holds all information about a comment - which user has made it
 
 On all pages, everything that is clickable has a hover effect so that it´s clear to the user when something is clickable and not. 
 
+##### **Spinner**
+- A spinner is shown on all pages where data is fetched from the api and rendered, during the data is fetched.
+
+![Spinner](documentation/readme-spinner.png)
+
 #### **Home page**
 
 ##### **Intro section**
 - aims to give the user a warm welcome and is useful to the users as it gives them a first glance of what Travel Stories offers. It aims to make them interested and to make them want to continue exploring the page.
 - the intro is short so that the user can go to the main part of the home page as quickly as possible (the story section)
 
-![Home page intro](documentation/readme-home-intro.png)
+![Home page intro](documentation/readme-home-hero.png)
 
 ##### **Story section**
 - provides the user with all the stories shared on the site. This is where the user gets all the inspiration by scrolling (infinately) through the stories.
 - a story is shown on a card and consists of a heading with the story title and location that the story is about. The date for when the story was created is also provided.
 - the story image is shown in the middle of the story card and below that the actuall story content is displayed, along with the story owner profile image and username.
 - a user can like and save a story by clicking on the symbols below the story in the bottom right corner. It is also provided with the number of likes and comments made on a story. 
-- if the user is the owner of the story, it can click the three dots in the bottom right corner and be redirected to the edit story page or delete a story. 
+- if the user is the owner of the story, the like and save symbols are made grey and the user won´t be able to like or save. The user can instead see a three dots-symbol. It can click the three dots in the bottom right corner and be redirected to the edit story page or delete a story. 
 - the user can click at the very bottom of the story card, where there is a comment-symbol, to toggle out/in the comment section for the story. Here the user can create a comment and view other peoples comments. The user can also edit or delete it´s own comments by clicking the three dots symbol by a comment. The symbol is only shown for comments that the current user has made. The toggle functionality is made with React Bootstrap accordion component. 
 
-![Home page stories](documentation/readme-home-stories.png)
+![Home page stories](documentation/readme-home-stories1.png)
+![Home page stories](documentation/readme-home-stories2.png)
+![Home page stories](documentation/readme-home-stories3.png)
+![Home page stories](documentation/readme-home-stories4.png)
+![Home page stories](documentation/readme-home-stories5.png)
+![Home page stories](documentation/readme-home-stories6.png)
 
 ##### **Most liked stories section**
 - to the left on the home page, the 5 (or 3, on mobile) most liked stories on the site are shown in a vertical list, so that the user can keep track of popular stories.
 - each story is shown on a card with the story title and story location displayed on the card that has the story image as background. 
 - each card is a link to a separate page for the story. On that separate page, all the features of a single story descriped above (se Story section heading) is displayed. 
 
-![Home page most liked stories](documentation/readme-home-liked-stories.png)
+![Home page most liked stories](documentation/readme-home-most-liked.png)
 
 #### **Saved page**
 - shows all the stories (infinate scrolling) a registered user has saved (by clicking the save symbol for a story). Everything else on this pages is the same as the home page.
 
-![Saved stories](documentation/readme-saved-stories.png)
+![Saved stories](documentation/readme-saved-page.png)
 
 #### **User pages**
 The sign up, log in and log out functionality was created with Django allauth.
@@ -163,17 +245,15 @@ The sign up, log in and log out functionality was created with Django allauth.
 ##### **Sign up**
 - useful to the user as it makes it possible to create and save stories, comment, like and add a destination to bucket list. Provides a form with a submit button in the end.
 
-![Sign up page](documentation/readme-sign-up.png)
+![Sign up page](documentation/readme-signup.png)
 
 ##### **Log in**
 - When the user has logged in the Sign up item is replaced by the Profile item and the the Login navbar item changes to Logout. A Create Story item, Saved (stories) and Bucket list item is also added to the navbar. 
 
-![Log in page](documentation/readme-log-in.png)
+![Log in page](documentation/readme-login.png)
 
 ##### **Log out**
 - When the user has logged in the Logout navbar item changes to Login and the Sign up item replaces the Profile item. The Create Story item, Saved (stories) and Bucket list item is removed.
-
-![Log out page](documentation/readme-log-out.png)
 
 #### **Create story**
 - user is taken to this page when the Create Story button in the navbar has been clicked.
@@ -181,7 +261,7 @@ The sign up, log in and log out functionality was created with Django allauth.
 - if any field is not correctly filled in the user will be alerted with a message under the field.
 - the user can choose to cancel the creation and go back to the previous page by clicking the cancel button.
 
-![Create story page](documentation/readme-create-story.png)
+![Create story page](documentation/readme-story-form.png)
 
 #### **Edit story page**
 - at this page the user can edit a story. It provides the user with a edit form to edit all fields in the form. To edit the user needs to add correct form input and click the "Update" button.
@@ -190,14 +270,35 @@ The sign up, log in and log out functionality was created with Django allauth.
 - when a story is updated the user is taken to the profile page where the created story is shown at the top of the page (ordering by story creation date). 
 - if any field is not correctly filled in the user will be alerted with a message under the field.
 
-![Edit story page](documentation/readme-edit-story.png) 
+![Edit story page](documentation/readme-edit-story-form.png) 
 
 #### **Profile page**
 - is used by site visitors to learn everything about a user that has created an account (profile) on the site. 
 - shows the profile owners profile image, biography, location and number of stories shared. It also shows the users shared stories in a list.
-- the owner of the profile can click the pen symbol to edit the username, password or add and edit the profile biography and location. When clicking the user is taken to a new page with the respective edit form.   
+- the owner of the profile can click the pen symbol to edit the username, password or add and edit the profile biography and location. When clicking the user is taken to a new page with the respective edit form.
+- if the user hasn´t created any stories yet a messages is shown to the visitor   
 
-![Profile page](documentation/readme-profile.png)
+![Profile page](documentation/readme-profile-page.png)
+![Profile page](documentation/readme-no-stories.png)
+
+#### **Edit profile presentation page**
+- the user can edit its profile presentation by clicking the pen on the profile page and choose Edit profile presentation.
+- the form is very similar to most of the other forms at the page, so the user recognizes it.
+- non of the fields are required as it should be optional how much info the user wants to share.
+
+![Profile edit presentation page](documentation/readme-profile-edit-presentation.png)
+
+#### **Edit profile username page**
+- the user can edit its username by clicking the pen symbol on the profile page and choose Edit username.
+- the user is taken to a form to edit and then submit or cancel
+
+![Profile edit username page](documentation/readme-profile-edit-username.png)
+
+#### **Edit profile password page**
+- the user can edit its username by clicking the pen symbol on the profile pageand choose Change password.
+- the user is taken to a form to edit and then submit or cancel
+
+![Profile edit password page](documentation/readme-profile-edit-password.png)
 
 #### **Add destination page**
 - provides the registered user with the opportunity to create a bucketlist item, i.e. destination, that is added to a bucketlist of destinations the user want´s to visit.
@@ -209,8 +310,10 @@ The sign up, log in and log out functionality was created with Django allauth.
 #### **Bucket list page**
 - the page where the registered user can view all its created bucketlist destinations, in order based on which priority the user has given each destination (from Now at the top to Might happen at the bottom). 
 - each destination has a Edit and a Delete button, so the user can manage the content of its bucketlist. 
+- if the user hasn´t created any stories yet a messages is shown to the visitor 
 
 ![Bucket list page](documentation/readme-bucketlist.png)
+![Bucket list page](documentation/readme-no-destinations.png)
 
 #### **Edit destination page**
 - the user is taken to this page after clicking the Edit button on the bucketlist page.
@@ -228,7 +331,7 @@ The sign up, log in and log out functionality was created with Django allauth.
 ![Not found page](documentation/readme-not-found.png) 
 
 ### **Future features**
-- Users can use their own story (not just stories that they have saved, created by others) as a tag to a bucket list item. They might want to go back to the same place again and do other activites.
+- Users can filter the stories on the home page.
 
 The above feature is listed in a GitHub Project used as backlog for the app. The backlog is found [here](https://github.com/sarasm93/travel-stories-api2/issues).
 
@@ -326,17 +429,21 @@ if (story_tag.length !== 0) {
 ``` 
 When submitting a comment, instead of showing the placeholder text "Comment here" in the form, the comment text that was just submitted was still displayed. This was caused by a missplacement of the call to the setContent()-function in CommentCreateForm.js, which was placed after the setStory(). To solve this the setContent(""); was simply moved ahead of setStory(), see image below.
 
-![Comment form bug](documentation/readme/readme-bug-comment-form.png)
+![Comment form bug](documentation/bugs/readme-bug-comment-form.png)
 
 On medium screen sizes, the nav item text was too big and made the items render outside of the navbar due to the text jumping down to the next row. To solve this, some padding was removed and the font-size was decreased. 
 
 The comments count on storypage.js wasn´t updating when the user has made a comment unless the page was refreshed. This was solved by adding a ternary to check if comments has length and if so show that number, otherwise show the previous number of comments.
 
+The footer was hiding content on the page (see image). This was solved giving the main app container a bottom margin of 70px.
+
+![Footer hiding content](documentation/bugs/readme-bug-footer.png)
+
 After deleting a destination at the bucketlist page, the user is kept on the bucketlist page by the handleDelete function, i.e. the page where the deletion is made from. This meant that the deleted post was still shown in the browser window after deletion. The bucketlist needed to be refreshed in order to show the updated list of destinations. I used [this page](https://timmousk.com/blog/react-reload-page/) to figure out how to do that, namely by adding `window.location.reload();` in the handleDeletefunction. 
 
 When using the finished app in Google Chrome with the Google Chrome Dev Tools open, the console sometimes show a warning saying "Can't perform a React state update on an unmounted component", see image below. At first the warning seemed to show up at random but after some testing it seems to only show up when refreshing the page with the browser refresh button and at the same time holding down the Ctrl-button. I tried to find any relevant information on the Code Institute Slack chanels and by google searching but I think most information/solutions I found didn´t quite fit in to the description of my problem. A Code Institute tutor was also consulted with this issue but the tutor couldn´t see the warning, not even when refreshing the page like described above. As testing hasn´t found that the warning affects any functionality on the page, the warning has been left without any action. 
 
-![Console log warning in Google Chrome](documentation/readme-bug-console-warning)
+![Console log warning in Google Chrome](documentation/bugs/readme-bug-console-warning.png)
 
 ## **Deployment**
 The site was deployed to Heroku from GitHub with the following steps:
@@ -391,8 +498,6 @@ Used [this stack overflow page](https://www.pluralsight.com/guides/how-to-get-se
 CSS code was taken from [this site](https://www.upbeatcode.com/react/how-to-write-text-on-image-in-react-js/) for the popular stories cards on the home page, to place the text in the center of the card on top of the image.
 
 CSS code for box-shadow on most-liked-stories-cards was taken from [this Codepen.io page](https://codepen.io/ovdojoey/pen/BomKyZ). 
-
-The footer was hiding content on the page (see image). This was solved giving the main app container a bottom margin of 70px.
 
 [This stack overflow page](https://stackoverflow.com/questions/65546190/alert-not-working-with-react-hooks-bootstrap) was used to figure out how to display a custom alert message for the priority field in the DestinationCreateForm.js form. 
 
