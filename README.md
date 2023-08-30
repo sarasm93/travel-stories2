@@ -1,4 +1,3 @@
-README Front End PP5
 # **Travel Stories**
 
 Travel Stories is a social networking platform targeted towards everyone that loves to travel, want to share their adventures with others and keep track of feature destinations to visit. 
@@ -407,6 +406,117 @@ The accessibility of the site has been checked with Lighthouse in DevTools. The 
 
 ### **Manual testing**
 Google Chrome Dev Tools was used to test the site through out the development.
+
+#### **Spinner**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| spinner | when visiting a page where data must be fetched from api | spinner shows | pass |
+
+#### **Header with navbar**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| logo planet | hover | change color to blue | pass |
+| navbar items | hover | change background color to light blue and text to light grey | pass |
+| navbar items symbols | hover | change color to light green | pass |
+| logo | click | redirect to home | pass |
+| navbar items | click | redirect to correct page | pass |
+
+#### **Footer**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| logo planet | hover | dont change color | pass |
+| logo | click | redirect to home | pass |
+
+#### **Home page, Saved stories page, story section of profile page and separate most-liked-story-page**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| story like | click symbol | like can be made, like symbol turns green | pass |
+| story save | click symbol | save can be made, save symbols turns green and count increase by 1 | pass |
+| all symbols and profile username | hover | slight change in color | pass |
+| story like | hover symbol | if user is owner of story, symbol i grey and a message is shown with info that it cannot be liked | pass |
+| story save | hover symbol | if user is owner of story, symbol i grey and a message is shown with info that it cannot be saved | pass |
+| profile avatar | click | redirect to profile page | pass |
+| comment symbol | click | toggle out or toggle in comment form and comments under story card | pass |
+| comment form | write and click post symbol | submit comment, comment is shown below form, comments count increase by 1 | pass |
+| comment | see three dots-symbol | when owner of comment views its comment | pass |
+| comment | click on three dots-symbol | show dropdown meny with edit and delete options that will delete comment or make the comment into edit form | pass |
+| most liked story card | hover | shadow on card | pass |
+| most liked story card | click | go to story page for the story clicked | pass |
+| stories on home page, saved page and profile page | scroll | infinate scroll | pass |
+| story | see three dots-symbol | when owner of story views its story | pass |
+| story | click on three dots-symbol | show dropdown meny with edit and delete options that will delete story or get redirected to edit from | pass |
+
+#### **Create story page**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| default camera image | click | add image | pass |
+| all buttons | hover | color effect | pass |
+| Create button | click | submit form, create story and get redirected to profile page | pass |
+| cancel button | click | go back to previous page | pass |
+| change button | click | change image | pass |
+| create button | click | if user form input is invalid by entering invalid input, error message is shown | pass |
+
+#### **Profile page presentation section on top**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| story count| view | correct number | pass |
+| pen symbol | view | if user is owner of profile | pass |
+| pen symbol | click | show dropdown with options edit username, change password and edit presentation and get redirected to these pages | pass |
+| pen symbol | view | if user is owner of profile | pass |
+
+#### **Profile page edit forms**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| all buttons | hover | color effect | pass |
+| Create button | click | submit form, change username/password/presentation and get redirected to profile page with updated data | pass |
+| cancel button | click | go back to previous page | pass |
+| create button | click | if user form input is invalid by entering invalid input to form fields, error messages are shown | pass |
+| change button | click | change image | pass |
+
+#### **Bucketlist page**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| all buttons | hover | color effect | pass |
+| destinations (bucketlist items) | scroll | infinate scroll | pass |
+| story tag link | click | send user to the separate page for the story that was tagged | pass |
+| Add destination button | click | get redirected to create destination form | pass |
+| delete button | click | delete the destination | pass |
+| edit button | click | get redirected to edit page for destination | pass |
+
+#### **Add destination page**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| all buttons | hover | color effect | pass |
+| add button | click | submit form, create destination and get redirected to bucketlist page | pass |
+| cancel button | click | go back to previous page | pass |
+| add button | click | if user form input is invalid by entering invalid or have not entered input to all field except story tag, error messages are shown | pass |
+| story tag dropdown | click | show all stories that the current user has saved | pass |
+
+#### **Edit destination page**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| all buttons | hover | color effect | pass |
+| all form fields | page loaded | prefilled with destinatons data for the destination that is being edited | pass |
+| update button | click | submit form, update destination and get redirected to bucketlist page | pass |
+| cancel button | click | go back to previous page | pass |
+| update button | click | if user form input is invalid by entering invalid or have not entered input to all field except story tag, error messages are shown | pass |
+| story tag dropdown | click | show all stories that the current user has saved | pass |
+
+#### **Sign Up page**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| "log in" link | click | open Log In page | pass |
+| "Register" button | hover | color effect | pass |
+| "Register" button | click | if user form input is valid by entering correct input to all fields, go to log in page | pass |
+| "Register" button | click | if user form input is invalid by not entering correct input to all fields, show error messages on form until all fields have correct input | pass |
+
+#### **Log In page**
+| Feature | Action | Expected outcome | Pass/Fail |
+| --- | --- | --- | --- |
+| "here" link | click | open Sign Up page | pass |
+| "Log In" button | hover | color effect | pass |
+| "Log In" button | click | if user form input is valid by entering a registered username and password, open home page with new navbar items | pass |
+| "Log In" button | click | if user form input is invalid by entering invalid username and/or password, error message is shown | pass |
 
 ### **Validator testing**
 Throughout the development, the JSX and React Bootstrap code had been validated via feedback from npm in the terminal. The CSS code has also been put through the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input). The code has been adjusted according to the feedback.

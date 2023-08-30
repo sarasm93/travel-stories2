@@ -25,6 +25,11 @@
     margin: auto;
     color: #000000;
 }
+
+.Link:hover {
+    background-color: transparent;
+    color: #000000;
+}
   
 .Link span {
     color: #1916f6;
@@ -33,3 +38,4 @@
 .Image {
     margin-bottom: 5vh;
 }
+
