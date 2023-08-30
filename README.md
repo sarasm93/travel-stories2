@@ -362,47 +362,9 @@ The site has been tested so that it works on different browsers. It has been tes
 
 The site is responsive. The responsivness was tested with Google Chrome Dev Tools and [Am I responsive](https://ui.dev/amiresponsive). 
 
-The accessibility of the site has been checked with Lighthouse in DevTools. The results for the final site is shown below.
+The accessibility of the site has been checked with Lighthouse in DevTools. The results for the final site is shown below. The performance score was affected a bit by image sizes. All images have been optimized with tinypng.com but in the feature a caching library could be used as well.
 
-- Home page
-
-![Lighthouse testing score](documentation/validation/lighthouse-test-home.png)
-
-- Sign up page
-
-![Lighthouse testing score](documentation/validation/lighthouse-test-signup.png)
-
-- Login page
-
-![Lighthouse testing score](documentation/validation/lighthouse-test-login.png)
-
-- Logout page
-
-![Lighthouse testing score](documentation/validation/lighthouse-test-logout.png)
-
-- Profile page
-
-![Lighthouse testing score](documentation/validation/lighthouse-test-my-profile.png)
-
-- Edit story page
-
-![Lighthouse testing score](documentation/validation/lighthouse-test-edit-story.png)
-
-- Bucket list page
-
-![Lighthouse testing score](documentation/validation/lighthouse-test-bucketlist.png)
-
-- Add destination page
-
-![Lighthouse testing score](documentation/validation/lighthouse-test-add-dest.png)
-
-- Edit destination page
-
-![Lighthouse testing score](documentation/validation/lighthouse-test-edit-dest.png)
-
-- Delete page
-
-![Lighthouse testing score](documentation/validation/lighthouse-test-delete.png)
+![Lighthouse testing score](documentation/readme-lighthouse.png)
 
 ### **Manual testing**
 Google Chrome Dev Tools was used to test the site through out the development.
